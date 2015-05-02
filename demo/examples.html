@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="stylesheets/sass/blooby-grid.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/sass/screen.css">
+	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Reklino/gromlicons/master/style.css">
+
+	<script src="//use.typekit.net/hro1cmg.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
+
+	<title>Blooby Grid</title>
+</head>
+<body>
+
+	<header class="container">
+
+		<div class="col-12">
+			<h1>Blooby<br/>Grid</h1>
+			<span class="sub">An itty bitty tool for visualizing <span class="italic">fluid grids</span> during development.</span>
+			<br><span class="sub">Scroll Down to see how to use.</span>
+		</div>
+
+	</header>
+
+
+	<hr>
+
+
+	<section class="container" id="one">
+
+		<div class="col-4">
+			<h4>Basic Fluid Grid</h4>
+			<p>
+				The container property sets the maximum width of the grid. It should be set to the width of your content.
+			</p>
+		</div>
+
+		<div class="col-8">
+			<pre><code  class="language-javascript">
+bloobyGrid.container = 960,
+bloobyGrid.containerPosition = 'center',
+bloobyGrid.breaks = [
+    {
+        point : "(min-width: 1200px)",
+        columns : 6,
+        gutters : .166,
+        baseLineHeight : 24
+    }
+];
+bloobyGrid.gridInit();
+			</code></pre>
+		</div>
+
+	</section>
+
+
+	<hr>
+
+
+	<section class="container" id="two">
+
+		<div class="col-4">
+			<h4>Full Width Container</h4>
+			<p>
+				The container property sets the maximum width of the grid. It should be set to the width of your content.
+			</p>
+		</div>
+
+		<div class="col-8">
+			<pre><code  class="language-javascript">
+bloobyGrid.container = null,
+bloobyGrid.breaks = [
+    {
+        point : "(min-width: 900px)",
+        columns : 12,
+        gutters : .33,
+        baseLineHeight : 36
+    }
+];
+bloobyGrid.gridInit();
+			</code></pre>
+		</div>
+
+	</section>
+
+	<footer class="container">
+		<div class="col-4">
+			Made with <span class="icon_coffee"></span> by <a href="#">Reklino</a>
+		</div>
+		<div class="col-4">
+			Inspired by <a href="#">Golden Grid</a> &amp; <a href="#">Susy</a><br>
+		</div>
+		<div class="col-4">
+			<span>Github | Twitter</span>
+		</div>
+	</footer>
+
+<script src="../src/blooby-grid.js"></script>
+<script src="js/prism.js"></script>
+<script src="js/noframework.waypoints.min.js"></script>
+<script>
+	var waypoint = new Waypoint({
+	  element: document.getElementById('one'),
+	  handler: function(direction) {
+	  	bloobyGrid.container = 960,
+	  	bloobyGrid.containerPosition = 'center',
+	  	bloobyGrid.breaks = [
+	  	    {
+	  	        point : "(min-width: 1200px)",
+	  	        columns : 6,
+	  	        gutters : .166,
+	  	        baseLineHeight : 24
+	  	    }
+	  	];
+	    bloobyGrid.gridInit();
+	  },
+	  offset: '25%'
+	})
+
+	var waypoint = new Waypoint({
+	  element: document.getElementById('two'),
+	  handler: function(direction) {
+	  	bloobyGrid.container = null,
+	  	bloobyGrid.breaks = [
+	  	    {
+	  	        point : "(min-width: 900px)",
+	  	        columns : 12,
+	  	        gutters : .33,
+	  	        baseLineHeight : 36
+	  	    }
+	  	];
+	  	bloobyGrid.gridInit();
+	  },
+	  offset: '25%'
+	})
+</script>
+</body>
+</html>

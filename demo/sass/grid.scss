@@ -1,0 +1,153 @@
+@import "susy";
+
+/*============================
+=            Grid            =
+============================*/
+
+$tablet:      layout(650px 6);
+$desktop-sm:  layout(960px 12);
+$desktop-lg:  layout(1100px 12);
+$susy: (
+    columns: 3,
+    gutters: .25,
+    gutter-position: inside,
+    container: 450px
+);
+
+$line-int: 30;
+
+$font-size: 20;
+$em: $font-size * 1;
+
+$line: $line-int / $em;
+
+/*
+*
+*   Zoomable baseline grid
+*   type size presets
+*
+*/
+
+body {
+    /* 20px / 28px */
+    font-size: ($font-size - 4) / 16 * 1em;
+    line-height: #{$line-int / $em}em;
+}
+
+.container {
+    transition: all 0.15s ease-in-out;
+    @include container;
+    margin: 0 auto;
+}
+
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { transition: all 0.15s ease-in-out; }
+
+.col-1     { @include span(3 of 3); }
+.col-2     { @include span(3 of 3); }
+.col-3     { @include span(3 of 3); }
+.col-4     { @include span(3 of 3); }
+.col-5     { @include span(3 of 3); }
+.col-6     { @include span(3 of 3); }
+.col-7     { @include span(3 of 3); }
+.col-8     { @include span(3 of 3); }
+.col-9     { @include span(3 of 3); }
+.col-10    { @include span(3 of 3); }
+.col-11    { @include span(3 of 3); }
+.col-12    { @include span(3 of 3); }
+
+@include susy-breakpoint(700px, $tablet) {
+  .col-1     { @include span(1 of 6); }
+  .col-2     { @include span(1 of 6); }
+  .col-3     { @include span(2 of 6); }
+  .col-4     { @include span(2 of 6); }
+  .col-5     { @include span(3 of 6); }
+  .col-6     { @include span(3 of 6); }
+  .col-7     { @include span(3 of 6); }
+  .col-8     { @include span(4 of 6); }
+  .col-9     { @include span(4 of 6); }
+  .col-10    { @include span(5 of 6); }
+  .col-11    { @include span(5 of 6); }
+  .col-12    { @include span(6 of 6); }
+
+  .col-offset-1     { margin-left: span(1 of 6); }
+  .col-offset-2     { margin-left: span(1 of 6); }
+  .col-offset-3     { margin-left: span(2 of 6); }
+  .col-offset-4     { margin-left: span(2 of 6); }
+  .col-offset-5     { margin-left: span(3 of 6); }
+  .col-offset-6     { margin-left: span(3 of 6); }
+  .col-offset-7     { margin-left: span(3 of 6); }
+  .col-offset-8     { margin-left: span(4 of 6); }
+  .col-offset-9     { margin-left: span(4 of 6); }
+  .col-offset-10    { margin-left: span(5 of 6); }
+  .col-offset-11    { margin-left: span(5 of 6); }
+
+  body {
+      /* 20px / 28px */
+      font-size: ($font-size - 2) / 16 * 1em;
+      line-height: #{$line-int / $em}em;
+  }
+
+  .container {
+      @include container;
+  }
+
+  figure.outset-left {
+    width: 75%;
+    margin-left: 0 - span(1 of 6);
+  }
+
+}
+@include susy-breakpoint(1100px, $desktop-sm) {
+  .col-1     { @include span(1 of 12); }
+  .col-2     { @include span(2 of 12); }
+  .col-3     { @include span(3 of 12); }
+  .col-4     { @include span(4 of 12); }
+  .col-5     { @include span(5 of 12); }
+  .col-6     { @include span(6 of 12); }
+  .col-7     { @include span(7 of 12); }
+  .col-8     { @include span(8 of 12); }
+  .col-9     { @include span(9 of 12); }
+  .col-10    { @include span(10 of 12); }
+  .col-11    { @include span(11 of 12); }
+  .col-12    { @include span(12 of 12); }
+
+  .col-offset-1     { margin-left: span(1 of 12); }
+  .col-offset-2     { margin-left: span(2 of 12); }
+  .col-offset-3     { margin-left: span(3 of 12); }
+  .col-offset-4     { margin-left: span(4 of 12); }
+  .col-offset-5     { margin-left: span(5 of 12); }
+  .col-offset-6     { margin-left: span(6 of 12); }
+  .col-offset-7     { margin-left: span(7 of 12); }
+  .col-offset-8     { margin-left: span(8 of 12); }
+  .col-offset-9     { margin-left: span(9 of 12); }
+  .col-offset-10    { margin-left: span(10 of 12); }
+  .col-offset-11    { margin-left: span(11 of 12); }
+
+  body {
+      /* 20px / 28px */
+      font-size: $font-size / 16 * 1em;
+      line-height: #{$line-int / $em}em;
+  }
+
+  .container {
+      @include container;
+  }
+
+  figure.outset-left {
+    width: 74.5%;
+    margin-left: -12.75%;
+  }
+  blockquote {
+    width: 124%;
+    margin-left: -12.75%;
+  }
+
+}
+
+@include susy-breakpoint(1600px, $desktop-lg) {
+  .container {
+      @include container;
+  }
+}
+
+/*-----  End of Grid  ------*/

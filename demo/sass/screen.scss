@@ -1,0 +1,675 @@
+@import "susy";
+
+/*============================
+=            Vars            =
+============================*/
+
+$body: #525560;
+$header: #303536;
+$background: #FFF;
+$primary: #23f0c7;
+
+$serif: "freight-text-pro",sans-serif;
+$sans-serif: "freight-sans-pro", sans-serif;
+
+$duration: 0.3s;
+$easing: cubic-bezier(.3,.53,0,1);
+
+$line-int: 30;
+
+$font-size: 20;
+$em: $font-size * 1;
+
+$line: $line-int / $em;
+
+/*
+*
+*   Zoomable baseline grid
+*   type size presets
+*
+*/
+
+body {
+    /* 20px / 28px */
+    font-size: $font-size / 16 * 1em;
+    line-height: #{$line}em;
+}
+
+@mixin small {
+    /* 13px / 18px */
+    font-size: #{($font-size*0.8125) / $em}em;
+    line-height: ($line-int*1) / ($font-size*0.8125) * 1em;
+}
+@mixin normal {
+    /* 20px / 28px */
+    font-size: #{$font-size / $em}em;
+    line-height: #{$line-int / $em}em; /* 28 */
+}
+
+@mixin large {
+    /* 32 / 36px */
+    font-size: #{32 / $em}em;
+    line-height: ($line-int*1.5) / 32 * 1em;
+}
+
+@mixin huge {
+    /* 52px / 48px */
+    font-size: #{52 / $em}em;
+    line-height: ($line-int*2) / 52 * 1em;
+}
+
+@mixin massive {
+    /* 84px / 72px */
+    font-size: #{84 / $em}em;
+    line-height: ($line-int*3) / 84 * 1em;
+}
+
+@mixin gigantic {
+    /* 135px / 120px */
+    font-size: #{135 / $em}em;
+    line-height: ($line-int*5) / 135 * 1em;
+}
+
+h1 {
+    @include gigantic;
+    margin: 0 0 ($line-int*5) / 135 * 1em;
+}
+h2 {
+    @include massive;
+    margin: 0 0 ($line-int*3) / 84 * 1em;
+}
+h3 {
+    @include huge;
+    margin: 0 0 ($line-int*2) / 52 * 1em;
+}
+h4 {
+    @include large;
+    margin: 0 0 ($line-int*1.5) / 32 * 1em;
+}
+h5 {
+    @include normal;
+    margin: 0 0 #{$line-int / $em}em;
+}
+h6 {
+    @include small;
+    margin: 0 0 ($line-int*0.75) / ($font-size*0.8125) * 1em;
+}
+
+p {
+    margin: 0 0 #{$line-int / $em}em;
+}
+
+
+/*-----  End of Vars  ------*/
+
+
+/*==================================
+=            Typography            =
+==================================*/
+
+* {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+}
+body {
+    font-family: $sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    background: $background;
+    color: $body;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+::selection {
+    background: darken($primary, 10);
+    color: white;
+}
+
+.italic {
+    font-style: italic;
+    color: $primary;
+}
+
+h1, h2, h3, h4, h5, h6 { font-weight: 700; color: $header; font-family: $serif; }
+
+a {
+    transition: all $duration $easing;
+    text-decoration: none;
+    color: darken($primary, 15);
+    &:hover {
+        color: darken($primary, 45);
+    }
+}
+
+ul {
+    list-style: circle;
+}
+li {
+    line-height: #{$line}em;
+    margin-left: 1.2em;
+}
+
+hr {
+    display: block;
+    border: 1px solid lighten($body, 50);
+    border-width: 1px 0 0 0;
+    width: 150px;
+    height: #{$line}em;
+    margin: #{$line}em auto 0;
+}
+
+.subtle {
+    h1, h2, h3, h4, h5, h6 { color: lighten($header, 20); }
+    &, p { color: lighten($body, 20); }
+}
+
+.sub {
+    font-family: $sans-serif;
+    font-weight: 300;
+    color: lighten($body, 25);
+}
+
+.clear-left { clear: left; }
+.clear-right { clear: right; }
+
+.clearfix {
+    &:after {
+        content:'';
+        display: block;
+        clear: both;
+    }
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.center { text-align: center !important; }
+.highlight { color: $primary; }
+
+/*-----  End of Typography  ------*/
+
+
+/*===========================================
+=            Base Element Styles            =
+===========================================*/
+
+pre {
+    float: left;
+    width: 100%;
+    white-space: pre-wrap;
+    font-size: 1em;
+    line-height: #{$line}em;
+    color: lighten($primary, 15);
+    box-shadow: inset 0 0 0 -1px darken($header, 25);
+    background: $header;
+    padding: #{$line/2}em 1em;
+    margin: 0;
+    border-radius: 10px;
+}
+
+code {
+    line-height: #{$line}em;
+}
+
+figure.outset-left {
+    position: relative;
+    clear: both;
+    outline: none;
+    box-sizing: border-box;
+    float: left;
+    margin-top: #{$line/2}em;
+    margin-right: 30px;
+    margin-bottom: #{$line/2}em;
+    margin-left: 0;
+    width: 100%;
+}
+blockquote {
+    color: $header;
+    text-align: center;
+    @include large;
+    font-family: $serif;
+    font-style: italic;
+    position: relative;
+    clear: both;
+    outline: none;
+    box-sizing: border-box;
+    float: left;
+    margin: ($line-int*1.5) / 32 * 1em 0;
+    width: 100%;
+    quotes: "\201C""\201D""\2018""\2019";
+}
+
+.number {
+    color: lighten($header, 50);
+}
+
+.add-bottom { margin-bottom: #{$line}em !important; }
+.add-top { margin-top: #{$line}em !important; }
+
+.filler {
+    position: relative;
+    height: #{$line}em;
+    margin-bottom: #{$line}em;
+    &:before {
+        @include small;
+        color: lighten($body, 30);
+        box-sizing: border-box;
+        border: 1px solid lighten($body, 45);
+        content: attr(data-column);
+        display: block;
+        width: 100%;
+    }
+}
+
+/*-----  End of Base Element Styles  ------*/
+
+
+
+
+/*==============================
+=            Layout            =
+==============================*/
+
+nav {
+    font-family: $sans-serif;
+    color: lighten($body, 25);
+    height: #{$line*2}em;
+    ul {
+        list-style: none;
+        display: none;
+    }
+    li {
+        margin: 0 3em 0 0;
+    }
+    a { color: $body; }
+}
+nav.active ul {
+    position: absolute;
+    display: block;
+    padding: $line*1.25 0 #{$line/2}em 1.5em;
+    margin-top: .25em;
+    margin-left: -0.75em;
+    width: 160px;
+    background: white;
+    border: 1px solid $body;
+    li { display: block; line-height: #{$line*1.5}em; }
+}
+#nav-trigger { display: block; }
+
+@media (min-width: 1100px) {
+    nav ul, nav.active ul {
+        display: block;
+        position: relative;
+        padding: 0;
+        margin: #{$line}em 0 0;
+        width: auto;
+        height: #{$line}em;
+        border: 1px solid lighten($body, 55);
+        border-width: 0 0 1px;
+        li {
+            color: lighten($body, 25);
+            font-size: 80%;
+            height: #{$line}em;
+            line-height: #{$line}em;
+            border: 1px solid lighten($body, 55);
+            display: block;
+            float: left;
+            margin: 0 1em;
+            padding: 0 1em;
+            &.active { border-bottom: 1px solid white; }
+        }
+    }
+    #nav-trigger {
+        display: none;
+    }
+}
+
+header {
+    padding: #{$line*4}em 0 #{$line}em;
+}
+
+.section-title {
+    font-weight: 500;
+    font-family: $sans-serif;
+    font-size: 42px;
+    margin-top: #{$line*2}em;
+    color: $body;
+    .col-12 {
+        position: relative;
+    }
+    span {
+        position: relative;
+        z-index: 1;
+        height: #{$line*2}em;
+        line-height: #{$line*2}em;
+        text-shadow: -1px 0 white, 1px 0 white;
+    }
+    span:after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        display: block;
+        margin-top: -4px;
+        height: 1px;
+        width: 100%;
+        background: $body;
+    }
+}
+
+section {
+    padding: #{$line*2}em 0 #{$line}em;
+}
+
+footer {
+    text-align: center;
+    background: lighten($body, 62);
+    padding: #{$line*2}em 0 #{$line}em;
+    margin-top: #{$line}em;
+}
+
+/*-----  End of Layout  ------*/
+
+
+/*================================
+=            Nav Icon            =
+================================*/
+
+.menu-icon {
+    user-select: none;
+    z-index: 1;
+    cursor: pointer;
+    position: absolute;
+    margin-top: 20px;
+    width: 14px;
+    height: 14px;
+    span {
+        position: relative;
+        display: block;
+        width: 18px;
+        height: 2px;
+        background-color: $body;
+        transition: all $duration $easing;
+        &:first-of-type {
+            top: -3px;
+        }
+        &:last-of-type {
+            bottom: -3px;
+        }
+    } // span
+    // Active state for the menu
+    &.active span {
+        transition: all $duration $easing;
+        &:first-of-type {
+            transform: rotate(45deg);
+            top: 1px;
+        }
+        &:last-of-type {
+            transform: rotate(-45deg);
+            bottom: 1px;
+        }
+    } // active
+} // menu-icon
+
+/*-----  End of Nav Icon  ------*/
+
+
+
+
+/*============================
+=            Logo            =
+============================*/
+
+#logo {
+    float: left;
+    position: relative;
+    z-index: 2;
+    height: #{$line*2}em;
+    padding-top: 8px;
+    cursor: pointer;
+    margin-right: 2em;
+}
+
+$palette: (
+  0: transparent, 
+  1: #fff, 
+  2: #0071b5,
+  3: $body
+);
+
+$pixel_size: 2px;
+
+$ghost: 
+    0 0 0 0 0 3 3 3 3 0 0 0 0 0,
+    0 0 0 3 3 3 3 3 3 3 3 0 0 0,
+    0 0 3 3 3 3 3 3 3 3 3 3 0 0,
+    0 3 1 1 3 3 3 3 1 1 3 3 3 0,
+    0 1 1 1 1 3 3 1 1 1 1 3 3 0,
+    0 2 2 1 1 3 3 2 2 1 1 3 3 0,
+    3 2 2 1 1 3 3 2 2 1 1 3 3 3,
+    3 3 1 1 3 3 3 3 1 1 3 3 3 3,
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
+    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
+    3 3 0 3 3 3 0 0 3 3 3 0 3 3,
+    3 0 0 0 3 3 0 0 3 3 0 0 0 3,
+;
+
+$ghost2: 
+    0 0 0 0 0 2 2 2 2 0 0 0 0 0,
+    0 0 0 2 2 2 2 2 2 2 2 0 0 0,
+    0 0 2 2 2 2 2 2 2 2 2 2 0 0,
+    0 2 2 2 2 2 2 2 2 2 2 2 2 0,
+    0 2 2 2 2 2 2 2 2 2 2 2 2 0,
+    0 2 2 2 1 1 2 2 1 1 2 2 2 0,
+    0 2 2 2 1 1 2 2 1 1 2 2 2 0,
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2,
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2,
+    2 2 1 1 2 2 1 1 2 2 1 1 2 2,
+    2 1 2 2 1 1 2 2 1 1 2 2 1 2,
+    2 2 2 2 2 2 2 2 2 2 2 2 2 2,
+    2 2 2 2 0 2 2 2 2 0 2 2 2 2,
+    0 2 2 0 0 0 2 2 0 0 0 2 2 0,
+;
+
+@function px($val) {
+    @return $val * $pixel_size;
+}
+@function get_width($pixels) {
+    @return length(nth($pixels, 1));
+}
+@function get_height($pixels) {
+    @return length($pixels);
+}
+@function render_pixels($pixels, $width, $height) {
+    $out: ();
+    $y: 1;
+
+    @for $row from 1 through $height {
+        @for $x from 1 through $width {
+            @if $x % $width < 1 {
+                @if $y < length($pixels) {
+                    $y: $y + 1;
+                }
+            }
+            $row_pixels: nth($pixels, $y);
+            $color: map-get($palette, nth($row_pixels, $x));
+            $out: join(append((), px($x) px($y) 0 $color, comma), $out);
+        }
+    }
+    @return $out;
+}
+
+.canvas {
+    position: relative;
+    background: transparent;
+    transition: background .2s ease;
+    margin-bottom: $pixel_size;
+    float: left;
+
+    &::after {
+        width: $pixel_size;
+        height: $pixel_size;
+        background: transparent;
+        position: absolute;
+        left: -$pixel_size;
+        top: -$pixel_size;
+        content: '';
+    }
+}
+#ghost1 {
+    width: px(get_width($ghost));
+    height: px(get_height($ghost));
+    background: white;
+  
+    &:hover {
+        opacity: 0;
+    }
+  
+    &::after {
+        box-shadow: render_pixels(
+          $ghost, 
+          get_width($ghost), 
+          get_height($ghost)
+        );
+    }
+}
+#ghost2 {
+    position: absolute;
+    width: px(get_width($ghost2));
+    height: px(get_height($ghost2));
+  
+    &::after {
+        box-shadow: render_pixels(
+          $ghost2, 
+          get_width($ghost2), 
+          get_height($ghost2)
+        );
+    }
+}
+
+/*-----  End of Logo  ------*/
+
+
+
+
+/*=================================
+=            Prism CSS            =
+=================================*/
+
+code[class*="language-"],
+pre[class*="language-"] {
+    color: #f8f8f2;
+    direction: ltr;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+    overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+    background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+      padding: .1em .5em;
+    border-radius: .3em;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: slategray;
+}
+
+.token.punctuation {
+    color: #f8f8f2;
+}
+
+.namespace {
+    opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+    color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+    color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+    color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+    color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function {
+    color: #e6db74;
+}
+
+.token.keyword {
+    color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+    color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+    font-weight: bold;
+}
+.token.italic {
+    font-style: italic;
+}
+
+.token.entity {
+    cursor: help;
+}
+
+/*-----  End of Prism CSS  ------*/
+
+
+

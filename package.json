@@ -1,0 +1,44 @@
+{
+  "name": "ghost-grid",
+  "version": "1.0.0",
+  "description": "A tool for visualizing fluid grids during development.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Reklino/blooby-grid.git"
+  },
+  "keywords": [
+    "grid",
+    "guide",
+    "guides",
+    "ruler",
+    "baseline",
+    "layout"
+  ],
+  "author": "Reklino",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Reklino/blooby-grid/issues"
+  },
+  "homepage": "https://github.com/Reklino/blooby-grid",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.1",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.2.0",
+    "gulp-jshint": "^1.10.0",
+    "gulp-sass": "^1.3.3",
+    "susy": "^2.2.3"
+  },
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.1"
+  }
+}
