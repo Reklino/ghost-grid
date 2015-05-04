@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="stylesheets/blooby-grid.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/ghost-grid.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/grid.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Reklino/gromlicons/master/style.css">
@@ -13,33 +13,39 @@
 </head>
 <body>
 
-	<nav class="container" id="nav">
-		<div class="col-10 col-offset-2">
-			<div id="nav-trigger">
-				<div class="menu-icon" id="menu-icon">
-				    <span></span>
-				    <span></span>
+	<nav id="nav">
+		<div class="backing"></div>
+		<div class="container">
+			<div class="col-12">
+				<div id="nav-trigger">
+					<div class="menu-icon" id="menu-icon">
+					    <span></span>
+					    <span></span>
+					</div>
 				</div>
+			    <ul>
+			    	<li class="logo"><h4>Ghost Grid</h4></li>
+			    	<li class="active">Intro</li>
+			    	<li><a href="example1.html">Flex Box</a></li>
+			        <li><a href="example2.html">Fluid</a></li>
+			    	<li><a href="example3.html">Static</a></li>
+			    </ul>
 			</div>
-		    <ul>
-		    	<li class="active">Intro</li>
-		    	<li><a href="example1.html">Flex Box</a></li>
-		        <li><a href="example2.html">Fluid</a></li>
-		    	<li><a href="example3.html">Static</a></li>
-		    </ul>
 		</div>
 	</nav>
 
-	<header class="container">
-			<div class="col-8 col-offset-2">
+	<header id="header">
+		<div class="container">
+			<div class="col-3">
 				<h2>Ghost Grid</h2>
-				<h4 class="sub">Summon your grid from the bowels of CSS hell so that you might visualize and conquer it once and for all.</h4>
 			</div>
+			<div class="col-3 col-offset-third">
+				<h4 class="sub">Summon your grid from the bowels of CSS hell so that you might visualize and conquer it once and for all.</h4>				
+			</div>	
+		</div>
 	</header>
 
-	<hr>
-
-	<section class="container">
+	<section class="container" id="section-start">
 
 		<article class="col-8 col-offset-2">
 			<h4>Intro</h4>
@@ -115,7 +121,7 @@
 
 			<figure class="outset-left">
 				<pre><code  class="language-javascript">
-bloobyGrid.breaks = [
+ghostGrid.breaks = [
     {
         point : "(min-width: 800px)",
         columns : 12,
@@ -134,7 +140,7 @@ bloobyGrid.breaks = [
 		<article class="col-8 col-offset-2">
 			<h4><span class="number">3.</span> Initiate!</h4>
 			<p>
-				When you've configured it, just run <code class="language-javascript">bloobyGrid.init()</code>. After that, if you need to toggle your grid on or off, just click the grid icon in the bottom right corner of the page.
+				When you've configured it, just run <code class="language-javascript">ghostGrid.init()</code>. After that, if you need to toggle your grid on or off, just click the grid icon in the bottom right corner of the page.
 			</p>
 		</article>
 	</section>
@@ -162,10 +168,10 @@ bloobyGrid.breaks = [
 		</div>
 	</footer>
 
-<script src="../src/blooby-grid.js"></script>
+<script src="../dist/ghost-grid.min.js"></script>
 <script>
 
-	// blooby grid
+	// ghost grid
 	ghost.container         = false,
 	ghost.containerPosition = 'center',
 	ghost.breaks = [
@@ -212,6 +218,17 @@ bloobyGrid.breaks = [
 		nav.classList.toggle('active');
 	})
 
+</script>
+<script src="../node_modules/waypoints/lib/noframework.waypoints.min.js"></script>
+<script>
+	var waypoint = new Waypoint({
+	  element: document.getElementById('section-start'),
+	  handler: function() {
+	  	var nav = document.getElementById('nav');
+	    nav.classList.toggle('reveal');
+	  },
+	  offset: 60
+	})
 </script>
 </body>
 </html>

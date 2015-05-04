@@ -80,6 +80,7 @@ body {
   .col-offset-9     { margin-left: span(4 of 6); }
   .col-offset-10    { margin-left: span(5 of 6); }
   .col-offset-11    { margin-left: span(5 of 6); }
+  .col-offset-third { margin-left: 33.33333%; }
 
   body {
       /* 20px / 28px */
@@ -122,6 +123,7 @@ body {
   .col-offset-9     { margin-left: span(9 of 12); }
   .col-offset-10    { margin-left: span(10 of 12); }
   .col-offset-11    { margin-left: span(11 of 12); }
+  .col-offset-third { margin-left: 50%; }
 
   body {
       /* 20px / 28px */

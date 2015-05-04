@@ -207,6 +207,8 @@ body {
     margin-left: 83.33333%; }
   .col-offset-11 {
     margin-left: 83.33333%; }
+  .col-offset-third {
+    margin-left: 33.33333%; }
   body {
     /* 20px / 28px */
     font-size: 1.125em;
@@ -318,6 +320,8 @@ body {
     margin-left: 83.33333%; }
   .col-offset-11 {
     margin-left: 91.66667%; }
+  .col-offset-third {
+    margin-left: 50%; }
   body {
     /* 20px / 28px */
     font-size: 1.25em;

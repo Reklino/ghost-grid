@@ -1,3 +1,15 @@
+/*=============================
+=            Reset            =
+=============================*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/*-----  End of Reset  ------*/
 /*============================
 =            Vars            =
 ============================*/
@@ -31,10 +43,10 @@ h3 {
   margin: 0 0 1.15385em; }
 
 h4 {
-  /* 32 / 36px */
-  font-size: 1.6em;
-  line-height: 1.40625em;
-  margin: 0 0 1.40625em; }
+  /* 28 / 36px */
+  font-size: 1.4em;
+  line-height: 1.07143em;
+  margin: 0 0 1.07143em; }
 
 h5 {
   /* 20px / 28px */
@@ -90,9 +102,9 @@ a {
   -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
           transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
   text-decoration: none;
-  color: #0dba97; }
+  color: #acafb8; }
   a:hover {
-    color: #032b23; }
+    color: #23f0c7; }
 
 ul {
   list-style: circle; }
@@ -174,9 +186,9 @@ figure.outset-left {
 blockquote {
   color: #303536;
   text-align: center;
-  /* 32 / 36px */
-  font-size: 1.6em;
-  line-height: 1.40625em;
+  /* 28 / 36px */
+  font-size: 1.4em;
+  line-height: 1.07143em;
   font-family: "freight-text-pro", sans-serif;
   font-style: italic;
   position: relative;
@@ -184,7 +196,7 @@ blockquote {
   outline: none;
   box-sizing: border-box;
   float: left;
-  margin: 1.40625em 0;
+  margin: 1.60714em 0;
   width: 100%;
   quotes: "\201C" "\201D" "\2018" "\2019"; }
 
@@ -217,7 +229,11 @@ blockquote {
 =            Layout            =
 ==============================*/
 nav {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
   font-family: "freight-sans-pro", sans-serif;
+  font-weight: 700;
   color: #9194a1;
   height: 3em; }
   nav ul {
@@ -227,6 +243,27 @@ nav {
     margin: 0 3em 0 0; }
   nav a {
     color: #525560; }
+  nav .logo {
+    overflow: hidden;
+    -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+            transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+    width: 0px;
+    margin: 0; }
+  nav .backing {
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 3em;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+            transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+    border-bottom: 1px solid transparent; }
+  nav.reveal .logo {
+    width: 150px;
+    margin: 0 3em 0 0; }
+  nav.reveal .backing {
+    background: white;
+    border-color: #f1f1f3; }
 
 nav.active ul {
   position: absolute;
@@ -249,28 +286,46 @@ nav.active ul {
     display: block;
     position: relative;
     padding: 0;
-    margin: 1.5em 0 0;
+    margin: 0.75em 0 0;
     width: auto;
     height: 1.5em;
-    border: 1px solid #e3e4e7;
-    border-width: 0 0 1px; }
+    background: transparent; }
     nav ul li, nav.active ul li {
-      color: #9194a1;
+      color: #acafb8;
       font-size: 80%;
       height: 1.5em;
       line-height: 1.5em;
-      border: 1px solid #e3e4e7;
       display: block;
       float: left;
-      margin: 0 1em;
-      padding: 0 1em; }
-      nav ul li.active, nav.active ul li.active {
-        border-bottom: 1px solid white; }
+      margin: 0 4em 0 0;
+      padding: 0; }
   #nav-trigger {
     display: none; } }
 
 header {
-  padding: 6em 0 1.5em; }
+  position: relative;
+  z-index: 1;
+  background: black;
+  padding: 6em 0 4.5em;
+  width: 100%; }
+  header:before {
+    -webkit-transition: all 0.6s cubic-bezier(.3, .53, 0, 1);
+            transition: all 0.6s cubic-bezier(.3, .53, 0, 1);
+    content: '';
+    background: url(../img/poltergeist-pic.jpg) no-repeat center top;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    z-index: -1;
+    opacity: 0.3; }
+  header h2 {
+    color: white; }
+
+@media (min-width: 1100px) {
+  header:before {
+    opacity: 1; } }
 
 .section-title {
   font-weight: 500;

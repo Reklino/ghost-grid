@@ -3,21 +3,10 @@ var ghost = (function () {
 
     /*
 
-    Ghost Grid v1.00
+    Ghost Grid v1.01 beta
     Created by Jacob Davidson (Reklino)
     Visit https://github.com/Reklino/ghost-grid for latest version
     MIT Liscense
-
-      .'``'.      ...
-     :o  o `....'`  ;
-     `. O         :'
-       `':          `.
-         `:.          `.
-          : `.         `.
-         `..'`...       `.
-                 `...     `.
-                    ``...  `.
-                          `````.
 
     */
 
@@ -159,6 +148,8 @@ var ghost = (function () {
     var findBreak = function(media) {
         for( i = 0; i < ghost.breaks.length; i++ ) {
 
+            console.log(media + ',' + ghost.breaks[i].point);
+
             if(media == ghost.breaks[i].point) {
 
                 // if going down a size, we need to offset the index by -1.
@@ -208,7 +199,7 @@ var ghost = (function () {
 
                 // set initial break
                 if(mq.matches) {
-                    ghost.activeBreakPointIndex = i + 1;
+                    ghost.activeBreakPointIndex = i;
                     ghost.activeBreakPoint = findBreak(mq.media);
                 }
 
