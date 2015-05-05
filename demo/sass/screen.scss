@@ -37,8 +37,10 @@ $body: #525560;
 $header: #303536;
 $background: #FFF;
 $primary: #23f0c7;
+$secondary: #8fa9c7;
 
-$serif: "freight-text-pro",sans-serif;
+$blackletter: "baroque-text", serif;
+$serif: "grad-sc-osf", serif;
 $sans-serif: "freight-sans-pro", sans-serif;
 
 $duration: 0.3s;
@@ -163,7 +165,18 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 { font-weight: 700; color: $header; font-family: $serif; }
-
+h5 {
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        margin-top: #{$line/2}em;
+        height: 1px;
+        width: 120px;
+        background: lighten($body, 35);
+    }
+}
+h6 { font-family: $sans-serif; font-weight: 400; }
 a {
     transition: all $duration $easing;
     text-decoration: none;
@@ -219,6 +232,11 @@ hr {
 .center { text-align: center !important; }
 .highlight { color: $primary; }
 
+.blackletter {
+    font-family: $blackletter;
+    font-weight: 400;
+}
+
 /*-----  End of Typography  ------*/
 
 
@@ -234,7 +252,7 @@ pre {
     line-height: #{$line}em;
     color: lighten($primary, 15);
     box-shadow: inset 0 0 0 -1px darken($header, 25);
-    background: $header;
+    background: lighten($body, 30);
     padding: #{$line/2}em 1em;
     margin: 0;
     border-radius: 10px;
@@ -272,8 +290,16 @@ blockquote {
     quotes: "\201C""\201D""\2018""\2019";
 }
 
-.number {
+.offset-number {
+    text-align: center;
+    line-height: 45px;
     color: lighten($header, 50);
+    position: absolute;
+    margin-left: -75px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid lighten($body, 40);
 }
 
 .add-bottom { margin-bottom: #{$line}em !important; }
@@ -287,7 +313,9 @@ blockquote {
         @include small;
         color: lighten($body, 30);
         box-sizing: border-box;
+        border-radius: 15px;
         border: 1px solid lighten($body, 45);
+        background: lighten($body, 60);
         content: attr(data-column);
         display: block;
         width: 100%;
@@ -320,10 +348,15 @@ nav {
     }
     a { color: $body; }
     .logo {
+        float: left;
+        position: relative;
+        z-index: 2;
         overflow: hidden;
+        white-space: nowrap;
         transition: all 0.45s $easing;
         width: 0px;
         margin: 0;
+        h4 { line-height: #{$line*1.25}em; }
     }
     .backing {
         top: 0;
@@ -333,10 +366,12 @@ nav {
         background: rgba(black, 0.5);
         transition: all 0.45s $easing;
         border-bottom: 1px solid transparent;
+        background: white;
+        border-color: lighten($body, 60);
     }
     &.reveal {
         .logo {
-            width: 150px;
+            width: 175px;
             margin: 0 3em 0 0;
         }
         .backing {
@@ -348,13 +383,41 @@ nav {
 nav.active ul {
     position: absolute;
     display: block;
-    padding: $line*1.25 0 #{$line/2}em 1.5em;
-    margin-top: .25em;
-    margin-left: -0.75em;
+    padding: #{$line/2}em 0 #{$line/2}em 1.5em;
+    margin-top: #{$line*2}em;
+    margin-left: -1.5em;
     width: 160px;
     background: white;
-    border: 1px solid $body;
+    border: 1px solid lighten($body, 35);
+    border-radius: 5px;
+    box-shadow: 0 0 10px 0 rgba($body, 0.15);
     li { display: block; line-height: #{$line*1.5}em; }
+    &:before {
+        content: '';
+        z-index: 1;
+        position: absolute;
+        top: -15px;
+        left: 1.10em;
+        margin-right: -8px;
+        display: inline-block;
+        border-top: 0 solid #6883a5;
+        border-left: 15px solid transparent;
+        border-right: 15px solid transparent;
+        border-bottom: 15px solid #6883a5;
+    }
+    &:after {
+        content: '';
+        z-index: 2;
+        position: absolute;
+        top: -14px;
+        left: 1.2em;
+        margin-right: -7px;
+        display: inline-block;
+        border-top: 0 solid #fff;
+        border-left: 14px solid transparent;
+        border-right: 14px solid transparent;
+        border-bottom: 14px solid #fff;
+    }
 }
 #nav-trigger { display: block; }
 
@@ -367,6 +430,9 @@ nav.active ul {
         width: auto;
         height: #{$line}em;
         background: transparent;
+        border: none;
+        box-shadow: none;
+        &:after, &:before { display: none; }
         li {
             color: lighten($body, 35);
             font-size: 80%;
@@ -386,13 +452,13 @@ nav.active ul {
 header {
     position: relative;
     z-index: 1;
-    background: black;
+    //background: black;
     padding: #{$line*4}em 0 #{$line*3}em;
     width: 100%;
     &:before {
         transition: all 0.6s $easing;
         content: '';
-        background: url(../img/poltergeist-pic.jpg) no-repeat center top;
+        //background: url(../img/poltergeist-pic.jpg) no-repeat center top;
         background-size: cover;
         width: 100%;
         height: 100%;
@@ -401,7 +467,6 @@ header {
         z-index: -1;
         opacity: 0.3;
     }
-    h2 { color: white; } 
 }
 @media (min-width: 1100px) {
     header:before {
@@ -459,10 +524,13 @@ footer {
     user-select: none;
     z-index: 1;
     cursor: pointer;
-    position: absolute;
-    margin-top: 20px;
+    position: relative;
+    z-index: 3;
+    margin-top: 1.25em;
     width: 14px;
     height: 14px;
+    float: left;
+    margin-right: 1.5em;
     span {
         position: relative;
         display: block;
@@ -489,148 +557,10 @@ footer {
             bottom: 1px;
         }
     } // active
+
 } // menu-icon
 
 /*-----  End of Nav Icon  ------*/
-
-
-
-
-/*============================
-=            Logo            =
-============================*/
-
-#logo {
-    float: left;
-    position: relative;
-    z-index: 2;
-    height: #{$line*2}em;
-    padding-top: 8px;
-    cursor: pointer;
-    margin-right: 2em;
-}
-
-$palette: (
-  0: transparent, 
-  1: #fff, 
-  2: #0071b5,
-  3: $body
-);
-
-$pixel_size: 2px;
-
-$ghost: 
-    0 0 0 0 0 3 3 3 3 0 0 0 0 0,
-    0 0 0 3 3 3 3 3 3 3 3 0 0 0,
-    0 0 3 3 3 3 3 3 3 3 3 3 0 0,
-    0 3 1 1 3 3 3 3 1 1 3 3 3 0,
-    0 1 1 1 1 3 3 1 1 1 1 3 3 0,
-    0 2 2 1 1 3 3 2 2 1 1 3 3 0,
-    3 2 2 1 1 3 3 2 2 1 1 3 3 3,
-    3 3 1 1 3 3 3 3 1 1 3 3 3 3,
-    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
-    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
-    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
-    3 3 3 3 3 3 3 3 3 3 3 3 3 3,
-    3 3 0 3 3 3 0 0 3 3 3 0 3 3,
-    3 0 0 0 3 3 0 0 3 3 0 0 0 3,
-;
-
-$ghost2: 
-    0 0 0 0 0 2 2 2 2 0 0 0 0 0,
-    0 0 0 2 2 2 2 2 2 2 2 0 0 0,
-    0 0 2 2 2 2 2 2 2 2 2 2 0 0,
-    0 2 2 2 2 2 2 2 2 2 2 2 2 0,
-    0 2 2 2 2 2 2 2 2 2 2 2 2 0,
-    0 2 2 2 1 1 2 2 1 1 2 2 2 0,
-    0 2 2 2 1 1 2 2 1 1 2 2 2 0,
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2,
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2,
-    2 2 1 1 2 2 1 1 2 2 1 1 2 2,
-    2 1 2 2 1 1 2 2 1 1 2 2 1 2,
-    2 2 2 2 2 2 2 2 2 2 2 2 2 2,
-    2 2 2 2 0 2 2 2 2 0 2 2 2 2,
-    0 2 2 0 0 0 2 2 0 0 0 2 2 0,
-;
-
-@function px($val) {
-    @return $val * $pixel_size;
-}
-@function get_width($pixels) {
-    @return length(nth($pixels, 1));
-}
-@function get_height($pixels) {
-    @return length($pixels);
-}
-@function render_pixels($pixels, $width, $height) {
-    $out: ();
-    $y: 1;
-
-    @for $row from 1 through $height {
-        @for $x from 1 through $width {
-            @if $x % $width < 1 {
-                @if $y < length($pixels) {
-                    $y: $y + 1;
-                }
-            }
-            $row_pixels: nth($pixels, $y);
-            $color: map-get($palette, nth($row_pixels, $x));
-            $out: join(append((), px($x) px($y) 0 $color, comma), $out);
-        }
-    }
-    @return $out;
-}
-
-.canvas {
-    position: relative;
-    background: transparent;
-    transition: background .2s ease;
-    margin-bottom: $pixel_size;
-    float: left;
-
-    &::after {
-        width: $pixel_size;
-        height: $pixel_size;
-        background: transparent;
-        position: absolute;
-        left: -$pixel_size;
-        top: -$pixel_size;
-        content: '';
-    }
-}
-#ghost1 {
-    width: px(get_width($ghost));
-    height: px(get_height($ghost));
-    background: white;
-  
-    &:hover {
-        opacity: 0;
-    }
-  
-    &::after {
-        box-shadow: render_pixels(
-          $ghost, 
-          get_width($ghost), 
-          get_height($ghost)
-        );
-    }
-}
-#ghost2 {
-    position: absolute;
-    width: px(get_width($ghost2));
-    height: px(get_height($ghost2));
-  
-    &::after {
-        box-shadow: render_pixels(
-          $ghost2, 
-          get_width($ghost2), 
-          get_height($ghost2)
-        );
-    }
-}
-
-/*-----  End of Logo  ------*/
-
 
 
 
@@ -640,7 +570,7 @@ $ghost2:
 
 code[class*="language-"],
 pre[class*="language-"] {
-    color: #f8f8f2;
+    color: $body;
     direction: ltr;
     text-align: left;
     white-space: pre;
@@ -664,7 +594,7 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-    background: #272822;
+    background: lighten($body, 60);
 }
 
 /* Inline code */
@@ -677,11 +607,11 @@ pre[class*="language-"] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: slategray;
+    color: $body;
 }
 
 .token.punctuation {
-    color: #f8f8f2;
+    color: lighten($body, 15);
 }
 
 .namespace {
@@ -707,7 +637,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: #a6e22e;
+    color: $secondary;
 }
 
 .token.operator,
@@ -716,22 +646,22 @@ pre[class*="language-"] {
 .language-css .token.string,
 .style .token.string,
 .token.variable {
-    color: #f8f8f2;
+    color: lighten($body, 15);
 }
 
 .token.atrule,
 .token.attr-value,
 .token.function {
-    color: #e6db74;
+    color: darken($primary, 15);
 }
 
 .token.keyword {
-    color: #66d9ef;
+    color: darken(#66d9ef, 15);
 }
 
 .token.regex,
 .token.important {
-    color: #fd971f;
+    color: darken(#fd971f, 15);
 }
 
 .token.important,
