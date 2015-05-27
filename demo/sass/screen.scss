@@ -39,8 +39,8 @@ $background: #FFF;
 $primary: #23f0c7;
 $secondary: #8fa9c7;
 
-$blackletter: "baroque-text", serif;
-$serif: "grad-sc-osf", serif;
+$blackletter: "futura-pt", serif;
+$serif: "futura-pt", serif;
 $sans-serif: "freight-sans-pro", sans-serif;
 
 $duration: 0.3s;
@@ -356,13 +356,13 @@ nav {
         transition: all 0.45s $easing;
         width: 0px;
         margin: 0;
-        h4 { line-height: #{$line*1.25}em; }
+        h4 { line-height: #{$line*2}em; }
     }
     .backing {
         top: 0;
         position: fixed;
         width: 100%;
-        height: #{$line*2}em;
+        height: #{$line*3}em;
         background: rgba(black, 0.5);
         transition: all 0.45s $easing;
         border-bottom: 1px solid transparent;
@@ -426,9 +426,9 @@ nav.active ul {
         display: block;
         position: relative;
         padding: 0;
-        margin: #{$line/2}em 0 0;
+        margin: #{$line}em 0 0;
         width: auto;
-        height: #{$line}em;
+        height: #{$line*2}em;
         background: transparent;
         border: none;
         box-shadow: none;
@@ -453,7 +453,7 @@ header {
     position: relative;
     z-index: 1;
     //background: black;
-    padding: #{$line*4}em 0 #{$line*3}em;
+    padding: #{$line*5}em 0 #{$line*3}em;
     width: 100%;
     &:before {
         transition: all 0.6s $easing;
