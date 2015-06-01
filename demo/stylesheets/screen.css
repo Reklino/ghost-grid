@@ -75,7 +75,8 @@ body {
   font-family: "freight-sans-pro", sans-serif;
   font-style: normal;
   font-weight: 400;
-  background: #FFF;
+  background: #fdfff8 url(http://subtlepatterns.com/patterns/paper_fibers.png);
+  background-attachment: fixed;
   color: #525560;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   text-rendering: optimizeLegibility !important;
@@ -95,7 +96,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
-  color: #303536;
+  color: #1b1e1e;
   font-family: "futura-pt", serif; }
 
 h5:after {
@@ -103,9 +104,9 @@ h5:after {
   display: block;
   position: absolute;
   margin-top: 0.75em;
-  height: 1px;
+  height: 5px;
   width: 120px;
-  background: #acafb8; }
+  background: #23f0c7; }
 
 h6 {
   font-family: "freight-sans-pro", sans-serif;
@@ -128,14 +129,14 @@ li {
 
 hr {
   display: block;
-  border: 1px solid #d5d7dc;
-  border-width: 1px 0 0 0;
-  width: 150px;
+  border: 5px solid #23f0c7;
+  border-radius: 100%;
   height: 1.5em;
+  width: 1.5em;
   margin: 1.5em auto 0; }
 
 .subtle h1, .subtle h2, .subtle h3, .subtle h4, .subtle h5, .subtle h6 {
-  color: #606a6c; }
+  color: #4b5454; }
 .subtle, .subtle p {
   color: #838795; }
 
@@ -201,7 +202,7 @@ figure.outset-left {
   width: 100%; }
 
 blockquote {
-  color: #303536;
+  color: #1b1e1e;
   text-align: center;
   /* 28 / 36px */
   font-size: 1.4em;
@@ -220,7 +221,7 @@ blockquote {
 .offset-number {
   text-align: center;
   line-height: 45px;
-  color: #aeb6b7;
+  color: #97a1a1;
   position: absolute;
   margin-left: -75px;
   width: 50px;
@@ -237,16 +238,18 @@ blockquote {
 .filler {
   position: relative;
   height: 1.5em;
-  margin-bottom: 1.5em; }
+  margin-bottom: 1.5em;
+  text-transform: uppercase;
+  font-family: "futura-pt", serif;
+  font-weight: 600; }
   .filler:before {
     /* 13px / 18px */
     font-size: 0.8125em;
     line-height: 1.84615em;
-    color: #9ea1ad;
+    color: #1b1e1e;
     box-sizing: border-box;
-    border-radius: 15px;
-    border: 1px solid #c8c9d0;
-    background: #f1f1f3;
+    border: 5px solid #23f0c7;
+    border-width: 0 0 5px 0;
     content: attr(data-column);
     display: block;
     width: 100%; }
@@ -370,8 +373,22 @@ nav.active ul {
 header {
   position: relative;
   z-index: 1;
-  padding: 7.5em 0 4.5em;
-  width: 100%; }
+  padding: 7.5em 0 4.5em; }
+  header .box {
+    position: relative;
+    text-align: center;
+    padding-top: 3em;
+    padding-bottom: 1.5em;
+    background: white; }
+    header .box:before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      border: 5px solid #23f0c7; }
   header:before {
     -webkit-transition: all 0.6s cubic-bezier(.3, .53, 0, 1);
             transition: all 0.6s cubic-bezier(.3, .53, 0, 1);
@@ -417,9 +434,13 @@ section {
 
 footer {
   text-align: center;
-  background: #f6f7f8;
   padding: 3em 0 1.5em;
   margin-top: 1.5em; }
+  footer h6 {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-family: "futura-pt", serif;
+    letter-spacing: 1px; }
 
 /*-----  End of Layout  ------*/
 /*================================

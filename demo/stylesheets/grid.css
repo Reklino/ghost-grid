@@ -9,8 +9,8 @@
 */
 body {
   /* 20px / 28px */
-  font-size: 1em;
-  line-height: 1.5em; }
+  font-size: 0.875em;
+  line-height: 1.66667em; }
 
 .container {
   -webkit-transition: all 0.15s ease-in-out;
@@ -211,8 +211,8 @@ body {
     margin-left: 33.33333%; }
   body {
     /* 20px / 28px */
-    font-size: 1.125em;
-    line-height: 1.5em; }
+    font-size: 1em;
+    line-height: 1.66667em; }
   .container {
     max-width: 650px;
     margin-left: auto;
@@ -324,8 +324,8 @@ body {
     margin-left: 50%; }
   body {
     /* 20px / 28px */
-    font-size: 1.25em;
-    line-height: 1.5em; }
+    font-size: 1.125em;
+    line-height: 1.66667em; }
   .container {
     max-width: 960px;
     margin-left: auto;

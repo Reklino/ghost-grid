@@ -14,33 +14,9 @@
 </head>
 <body>
 
-	<nav id="nav">
-		<div class="backing"></div>
-		<div class="container">
-			<div class="col-12">
-				<div id="nav-trigger">
-					<div class="menu-icon" id="menu-icon">
-					    <span></span>
-					    <span></span>
-					</div>
-				</div>
-				<div class="logo"><h4>Ghost Grid</h4></div>
-			    <ul>
-			    	<li class="active">Intro</li>
-			    	<li><a href="example1.html">Flex Box</a></li>
-			        <li><a href="example2.html">Fluid</a></li>
-			    	<li><a href="example3.html">Static</a></li>
-			    </ul>
-			</div>
-		</div>
-	</nav>
-
-	<header id="header">
-		<div class="container">
-			<div class="col-8 col-offset-2">
+	<header id="header" class="container">
+			<div class="col-8 col-offset-2 box">
 				<h2>Ghost Grid</h2>
-			</div>
-			<div class="col-10 col-offset-1">
 				<h4 class="sub">Summon your grid from the bowels of CSS hell so that you might visualize and conquer it once and for all.</h4>
 			</div>	
 		</div>
@@ -48,17 +24,20 @@
 
 	<section class="container" id="section-start">
 
-		<article class="col-8 col-offset-2">
-			<h4>Intro</h4>
+		<article class="col-4">
+			<h4>Introduction</h4>
 			<p>
 				With multiple breakpoints, fluid widths, and dynamic baselines, responsive grid systems get complicated really quick. Ghost Grid is a lightweight javascript tool for visualizing your grid systems so you can visualize spacing during design. It is NOT a grid system in itself, but is an agnostic visual companion to any grid system.
 			</p>
-			<blockquote>
-				If you're ready to summon the ghost, just click on the <span class="highlight">green</span> icon in the bottom right of this page.
-			</blockquote>
+		</article>
+		<article class="col-4">
+			<h4>Why?</h4>
 			<p>
 				More and more, I find myself designing with code, and I don't intend to stop. It's an amazing feeling when you're able to craft a desisn by typing up some html and css, especially when you can do it quickly. Some things, however, are lost in this design process. One of which is visual guides, grids, and layout tools that you find in design &amp; prototyping applications.
 			</p>
+		</article>
+		<article class="col-4">
+			<h4>Credits</h4>
 			<p>
 				There have been other attempts at bridging this gap which I have taken heavy inspiration from. Most notably is the <a href="#">Golden Grid System</a> and its 'Golden Gridlet' overlay. My goal with Ghost Grid was to simply create an easily customizable, dependency free version of what Joni Korpi did with GGS that had a few more features.
 			</p>
@@ -69,7 +48,7 @@
 	<hr>
 
 	<section class="container">
-		<article class="col-4 col-offset-2 add-top add-bottom">
+		<article class="col-4 add-top add-bottom">
 			<h5>Multiple Breakpoints</h5>
 			<p>
 				Use Ghost Grid to visualize a responsive column layout by setting up different columns at various breakpoints. Resize this screen to see an example.
@@ -78,10 +57,6 @@
 			<p>
 				Whether you prefer fluid grids (percentage based) or static grids (static value based), Ghost Grid can math it.
 			</p>
-			<h5>Plays well with Susy</h5>
-			<p>
-				I love using Susy to quickly get started with complex fluid grid layouts so I made sure this worked well with it. The structure of this project was inspired heavily by Susy and should therefore be familiar to any past users of Susy.
-			</p>
 		</article>
 
 		<article class="col-4 add-top add-bottom">
@@ -89,6 +64,13 @@
 			<p>
 				Visualize your columns while you develop so you can rest assured you're within your bounds and, more importantly, make design decisions based on <i>something you can see</i>.
 			</p>
+			<h5>Plays well with Susy</h5>
+			<p>
+				I love using Susy to quickly get started with complex fluid grid layouts so I made sure this worked well with it. The structure of this project was inspired heavily by Susy and should therefore be familiar to any past users of Susy.
+			</p>
+		</article>
+
+		<article class="col-4 add-top add-bottom">
 			<h5>Baseline Grid</h5>
 			<p>
 				Use Ghost Grid's basline grid to ensure your site/app maintains a consistent vertical rhythm.
@@ -101,54 +83,6 @@
 	</section>
 
 	<hr>
-
-	<section class="container">
-		<article class="col-8 col-offset-2">
-			<h4><span class="offset-number">1</span> Install</h4>
-			<p>
-				Ghost grid is all contained within one javascript file. You can download it here or install it with <code class="language-javascript">bower install ghost-grid</code><br>
-				<br>
-				After you have the file, just load it in like so <code class="language-javascript">&lt;script src="ghost-grid.js">&lt;/script></code>
-			</p>
-		</article>
-	</section>
-
-	<section class="container">
-
-		<article class="col-8 col-offset-2">
-
-			<h4><span class="offset-number">2</span> Add a Break Point or Two</h4>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-
-			<figure class="outset-left">
-				<pre><code  class="language-javascript">
-ghostGrid.breaks = [
-    {
-        point : "(min-width: 800px)",
-        columns : 12,
-        gutters : .33,
-        baseLineHeight : 24
-    }
-];
-				</code></pre>
-			</figure>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		</div>
-
-	</section>
-
-	<section class="container">
-		<article class="col-8 col-offset-2">
-			<h4><span class="offset-number">3</span> Initiate!</h4>
-			<p>
-				When you've configured it, just run <code class="language-javascript">ghostGrid.init()</code>. After that, if you need to toggle your grid on or off, just click the grid icon in the bottom right corner of the page.
-			</p>
-		</article>
-	</section>
-
-	<section class="container center">
-		<a class="btn" href="example1.html">Fluid Grid Example <i class="icon_arrow-right"></i></a>
-	</section>
 
 	<footer>
 		<div class="container">
@@ -181,28 +115,28 @@ ghostGrid.breaks = [
 	        container: 450,
 	        columns: 3,
 	        gutters: 1/4,
-	        baseLineHeight: (30/20) + 'em'
+	        baseLineHeight: (1.5) + 'em'
 	    },
 	    {
 	        point: "(min-width: 700px)",
 	        container: 650,
 	        columns: 6,
 	        gutters: 1/4,
-	        baseLineHeight: (30/20) + 'em'
+	        baseLineHeight: (1.5) + 'em'
 	    },
 	    {
 	        point: "(min-width: 1100px)",
 	        container: 960,
 	        columns: 12,
 	        gutters: 1/4,
-	        baseLineHeight: (30/20) + 'em'
+	        baseLineHeight: (1.5) + 'em'
 	    },
 	    {
 	        point: "(min-width: 1600px)",
 	        container: 1100,
 	        columns: 12,
 	        gutters: 1/4,
-	        baseLineHeight: (30/20) + 'em'
+	        baseLineHeight: (1.5) + 'em'
 	    }	    
 	];
 	ghost.summon();
@@ -219,17 +153,6 @@ ghostGrid.breaks = [
 		nav.classList.toggle('active');
 	})
 
-</script>
-<script src="../node_modules/waypoints/lib/noframework.waypoints.min.js"></script>
-<script>
-	var waypoint = new Waypoint({
-	  element: document.getElementById('section-start'),
-	  handler: function() {
-	  	var nav = document.getElementById('nav');
-	    nav.classList.toggle('reveal');
-	  },
-	  offset: 60
-	})
 </script>
 </body>
 </html>

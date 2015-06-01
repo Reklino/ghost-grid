@@ -20,7 +20,7 @@ var ghost = (function () {
     // set defaults
     ghost.container         = false;
     ghost.containerPosition = 'center';
-    ghost.opacity           = 0.5;
+    ghost.opacity           = 0.6;
     ghost.breaks            = [
         {
             point : "(min-width: 800px)",
