@@ -15,11 +15,29 @@
 <body>
 
 	<header id="header" class="container">
-			<div class="col-8 col-offset-2 box">
-				<h2>Ghost Grid</h2>
-				<h4 class="sub">Summon your grid from the bowels of CSS hell so that you might visualize and conquer it once and for all.</h4>
-			</div>	
+		<div class="col-6">
+			<h1>Ghost Grid</h1>
+			<h4 class="sub">Summon your fluid grid from the bowels of CSS hell so that you might visualize and conquer it once and for all.</h4>
 		</div>
+		<div class="col-6">
+			<div class="box">
+<pre><code  class="language-javascript">
+&#60;script src="../dist/ghost-grid.js">&#60;/script>
+&#60;script>
+ghost.containingElement = false,
+ghost.align = 'center',
+ghost.breaks = [
+	{
+        point: "(min-width: 300px)",
+        columns: 8,
+        gutters: 1/4,
+        baseLineHeight: (1.5) + 'em'
+    }    
+];
+ghost.summon();
+&#60;/script></code></pre>
+			</div>
+		</div>	
 	</header>
 
 	<section class="container" id="section-start">
@@ -33,7 +51,7 @@
 		<article class="col-4">
 			<h4>Why?</h4>
 			<p>
-				More and more, I find myself designing with code, and I don't intend to stop. It's an amazing feeling when you're able to craft a desisn by typing up some html and css, especially when you can do it quickly. Some things, however, are lost in this design process. One of which is visual guides, grids, and layout tools that you find in design &amp; prototyping applications.
+				More and more, I find myself designing with code, and I don't intend to stop. It's an amazing feeling when you're able to craft a desisn by typing up some html and css, especially when you can do it quickly. Some things, however, are lost in this design process. One of which is visual guides, grids, and layout tools that you find in design &amp; prototyping applications. Ghost Grid is a simple attempt to bridge that gap.
 			</p>
 		</article>
 		<article class="col-4">
@@ -53,9 +71,9 @@
 			<p>
 				Use Ghost Grid to visualize a responsive column layout by setting up different columns at various breakpoints. Resize this screen to see an example.
 			</p>
-			<h5>Fluid or Static Grid</h5>
+			<h5>Muliple Grid Instances</h5>
 			<p>
-				Whether you prefer fluid grids (percentage based) or static grids (static value based), Ghost Grid can math it.
+				Use the `ghost.containerId` property to bind the grid to a specific element in your layout. You can create multiple ghost grids this way for complex layouts.
 			</p>
 		</article>
 
@@ -103,40 +121,40 @@
 		</div>
 	</footer>
 
-<script src="../dist/ghost-grid.min.js"></script>
+<script src="../dist/ghost-grid.js"></script>
 <script>
 
 	// ghost grid
-	ghost.container         = false,
-	ghost.containerPosition = 'center',
+	ghost.containingElement = false,
+	ghost.align = 'center',
 	ghost.breaks = [
 		{
 	        point: "(min-width: 300px)",
-	        container: 450,
+	        containerWidth: 450,
 	        columns: 3,
 	        gutters: 1/4,
-	        baseLineHeight: (1.5) + 'em'
+	        baseLineHeight: (30/18) + 'em'
 	    },
 	    {
 	        point: "(min-width: 700px)",
-	        container: 650,
+	        containerWidth: 650,
 	        columns: 6,
 	        gutters: 1/4,
-	        baseLineHeight: (1.5) + 'em'
+	        baseLineHeight: (30/18) + 'em'
 	    },
 	    {
 	        point: "(min-width: 1100px)",
-	        container: 960,
+	        containerWidth: 960,
 	        columns: 12,
 	        gutters: 1/4,
-	        baseLineHeight: (1.5) + 'em'
+	        baseLineHeight: (30/18) + 'em'
 	    },
 	    {
 	        point: "(min-width: 1600px)",
-	        container: 1100,
+	        containerWidth: 1100,
 	        columns: 12,
 	        gutters: 1/4,
-	        baseLineHeight: (1.5) + 'em'
+	        baseLineHeight: (30/18) + 'em'
 	    }	    
 	];
 	ghost.summon();

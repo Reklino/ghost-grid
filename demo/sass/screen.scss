@@ -39,7 +39,6 @@ $background: #fdfff8;
 $primary: #23f0c7;
 $secondary: #8fa9c7;
 
-$blackletter: "futura-pt", serif;
 $serif: "futura-pt", serif;
 $sans-serif: "freight-sans-pro", sans-serif;
 
@@ -48,7 +47,7 @@ $easing: cubic-bezier(.3,.53,0,1);
 
 $line-int: 30;
 
-$font-size: 20;
+$font-size: 18;
 $em: $font-size * 1;
 
 $line: $line-int / $em;
@@ -97,13 +96,13 @@ body {
 
 @mixin gigantic {
     /* 135px / 120px */
-    font-size: #{135 / $em}em;
-    line-height: ($line-int*5) / 135 * 1em;
+    font-size: #{130 / $em}em;
+    line-height: ($line-int*4) / 130 * 1em;
 }
 
 h1 {
     @include gigantic;
-    margin: 0 0 ($line-int*5) / 135 * 1em;
+    margin: 0 0 ($line-int*2) / 130 * 1em;
 }
 h2 {
     @include massive;
@@ -172,7 +171,7 @@ h5 {
         display: block;
         position: absolute;
         margin-top: #{$line/2}em;
-        height: 5px;
+        height: 3px;
         width: 120px;
         background: $primary;
     }
@@ -180,8 +179,7 @@ h5 {
 h6 { font-family: $sans-serif; font-weight: 400; }
 a {
     transition: all $duration $easing;
-    text-decoration: none;
-    color: lighten($body, 35);
+    color: lighten($body, 15);
     &:hover {
         color: $primary;
     }
@@ -197,8 +195,8 @@ li {
 
 hr {
     display: block;
-    border: 5px solid $primary;
-    border-radius: 100%;
+    border: 3px solid $header;
+    //border-radius: 100%;
     height: #{$line}em;
     width: #{$line}em;
     margin: #{$line}em auto 0;
@@ -233,11 +231,6 @@ hr {
 .center { text-align: center !important; }
 .highlight { color: $primary; }
 
-.blackletter {
-    font-family: $blackletter;
-    font-weight: 400;
-}
-
 /*-----  End of Typography  ------*/
 
 
@@ -252,9 +245,8 @@ pre {
     font-size: 1em;
     line-height: #{$line}em;
     color: lighten($primary, 15);
-    box-shadow: inset 0 0 0 -1px darken($header, 25);
-    background: lighten($body, 30);
-    padding: #{$line/2}em 1em;
+    background: white;
+    padding: 0;
     margin: 0;
     border-radius: 10px;
 }
@@ -317,8 +309,8 @@ blockquote {
         @include small;
         color: $header;
         box-sizing: border-box;
-        border: 5px solid $primary;
-        border-width: 0 0 5px 0;
+        border: 3px solid $primary;
+        border-width: 0 0 3px 0;
         content: attr(data-column);
         display: block;
         width: 100%;
@@ -460,16 +452,21 @@ header {
     .box {
         position: relative;
         text-align: center;
-        padding-top: #{$line*2}em;
-        padding-bottom: #{$line*1}em;
+        padding: #{$line*1}em 2em;
         background: white;
+        box-sizing: border-box;
+        &:after {
+            content:'';
+            display: block;
+            clear: both;
+        }
         &:before {
             content:'';
             position: absolute;
             left: 0; top: 0;
             box-sizing: border-box;
             width: 100%; height: 100%;
-            border: 5px solid $primary;
+            border: 3px solid $primary;
         }
     }
     &:before {
@@ -616,12 +613,12 @@ pre[class*="language-"] {
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-    background: lighten($body, 60);
+    background: white;
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-      padding: .1em .5em;
+    padding: .1em .5em;
     border-radius: .3em;
 }
 

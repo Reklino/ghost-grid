@@ -18,11 +18,12 @@ var ghost = (function () {
 
 
     // set defaults
-    ghost.container         = false;
-    ghost.containerPosition = 'center';
-    ghost.opacity           = 0.6;
+    ghost.containingElement = false;
+    ghost.align             = 'center';
+    ghost.opacity           = 0.75;
     ghost.breaks            = [
         {
+            containerWidth : false,
             point : "(min-width: 800px)",
             columns : 12,
             gutters : 0.25,
@@ -77,7 +78,7 @@ var ghost = (function () {
     // returns the pixel value of a string/unit pair
     // example: getPixelValue('24px') will return 24
     function getPixelValue(value)
-    {        
+    {   
         if (typeof value === 'number')
             console.log('Ghost Grid says: baseLineHeight must be set to a string with the unit type declared (example: "24px")');
         else if (value.indexOf("rem") > -1)
@@ -93,8 +94,8 @@ var ghost = (function () {
         var bp              = typeof currentBreak === 'undefined' ? ghost.breaks[0] : currentBreak;
             body            = document.body,
             html            = document.documentElement,
-            container       = ghost.container > 0 ? ghost.container + 'px' : '100%',
-            container       =  bp.container > 0 ? bp.container + 'px' : defaultContainer,
+            containerWidth       = '100%',
+            containerWidth       =  bp.containerWidth > 0 ? bp.containerWidth + 'px' : containerWidth,
             w               = window.innerWidth,
             h               = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ),
             baseLineHeight  = getPixelValue(bp.baseLineHeight),
@@ -106,11 +107,11 @@ var ghost = (function () {
         gridContainer.innerHTML      = '';
         gridLineContainer.innerHTML  = '';
         grid.style.opacity           = ghost.opacity;
-        gridContainer.style.maxWidth = container;
+        gridContainer.style.maxWidth = containerWidth;
 
         // position grid container based on container position
-        if(container != '100%') {
-            switch(ghost.containerPosition) {
+        if(containerWidth != '100%') {
+            switch(ghost.align) {
                 case 'left':
                     gridContainer.style.marginLeft = '0';
                     gridContainer.style.marginRight = '0';
@@ -120,7 +121,7 @@ var ghost = (function () {
                     gridContainer.style.marginRight = 'auto';
                     break;
                 case 'right':
-                    gridContainer.style.marginLeft = '0';
+                    gridContainer.style.marginLeft = 'auto';
                     gridContainer.style.marginRight = '0';
                     break;
             }
@@ -146,9 +147,8 @@ var ghost = (function () {
 
     // loops through breaks to find match and returns break object
     var findBreak = function(media) {
+        console.log('fired findBreak with ' + ghost.breaks.length + ' breakpoints')
         for( i = 0; i < ghost.breaks.length; i++ ) {
-
-            console.log(media + ',' + ghost.breaks[i].point);
 
             if(media == ghost.breaks[i].point) {
 
@@ -199,7 +199,7 @@ var ghost = (function () {
 
                 // set initial break
                 if(mq.matches) {
-                    ghost.activeBreakPointIndex = i;
+                    ghost.activeBreakPointIndex = i - 1;
                     ghost.activeBreakPoint = findBreak(mq.media);
                 }
 
