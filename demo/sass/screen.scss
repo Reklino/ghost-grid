@@ -129,6 +129,22 @@ p {
     margin: 0 0 #{$line-int / $em}em;
 }
 
+a.btn {
+    display: inline-block;
+    background: $primary;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    height: #{$line*2}em;
+    line-height: #{$line*2}em;
+    padding: 0 1.5em;
+    border-radius: 5px;
+    &:hover {
+        background: $header;
+        color: white;
+    }
+}
+
 
 /*-----  End of Vars  ------*/
 

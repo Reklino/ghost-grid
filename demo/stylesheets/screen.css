@@ -64,6 +64,20 @@ h6 {
 p {
   margin: 0 0 1.66667em; }
 
+a.btn {
+  display: inline-block;
+  background: #23f0c7;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  height: 3.33333em;
+  line-height: 3.33333em;
+  padding: 0 1.5em;
+  border-radius: 5px; }
+  a.btn:hover {
+    background: #1b1e1e;
+    color: white; }
+
 /*-----  End of Vars  ------*/
 /*==================================
 =            Typography            =
