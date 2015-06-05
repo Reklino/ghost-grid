@@ -43,7 +43,7 @@ $serif: "futura-pt", serif;
 $sans-serif: "freight-sans-pro", sans-serif;
 
 $duration: 0.3s;
-$easing: cubic-bezier(.3,.53,0,1);
+$easing: cubic-bezier(.36,.43,.18,.97);
 
 $line-int: 30;
 
@@ -106,7 +106,7 @@ h1 {
 }
 h2 {
     @include massive;
-    margin: 0 0 ($line-int*3) / 84 * 1em;
+    margin: 0 0 ($line-int*1) / 84 * 1em;
 }
 h3 {
     @include huge;
@@ -129,22 +129,6 @@ p {
     margin: 0 0 #{$line-int / $em}em;
 }
 
-a.btn {
-    display: inline-block;
-    background: $primary;
-    text-decoration: none;
-    color: white;
-    font-weight: 700;
-    height: #{$line*2}em;
-    line-height: #{$line*2}em;
-    padding: 0 1.5em;
-    border-radius: 5px;
-    &:hover {
-        background: $header;
-        color: white;
-    }
-}
-
 
 /*-----  End of Vars  ------*/
 
@@ -153,11 +137,7 @@ a.btn {
 =            Typography            =
 ==================================*/
 
-* {
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 body {
     font-family: $sans-serif;
     font-style: normal;
@@ -192,12 +172,25 @@ h5 {
         background: $primary;
     }
 }
-h6 { font-family: $sans-serif; font-weight: 400; }
-a {
+p a {
+    position: relative;
     transition: all $duration $easing;
-    color: lighten($body, 15);
+    color: $header;
+    text-decoration: none;
+    &:after {
+        transition: all $duration $easing;
+        position: absolute;
+        top: 4px; left: 0; right: 0; bottom: 0;
+        margin: auto;
+        content: '';
+        height: 1px;
+        width: 100%;
+        background: $header;
+    }
     &:hover {
-        color: $primary;
+        &:after {
+            top: 18px;
+        }
     }
 }
 
@@ -215,7 +208,7 @@ hr {
     //border-radius: 100%;
     height: #{$line}em;
     width: #{$line}em;
-    margin: #{$line}em auto 0;
+    margin: 0 auto 0;
 }
 
 .subtle {
@@ -254,71 +247,90 @@ hr {
 =            Base Element Styles            =
 ===========================================*/
 
-pre {
-    float: left;
-    width: 100%;
-    white-space: pre-wrap;
-    font-size: 1em;
-    line-height: #{$line}em;
-    color: lighten($primary, 15);
-    background: white;
-    padding: 0;
-    margin: 0;
-    border-radius: 10px;
-}
-
-code {
-    line-height: #{$line}em;
-}
-
-figure.outset-left {
-    position: relative;
-    clear: both;
-    outline: none;
-    box-sizing: border-box;
-    float: left;
-    margin-top: #{$line/2}em;
-    margin-right: 30px;
-    margin-bottom: #{$line/2}em;
-    margin-left: 0;
-    width: 100%;
-}
-blockquote {
-    color: $header;
-    text-align: center;
-    @include large;
-    font-family: $serif;
-    font-style: italic;
-    position: relative;
-    clear: both;
-    outline: none;
-    box-sizing: border-box;
-    float: left;
-    margin: ($line-int*1.5) / 28 * 1em 0;
-    width: 100%;
-    quotes: "\201C""\201D""\2018""\2019";
-}
-
-.offset-number {
-    text-align: center;
-    line-height: 45px;
-    color: lighten($header, 50);
-    position: absolute;
-    margin-left: -75px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50px;
-    border: 1px solid lighten($body, 40);
+a.btn {
+    transition: all $duration $easing;
+    display: inline-block;
+    background: $primary;
+    text-decoration: none;
+    color: white;
+    @include small;
+    font-weight: 700;
+    height: #{$line*2.5}em;
+    line-height: #{$line*2.5}em;
+    padding: 0 1.5em;
+    border-radius: 5px;
+    &:hover {
+        background: $header;
+        color: white;
+    }
 }
 
 .add-bottom { margin-bottom: #{$line}em !important; }
 .add-top { margin-top: #{$line}em !important; }
+
+/*-----  End of Base Element Styles  ------*/
+
+
+
+
+/*==============================
+=            Layout            =
+==============================*/
+
+@keyframes unfold {
+    from { width: 100%; }
+    to { width: 0%; }
+}
+
+#bg {
+    position: fixed;
+    z-index: 2;
+    pointer-events: none;
+    width: 100%;
+    .container { height: 2000px; }
+    div.col-4 {
+        height: 100%;
+        &:after {
+            content:'';
+            display: block;
+            height: 100%;
+            border-left: 1px solid lighten($body, 55);
+        }
+        &:before {
+            position: absolute;
+            content:'';
+            display: block;
+            height: 100%;
+            width: 0%;
+            background: $background url(http://subtlepatterns.com/patterns/paper_fibers.png);
+            background-attachment: fixed;
+            animation: unfold 1s $easing;
+        }
+        &:nth-child(2) {
+            &:before { animation-delay: 0.1s; }
+        }
+        &:nth-child(3) {
+            &:before { animation-delay: 0.2s; }
+        }
+    }
+}
+
+header {
+    position: relative;
+    z-index: 1;
+    padding: #{$line*5}em 0 #{$line*2}em;
+}
+
+section {
+    padding: #{$line*3}em 0 #{$line*2}em;
+}
 
 .filler {
     position: relative;
     height: #{$line}em;
     margin-bottom: #{$line}em;
     text-transform: uppercase;
+    text-align: center;
     font-family: $serif;
     font-weight: 600;
     &:before {
@@ -333,385 +345,15 @@ blockquote {
     }
 }
 
-/*-----  End of Base Element Styles  ------*/
-
-
-
-
-/*==============================
-=            Layout            =
-==============================*/
-
-nav {
-    z-index: 2;
-    position: fixed;
-    width: 100%;
-    font-family: $sans-serif;
-    font-weight: 700;
-    color: lighten($body, 25);
-    height: #{$line*2}em;
-    ul {
-        list-style: none;
-        display: none;
-    }
-    li {
-        margin: 0 3em 0 0;
-    }
-    a { color: $body; }
-    .logo {
-        float: left;
-        position: relative;
-        z-index: 2;
-        overflow: hidden;
-        white-space: nowrap;
-        transition: all 0.45s $easing;
-        width: 0px;
-        margin: 0;
-        h4 { line-height: #{$line*2}em; }
-    }
-    .backing {
-        top: 0;
-        position: fixed;
-        width: 100%;
-        height: #{$line*3}em;
-        background: rgba(black, 0.5);
-        transition: all 0.45s $easing;
-        border-bottom: 1px solid transparent;
-        background: white;
-        border-color: lighten($body, 60);
-    }
-    &.reveal {
-        .logo {
-            width: 175px;
-            margin: 0 3em 0 0;
-        }
-        .backing {
-            background: white;
-            border-color: lighten($body, 60);
-        }
-    }
-}
-nav.active ul {
-    position: absolute;
-    display: block;
-    padding: #{$line/2}em 0 #{$line/2}em 1.5em;
-    margin-top: #{$line*2}em;
-    margin-left: -1.5em;
-    width: 160px;
-    background: white;
-    border: 1px solid lighten($body, 35);
-    border-radius: 5px;
-    box-shadow: 0 0 10px 0 rgba($body, 0.15);
-    li { display: block; line-height: #{$line*1.5}em; }
-    &:before {
-        content: '';
-        z-index: 1;
-        position: absolute;
-        top: -15px;
-        left: 1.10em;
-        margin-right: -8px;
-        display: inline-block;
-        border-top: 0 solid #6883a5;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-        border-bottom: 15px solid #6883a5;
-    }
-    &:after {
-        content: '';
-        z-index: 2;
-        position: absolute;
-        top: -14px;
-        left: 1.2em;
-        margin-right: -7px;
-        display: inline-block;
-        border-top: 0 solid #fff;
-        border-left: 14px solid transparent;
-        border-right: 14px solid transparent;
-        border-bottom: 14px solid #fff;
-    }
-}
-#nav-trigger { display: block; }
-
-@media (min-width: 1100px) {
-    nav ul, nav.active ul {
-        display: block;
-        position: relative;
-        padding: 0;
-        margin: #{$line}em 0 0;
-        width: auto;
-        height: #{$line*2}em;
-        background: transparent;
-        border: none;
-        box-shadow: none;
-        &:after, &:before { display: none; }
-        li {
-            color: lighten($body, 35);
-            font-size: 80%;
-            height: #{$line}em;
-            line-height: #{$line}em;
-            display: block;
-            float: left;
-            margin: 0 4em 0 0;
-            padding: 0;
-        }
-    }
-    #nav-trigger {
-        display: none;
-    }
-}
-
-header {
-    position: relative;
-    z-index: 1;
-    //background: black;
-    padding: #{$line*5}em 0 #{$line*3}em;
-    .box {
-        position: relative;
-        text-align: center;
-        padding: #{$line*1}em 2em;
-        background: white;
-        box-sizing: border-box;
-        &:after {
-            content:'';
-            display: block;
-            clear: both;
-        }
-        &:before {
-            content:'';
-            position: absolute;
-            left: 0; top: 0;
-            box-sizing: border-box;
-            width: 100%; height: 100%;
-            border: 3px solid $primary;
-        }
-    }
-    &:before {
-        transition: all 0.6s $easing;
-        content: '';
-        //background: url(../img/poltergeist-pic.jpg) no-repeat center top;
-        background-size: cover;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        position: absolute;
-        z-index: -1;
-        opacity: 0.3;
-    }
-}
-@media (min-width: 1100px) {
-    header:before {
-        opacity: 1;
-    }
-}
-
-.section-title {
-    font-weight: 500;
-    font-family: $sans-serif;
-    font-size: 42px;
-    margin-top: #{$line*2}em;
-    color: $body;
-    .col-12 {
-        position: relative;
-    }
-    span {
-        position: relative;
-        z-index: 1;
-        height: #{$line*2}em;
-        line-height: #{$line*2}em;
-        text-shadow: -1px 0 white, 1px 0 white;
-    }
-    span:after {
-        content: '';
-        position: absolute;
-        z-index: -1;
-        display: block;
-        margin-top: -4px;
-        height: 1px;
-        width: 100%;
-        background: $body;
-    }
-}
-
-section {
-    padding: #{$line*2}em 0 #{$line}em;
-}
-
 footer {
-    text-align: center;
-    padding: #{$line*2}em 0 #{$line}em;
+    padding: #{$line}em 0 #{$line}em;
     margin-top: #{$line}em;
-    h6 {
-        text-transform: uppercase;
-        font-weight: 400;
-        font-family: $serif;
-        letter-spacing: 1px;
+    p {
+        @include small;
     }
 }
 
 /*-----  End of Layout  ------*/
-
-
-/*================================
-=            Nav Icon            =
-================================*/
-
-.menu-icon {
-    user-select: none;
-    z-index: 1;
-    cursor: pointer;
-    position: relative;
-    z-index: 3;
-    margin-top: 1.25em;
-    width: 14px;
-    height: 14px;
-    float: left;
-    margin-right: 1.5em;
-    span {
-        position: relative;
-        display: block;
-        width: 18px;
-        height: 2px;
-        background-color: $body;
-        transition: all $duration $easing;
-        &:first-of-type {
-            top: -3px;
-        }
-        &:last-of-type {
-            bottom: -3px;
-        }
-    } // span
-    // Active state for the menu
-    &.active span {
-        transition: all $duration $easing;
-        &:first-of-type {
-            transform: rotate(45deg);
-            top: 1px;
-        }
-        &:last-of-type {
-            transform: rotate(-45deg);
-            bottom: 1px;
-        }
-    } // active
-
-} // menu-icon
-
-/*-----  End of Nav Icon  ------*/
-
-
-
-/*=================================
-=            Prism CSS            =
-=================================*/
-
-code[class*="language-"],
-pre[class*="language-"] {
-    color: $body;
-    direction: ltr;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-}
-
-/* Code blocks */
-pre[class*="language-"] {
-    overflow: auto;
-}
-
-:not(pre) > code[class*="language-"],
-pre[class*="language-"] {
-    background: white;
-}
-
-/* Inline code */
-:not(pre) > code[class*="language-"] {
-    padding: .1em .5em;
-    border-radius: .3em;
-}
-
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-    color: $body;
-}
-
-.token.punctuation {
-    color: lighten($body, 15);
-}
-
-.namespace {
-    opacity: .7;
-}
-
-.token.property,
-.token.tag,
-.token.constant,
-.token.symbol,
-.token.deleted {
-    color: #f92672;
-}
-
-.token.boolean,
-.token.number {
-    color: #ae81ff;
-}
-
-.token.selector,
-.token.attr-name,
-.token.string,
-.token.char,
-.token.builtin,
-.token.inserted {
-    color: $secondary;
-}
-
-.token.operator,
-.token.entity,
-.token.url,
-.language-css .token.string,
-.style .token.string,
-.token.variable {
-    color: lighten($body, 15);
-}
-
-.token.atrule,
-.token.attr-value,
-.token.function {
-    color: darken($primary, 15);
-}
-
-.token.keyword {
-    color: darken(#66d9ef, 15);
-}
-
-.token.regex,
-.token.important {
-    color: darken(#fd971f, 15);
-}
-
-.token.important,
-.token.bold {
-    font-weight: bold;
-}
-.token.italic {
-    font-style: italic;
-}
-
-.token.entity {
-    cursor: help;
-}
-
-/*-----  End of Prism CSS  ------*/
 
 
 

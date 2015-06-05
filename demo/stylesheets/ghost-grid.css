@@ -51,6 +51,7 @@ body {
 #grid-switch {
   cursor: pointer;
   position: fixed;
+  z-index: 99;
   width: 30px;
   height: 30px;
   bottom: 24px;

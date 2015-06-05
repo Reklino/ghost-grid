@@ -73,6 +73,7 @@ $grid-switch-size: 30px;
 #grid-switch {
     cursor: pointer;
     position: fixed;
+    z-index: 99;
     width: $grid-switch-size;
     height: $grid-switch-size;
     bottom: 24px;

@@ -14,43 +14,38 @@
 </head>
 <body>
 
-	<header id="header" class="container">
-		<div class="col-6">
-			<h1>Ghost Grid</h1>
+	<div id="bg">
+		<div class="container">
+			<div class="col-4"></div>
+			<div class="col-4"></div>
+			<div class="col-4"></div>
 		</div>
-		<div class="col-6">
+	</div>
+
+	<header id="header" class="container">
+		<div class="col-4">
+			<h2>Ghost Grid</h2>
 			<h4 class="sub">Summon your fluid grid from the bowels of CSS hell so that you might visualize and conquer it once and for all.</h4>
 			<a class="btn" href="https://github.com/Reklino/ghost-grid">Visit the Github Repo for Instructions <span class="icon_arrow-right"></span></a>
 		</div>
-	</header>
-
-	<section class="container" id="section-start">
-
-		<article class="col-4">
-			<h4>Introduction</h4>
+		<div class="col-4">
+			<h4>What?</h4>
 			<p>
 				With multiple breakpoints, fluid widths, and dynamic baselines, responsive grid systems get complicated really quick. Ghost Grid is a lightweight javascript tool for visualizing your grid systems so you can visualize spacing during design. It is NOT a grid system in itself, but is an agnostic visual companion to any grid system.
 			</p>
-		</article>
-		<article class="col-4">
+		</div>
+		<div class="col-4">
 			<h4>Why?</h4>
 			<p>
-				More and more, I find myself designing with code, and I don't intend to stop. It's an amazing feeling when you're able to craft a desisn by typing up some html and css, especially when you can do it quickly. Some things, however, are lost in this design process. One of which is visual guides, grids, and layout tools that you find in design &amp; prototyping applications. Ghost Grid is a simple attempt to bridge that gap.
+				It's an amazing feeling when you're able to craft a desisn by typing up some html and css, especially when you can do it quickly. Some things, however, are lost in this design process. One of which is visual guides, grids, and layout tools that you find in design &amp; prototyping applications. Ghost Grid is a simple attempt to bridge that gap.
 			</p>
-		</article>
-		<article class="col-4">
-			<h4>Credits</h4>
-			<p>
-				There have been other attempts at bridging this gap which I have taken heavy inspiration from. Most notably is the <a href="#">Golden Grid System</a> and its 'Golden Gridlet' overlay. My goal with Ghost Grid was to simply create an easily customizable, dependency free version of what Joni Korpi did with GGS that had a few more features.
-			</p>
-		</article>
-
-	</section>
+		</div>
+	</header>
 
 	<hr>
 
 	<section class="container">
-		<article class="col-4 add-top add-bottom">
+		<article class="col-4">
 			<h5>Multiple Breakpoints</h5>
 			<p>
 				Use Ghost Grid to visualize a responsive column layout by setting up different columns at various breakpoints. Resize this screen to see an example.
@@ -61,7 +56,7 @@
 			</p>
 		</article>
 
-		<article class="col-4 add-top add-bottom">
+		<article class="col-4">
 			<h5>Columns</h5>
 			<p>
 				Visualize your columns while you develop so you can rest assured you're within your bounds and, more importantly, make design decisions based on <i>something you can see</i>.
@@ -72,10 +67,10 @@
 			</p>
 		</article>
 
-		<article class="col-4 add-top add-bottom">
+		<article class="col-4">
 			<h5>Baseline Grid</h5>
 			<p>
-				Use Ghost Grid's basline grid to ensure your site/app maintains a consistent vertical rhythm.
+				For all the masochistic perfectionists out there like me who want to make sure their layout maintains vertical rhythm, you can set a baseline grid for each breakpoint.
 			</p>
 			<h5>Works with Flexbox</h5>
 			<p>
@@ -86,7 +81,7 @@
 
 	<hr>
 
-	<footer>
+	<section id="fillers">
 		<div class="container">
 			<div data-column="col-1" class="col-1 filler"></div><div data-column="col-11" class="col-11 filler"></div>
 			<div data-column="col-2" class="col-2 filler"></div><div data-column="col-10" class="col-10 filler"></div>
@@ -94,13 +89,25 @@
 			<div data-column="col-4" class="col-4 filler"></div><div data-column="col-8" class="col-8 filler"></div>
 			<div data-column="col-5" class="col-5 filler"></div><div data-column="col-7" class="col-7 filler"></div>
 			<div data-column="col-6" class="col-6 filler"></div><div data-column="col-6" class="col-6 filler"></div>
-			<div class="clearfix add-bottom"><br></div>
-			<div data-column="col-8" class="col-8 col-offset-2 subtle">
-				<h6>
+		</div>
+	</section>
+
+	<footer>
+		<div class="container">
+			<div class="col-4">
+				<p>
+					There have been other attempts at bridging this gap which I have taken heavy inspiration from. Most notably is the <a href="#">Golden Grid System</a> and its 'Golden Gridlet' overlay. My goal with Ghost Grid was to simply create an easily customizable, dependency free version of what Joni Korpi did with GGS that had a few more features.
+				</p>
+			</div>
+			<div class="col-4">
+				<p>
 					This site uses <a href="#">prism.js</a> for syntax highlighting, <a href="#">Susy</a> for css grid generation, and <a href="#">Gromlicons</a> for icons. The fonts are <a href="#">Soleil</a> &amp; <a href="#">Freight Sans Pro.</a>
-				</h6>
-				<br>
-				<h6>Made with <span class="icon_heart"></span> &amp; <span class="icon_coffee"></span> by <a href="#">Reklino</a></h6>
+				</p>
+			</div>
+			<div class="col-4">
+				<p>
+					Made with <span class="icon_heart"></span> &amp; <span class="icon_coffee"></span> by <a href="#">Reklino</a>
+				</p>
 			</div>
 		</div>
 	</footer>
