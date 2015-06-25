@@ -44,9 +44,9 @@ h3 {
 
 h4 {
   /* 28 / 36px */
-  font-size: 1.55556em;
-  line-height: 1.07143em;
-  margin: 0 0 1.07143em; }
+  font-size: 1.44444em;
+  line-height: 1.15385em;
+  margin: 0 0 1.15385em; }
 
 h5 {
   /* 20px / 28px */
@@ -75,7 +75,6 @@ body {
   font-family: "freight-sans-pro", sans-serif;
   font-style: normal;
   font-weight: 400;
-  background: #fdfff8 url(http://subtlepatterns.com/patterns/paper_fibers.png);
   background-attachment: fixed;
   color: #525560;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
@@ -104,7 +103,7 @@ h5:after {
   display: block;
   position: absolute;
   margin-top: 0.83333em;
-  height: 3px;
+  height: 1px;
   width: 120px;
   background: #23f0c7; }
 
@@ -138,11 +137,28 @@ li {
   margin-left: 1.2em; }
 
 hr {
+  position: relative;
   display: block;
-  border: 3px solid #1b1e1e;
+  border: 1px solid #1b1e1e;
   height: 1.66667em;
   width: 1.66667em;
   margin: 0 auto 0; }
+  hr:after, hr:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -25%;
+    width: 150%;
+    height: 1px;
+    background: #1b1e1e;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg); }
+  hr:after {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
 
 .subtle h1, .subtle h2, .subtle h3, .subtle h4, .subtle h5, .subtle h6 {
   color: #4b5454; }
@@ -182,20 +198,23 @@ a.btn {
   -webkit-transition: all 0.3s cubic-bezier(.36, .43, .18, .97);
           transition: all 0.3s cubic-bezier(.36, .43, .18, .97);
   display: inline-block;
-  background: #23f0c7;
   text-decoration: none;
-  color: white;
+  color: #1b1e1e;
   /* 13px / 18px */
   font-size: 0.8125em;
   line-height: 2.05128em;
-  font-weight: 700;
+  text-transform: uppercase;
+  font-family: "futura-pt", serif;
+  font-weight: 400;
   height: 4.16667em;
   line-height: 4.16667em;
+  margin-bottom: 4.16667em;
   padding: 0 1.5em;
-  border-radius: 5px; }
+  border: 1px solid #1b1e1e;
+  box-sizing: border-box; }
   a.btn:hover {
-    background: #1b1e1e;
-    color: white; }
+    border-color: #1b1e1e;
+    color: #1b1e1e; }
 
 .add-bottom {
   margin-bottom: 1.66667em !important; }
@@ -207,19 +226,6 @@ a.btn {
 /*==============================
 =            Layout            =
 ==============================*/
-@-webkit-keyframes unfold {
-  from {
-    width: 100%; }
-
-  to {
-    width: 0%; } }
-@keyframes unfold {
-  from {
-    width: 100%; }
-
-  to {
-    width: 0%; } }
-
 #bg {
   position: fixed;
   z-index: 2;
@@ -227,29 +233,6 @@ a.btn {
   width: 100%; }
   #bg .container {
     height: 2000px; }
-  #bg div.col-4 {
-    height: 100%; }
-    #bg div.col-4:after {
-      content: '';
-      display: block;
-      height: 100%;
-      border-left: 1px solid #e3e4e7; }
-    #bg div.col-4:before {
-      position: absolute;
-      content: '';
-      display: block;
-      height: 100%;
-      width: 0%;
-      background: #fdfff8 url(http://subtlepatterns.com/patterns/paper_fibers.png);
-      background-attachment: fixed;
-      -webkit-animation: unfold 1s cubic-bezier(.36, .43, .18, .97);
-              animation: unfold 1s cubic-bezier(.36, .43, .18, .97); }
-    #bg div.col-4:nth-child(2):before {
-      -webkit-animation-delay: 0.1s;
-              animation-delay: 0.1s; }
-    #bg div.col-4:nth-child(3):before {
-      -webkit-animation-delay: 0.2s;
-              animation-delay: 0.2s; }
 
 header {
   position: relative;
@@ -273,8 +256,8 @@ section {
     line-height: 2.05128em;
     color: #1b1e1e;
     box-sizing: border-box;
-    border: 3px solid #23f0c7;
-    border-width: 0 0 3px 0;
+    border: 1px solid #23f0c7;
+    border-width: 0 0 1px 0;
     content: attr(data-column);
     display: block;
     width: 100%; }

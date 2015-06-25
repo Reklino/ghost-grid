@@ -41,6 +41,7 @@ $secondary: #8fa9c7;
 
 $serif: "futura-pt", serif;
 $sans-serif: "freight-sans-pro", sans-serif;
+$deco: "estilo-regular", sans-serif;
 
 $duration: 0.3s;
 $easing: cubic-bezier(.36,.43,.18,.97);
@@ -78,8 +79,8 @@ body {
 
 @mixin large {
     /* 28 / 36px */
-    font-size: #{28 / $em}em;
-    line-height: ($line-int*1) / 28 * 1em;
+    font-size: #{26 / $em}em;
+    line-height: ($line-int*1) / 26 * 1em;
 }
 
 @mixin huge {
@@ -114,7 +115,7 @@ h3 {
 }
 h4 {
     @include large;
-    margin: 0 0 ($line-int*1) / 28 * 1em;
+    margin: 0 0 ($line-int*1) / 26 * 1em;
 }
 h5 {
     @include normal;
@@ -142,7 +143,7 @@ body {
     font-family: $sans-serif;
     font-style: normal;
     font-weight: 400;
-    background: $background url(http://subtlepatterns.com/patterns/paper_fibers.png);
+    //background: $background url(http://subtlepatterns.com/patterns/paper_fibers.png);
     background-attachment: fixed;
     color: $body;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
@@ -167,7 +168,7 @@ h5 {
         display: block;
         position: absolute;
         margin-top: #{$line/2}em;
-        height: 3px;
+        height: 1px;
         width: 120px;
         background: $primary;
     }
@@ -203,12 +204,26 @@ li {
 }
 
 hr {
+    position: relative;
     display: block;
-    border: 3px solid $header;
+    border: 1px solid $header;
     //border-radius: 100%;
     height: #{$line}em;
     width: #{$line}em;
     margin: 0 auto 0;
+    &:after, &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%; left: -25%;
+        width: 150%;
+        height: 1px;
+        background: $header;
+        transform: rotate(45deg);
+    }
+    &:after {
+        transform: rotate(-45deg);
+    }
 }
 
 .subtle {
@@ -250,18 +265,21 @@ hr {
 a.btn {
     transition: all $duration $easing;
     display: inline-block;
-    background: $primary;
     text-decoration: none;
-    color: white;
+    color: $header;
     @include small;
-    font-weight: 700;
+    text-transform: uppercase;
+    font-family: $serif;
+    font-weight: 400;
     height: #{$line*2.5}em;
     line-height: #{$line*2.5}em;
+    margin-bottom: #{$line*2.5}em;
     padding: 0 1.5em;
-    border-radius: 5px;
+    border: 1px solid $header;
+    box-sizing: border-box;
     &:hover {
-        background: $header;
-        color: white;
+        border-color: $header;
+        color: $header;
     }
 }
 
@@ -277,42 +295,12 @@ a.btn {
 =            Layout            =
 ==============================*/
 
-@keyframes unfold {
-    from { width: 100%; }
-    to { width: 0%; }
-}
-
 #bg {
     position: fixed;
     z-index: 2;
     pointer-events: none;
     width: 100%;
     .container { height: 2000px; }
-    div.col-4 {
-        height: 100%;
-        &:after {
-            content:'';
-            display: block;
-            height: 100%;
-            border-left: 1px solid lighten($body, 55);
-        }
-        &:before {
-            position: absolute;
-            content:'';
-            display: block;
-            height: 100%;
-            width: 0%;
-            background: $background url(http://subtlepatterns.com/patterns/paper_fibers.png);
-            background-attachment: fixed;
-            animation: unfold 1s $easing;
-        }
-        &:nth-child(2) {
-            &:before { animation-delay: 0.1s; }
-        }
-        &:nth-child(3) {
-            &:before { animation-delay: 0.2s; }
-        }
-    }
 }
 
 header {
@@ -337,8 +325,8 @@ section {
         @include small;
         color: $header;
         box-sizing: border-box;
-        border: 3px solid $primary;
-        border-width: 0 0 3px 0;
+        border: 1px solid $primary;
+        border-width: 0 0 1px 0;
         content: attr(data-column);
         display: block;
         width: 100%;

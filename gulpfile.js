@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
+var minifyCSS = require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
@@ -21,6 +22,17 @@ gulp.task('sass', function() {
 
 });
 
+gulp.task('css', function() {
+    return gulp.src('demo/sass/ghost-grid.scss')
+        .pipe(sass())
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('dist'))
+        .pipe(minifyCSS())
+        .pipe(rename('ghost-grid.min.css'))
+        .pipe(gulp.dest('dist'))
+        .pipe(reload({stream: true}));
+})
+
 gulp.task('js', function() {
     return gulp.src('dist/ghost-grid.js')
         .pipe(jshint())
@@ -41,4 +53,4 @@ gulp.task('watch', function() {
     gulp.watch("demo/*.html").on('change', reload);
 })
 
-gulp.task('default', ['sass', 'js', 'watch']);
+gulp.task('default', ['sass', 'css', 'js', 'watch']);
