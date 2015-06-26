@@ -33,15 +33,14 @@ time, mark, audio, video {
 =            Vars            =
 ============================*/
 
-$body: #525560;
+$body: #737887;
 $header: #1b1e1e;
 $background: #fdfff8;
 $primary: #23f0c7;
 $secondary: #8fa9c7;
 
 $serif: "futura-pt", serif;
-$sans-serif: "freight-sans-pro", sans-serif;
-$deco: "estilo-regular", sans-serif;
+$sans-serif: "freight-micro-pro", sans-serif;
 
 $duration: 0.3s;
 $easing: cubic-bezier(.36,.43,.18,.97);
@@ -168,10 +167,15 @@ h5 {
         display: block;
         position: absolute;
         margin-top: #{$line/2}em;
-        height: 1px;
+        height: 3px;
         width: 120px;
-        background: $primary;
+        background: lighten($body, 35);
     }
+}
+.section-header {
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 0.25em;
 }
 p a {
     position: relative;
@@ -211,6 +215,7 @@ hr {
     height: #{$line}em;
     width: #{$line}em;
     margin: 0 auto 0;
+    top: #{$line/2}em;
     &:after, &:before {
         content: '';
         display: block;
@@ -269,17 +274,19 @@ a.btn {
     color: $header;
     @include small;
     text-transform: uppercase;
+    letter-spacing: 2px;
     font-family: $serif;
     font-weight: 400;
     height: #{$line*2.5}em;
     line-height: #{$line*2.5}em;
     margin-bottom: #{$line*2.5}em;
-    padding: 0 1.5em;
-    border: 1px solid $header;
+    padding: 0 2em;
+    border: 2px solid $header;
     box-sizing: border-box;
     &:hover {
+        background: $header;
         border-color: $header;
-        color: $header;
+        color: white;
     }
 }
 
@@ -306,12 +313,51 @@ a.btn {
 header {
     position: relative;
     z-index: 1;
-    padding: #{$line*5}em 0 #{$line*2}em;
+    padding: 0;
+    text-align: center;
+    section {
+        padding: #{$line*6}em 0 #{$line*3}em;
+    }
+    .grid-switch {
+        position: absolute;
+        top: #{$line*3}em;
+        left: 50%; right: 0; margin-left: -15px;
+        i {
+            left: 0;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 100%;
+            margin: -15px 0 0 -15px;
+            width: 60px;
+            height: 60px;
+            border: 1px solid $header;
+        }
+    }
+    .filler {
+        &:before {
+            @include small;
+            box-sizing: border-box;
+            content: attr(data-column);
+            display: block;
+            width: 100%;
+        }
+    }
+}
+
+#main {
+    .grid-container div:before, .grid-line-container div {
+        border-color: #ffd200;
+    }
 }
 
 section {
-    padding: #{$line*3}em 0 #{$line*2}em;
+    padding: #{$line*4}em 0 #{$line*3}em;
 }
+.alternate { background: lighten($body, 48); }
 
 .filler {
     position: relative;
@@ -320,13 +366,12 @@ section {
     text-transform: uppercase;
     text-align: center;
     font-family: $serif;
-    font-weight: 600;
+    font-weight: 400;
     &:before {
         @include small;
         color: $header;
         box-sizing: border-box;
-        border: 1px solid $primary;
-        border-width: 0 0 1px 0;
+        border: 1px dotted $header;
         content: attr(data-column);
         display: block;
         width: 100%;
@@ -334,10 +379,25 @@ section {
 }
 
 footer {
-    padding: #{$line}em 0 #{$line}em;
-    margin-top: #{$line}em;
-    p {
-        @include small;
+    padding: #{$line*6}em 0 #{$line*3}em;
+    .grid-switch {
+        position: absolute;
+        top: #{$line*3}em;
+        left: 50%; right: 0; margin-left: -15px;
+        i {
+            left: 0;
+        }
+        &:after {
+            content: '';
+            display: block;
+            position: relative;
+            box-sizing: border-box;
+            border-radius: 100%;
+            margin: -15px 0 0 -15px;
+            width: 60px;
+            height: 60px;
+            border: 1px solid $header;
+        }
     }
 }
 

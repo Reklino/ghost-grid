@@ -1,5 +1,4 @@
-var ghost = (function () {
-
+function Ghost() {
 
     /*
 
@@ -10,15 +9,12 @@ var ghost = (function () {
 
     */
 
-
-
     // define ghost Object (will return this)
     var ghost = {};
 
 
 
     // set defaults
-    ghost.containingElement = false;
     ghost.align             = 'center';
     ghost.opacity           = 0.75;
     ghost.breaks            = [
@@ -31,60 +27,37 @@ var ghost = (function () {
         }
     ];
     ghost.oldBreaks = [];
-
-
-
-    // define private vars
-    var grid                = document.createElement('div'),
-        gridContainer       = document.createElement('div'),
-        gridLineContainer   = document.createElement('div'),
-        gridSwitch          = document.createElement('div');
+    ghost.grid                = document.createElement('div');
+    ghost.gridContainer       = document.createElement('div');
+    ghost.gridLineContainer   = document.createElement('div');
+    ghost.gridSwitch          = document.createElement('div');
 
 
 
     // render grid and container elements (see ghost-grid.css for styles)
-    document.body.setAttribute('class', 'grid-hidden');
-    grid.id                 = 'grid';
-    gridContainer.id        = 'grid-container';
-    gridLineContainer.id    = 'grid-line-container';
-    grid.appendChild(gridLineContainer);
-    grid.appendChild(gridContainer);
-    document.body.appendChild(grid);
+    ghost.grid.setAttribute('class', 'grid');
+    ghost.gridContainer.setAttribute('class', 'grid-container');
+    ghost.gridLineContainer.setAttribute('class', 'grid-line-container');
+    ghost.grid.appendChild(ghost.gridLineContainer);
+    ghost.grid.appendChild(ghost.gridContainer);
 
-    gridSwitch.id           = 'grid-switch';
-    gridSwitch.innerHTML    = '<i></i><i></i><i></i><i></i>';
-    document.body.appendChild(gridSwitch);
+    ghost.gridSwitch.setAttribute('class', 'grid-switch');
+    ghost.gridSwitch.innerHTML    = '<i></i><i></i><i></i><i></i>';
 
-
-
-    // redefine vars as rendered elements
-    grid                = document.getElementById('grid');
-    gridContainer       = document.getElementById('grid-container');
-    gridLineContainer   = document.getElementById('grid-line-container');
-    gridSwitch          = document.getElementById('grid-switch');
-
-
-    
-    // define grid toggle method used for toggling the grid visibility
-    ghost.toggle = function() {
-        document.body.classList.toggle('grid-hidden');
-    };
-
-    gridSwitch.addEventListener('click', function() {
-        ghost.toggle();
-    });
 
 
     // returns the pixel value of a string/unit pair
     // example: getPixelValue('24px') will return 24
     function getPixelValue(value)
     {   
-        if (typeof value === 'number')
+        if (value == undefined)
+            return false;
+        else if (typeof value === 'number')
             console.log('Ghost Grid says: baseLineHeight must be set to a string with the unit type declared (example: "24px")');
         else if (value.indexOf("rem") > -1)
             return parseFloat(value) * parseFloat(window.getComputedStyle(document.documentElement).fontSize);
         else if (value.indexOf("em") > -1)
-            return parseFloat(value) * parseFloat(window.getComputedStyle(document.body).fontSize);
+            return parseFloat(value) * parseFloat(window.getComputedStyle(ghost.containingElement).fontSize);
         else
             return parseFloat(value);
     }
@@ -92,10 +65,10 @@ var ghost = (function () {
     // render the grid lines
     ghost.gridRender = function(currentBreak) {
         var bp              = typeof currentBreak === 'undefined' ? ghost.breaks[0] : currentBreak;
-            body            = document.body,
+            body            = ghost.containingElement,
             html            = document.documentElement,
-            containerWidth       = '100%',
-            containerWidth       =  bp.containerWidth > 0 ? bp.containerWidth + 'px' : containerWidth,
+            containerWidth  = '100%',
+            containerWidth  =  bp.containerWidth > 0 ? bp.containerWidth + 'px' : containerWidth,
             w               = window.innerWidth,
             h               = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ),
             baseLineHeight  = getPixelValue(bp.baseLineHeight),
@@ -104,25 +77,25 @@ var ghost = (function () {
             gutterSize      = bp.gutters/(bp.columns + bp.columns * bp.gutters) * 100;
 
         // set configurable grid and grid container styles
-        gridContainer.innerHTML      = '';
-        gridLineContainer.innerHTML  = '';
-        grid.style.opacity           = ghost.opacity;
-        gridContainer.style.maxWidth = containerWidth;
+        ghost.gridContainer.innerHTML      = '';
+        ghost.gridLineContainer.innerHTML  = '';
+        ghost.grid.style.opacity           = ghost.opacity;
+        ghost.gridContainer.style.maxWidth = containerWidth;
 
         // position grid container based on container position
         if(containerWidth != '100%') {
             switch(ghost.align) {
                 case 'left':
-                    gridContainer.style.marginLeft = '0';
-                    gridContainer.style.marginRight = '0';
+                    ghost.gridContainer.style.marginLeft = '0';
+                    ghost.gridContainer.style.marginRight = '0';
                     break;
                 case 'center':
-                    gridContainer.style.marginLeft = 'auto';
-                    gridContainer.style.marginRight = 'auto';
+                    ghost.gridContainer.style.marginLeft = 'auto';
+                    ghost.gridContainer.style.marginRight = 'auto';
                     break;
                 case 'right':
-                    gridContainer.style.marginLeft = 'auto';
-                    gridContainer.style.marginRight = '0';
+                    ghost.gridContainer.style.marginLeft = 'auto';
+                    ghost.gridContainer.style.marginRight = '0';
                     break;
             }
         }
@@ -133,21 +106,22 @@ var ghost = (function () {
             c.style.paddingLeft     = gutterSize/2 + '%';
             c.style.paddingRight    = gutterSize/2 + '%';
             c.style.left            = i * colWidth - gutterSize/2 + '%';
-            gridContainer.appendChild(c);
+            ghost.gridContainer.appendChild(c);
         }
         
         // generate base lines
-        for( i = 0; i < lines; i++ ) {
-            var l = document.createElement('div');
-            l.setAttribute('class','ghost-line');
-            l.style.height             = bp.baseLineHeight;
-            gridLineContainer.appendChild(l);
-        }
+        if (baseLineHeight) {
+            for( i = 0; i < lines; i++ ) {
+                var l = document.createElement('div');
+                l.setAttribute('class','ghost-line');
+                l.style.height = bp.baseLineHeight;
+                ghost.gridLineContainer.appendChild(l);
+            }
+        };
     };
 
     // loops through breaks to find match and returns break object
     var findBreak = function(media) {
-        console.log('fired findBreak with ' + ghost.breaks.length + ' breakpoints')
         for( i = 0; i < ghost.breaks.length; i++ ) {
 
             if(media == ghost.breaks[i].point) {
@@ -175,6 +149,24 @@ var ghost = (function () {
     };
 
     ghost.summon = function() {
+
+        ghost.containingElement.style.position = 'relative';
+        ghost.containingElement = ghost.containingElement ? ghost.containingElement : document.body;
+        ghost.containingElement.classList.toggle('grid-hidden');
+        console.log(ghost.grid);
+        ghost.containingElement.appendChild(ghost.grid);
+        ghost.containingElement.appendChild(ghost.gridSwitch);
+
+
+
+        // define grid toggle method used for toggling the grid visibility
+        ghost.toggle = function() {
+            ghost.containingElement.classList.toggle('grid-hidden');
+        };
+
+        ghost.gridSwitch.addEventListener('click', function() {
+            ghost.toggle();
+        });
 
         // clear old listeners
         for ( i = 0; i < ghost.oldBreaks.length; i++ ) {
@@ -217,4 +209,4 @@ var ghost = (function () {
 
     return ghost;
 
-}());
+};

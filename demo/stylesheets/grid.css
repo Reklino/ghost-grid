@@ -24,6 +24,11 @@ body {
     display: block;
     clear: both; }
 
+.row:after {
+  content: '';
+  display: block;
+  clear: both; }
+
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   -webkit-transition: all 0.15s ease-in-out;
           transition: all 0.15s ease-in-out; }

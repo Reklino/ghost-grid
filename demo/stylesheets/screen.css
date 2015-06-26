@@ -72,11 +72,11 @@ p {
   box-sizing: border-box; }
 
 body {
-  font-family: "freight-sans-pro", sans-serif;
+  font-family: "freight-micro-pro", sans-serif;
   font-style: normal;
   font-weight: 400;
   background-attachment: fixed;
-  color: #525560;
+  color: #737887;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important; }
@@ -103,9 +103,14 @@ h5:after {
   display: block;
   position: absolute;
   margin-top: 0.83333em;
-  height: 1px;
+  height: 3px;
   width: 120px;
-  background: #23f0c7; }
+  background: #d3d5da; }
+
+.section-header {
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.25em; }
 
 p a {
   position: relative;
@@ -142,7 +147,8 @@ hr {
   border: 1px solid #1b1e1e;
   height: 1.66667em;
   width: 1.66667em;
-  margin: 0 auto 0; }
+  margin: 0 auto 0;
+  top: 0.83333em; }
   hr:after, hr:before {
     content: '';
     display: block;
@@ -163,12 +169,12 @@ hr {
 .subtle h1, .subtle h2, .subtle h3, .subtle h4, .subtle h5, .subtle h6 {
   color: #4b5454; }
 .subtle, .subtle p {
-  color: #838795; }
+  color: #aaadb6; }
 
 .sub {
-  font-family: "freight-sans-pro", sans-serif;
+  font-family: "freight-micro-pro", sans-serif;
   font-weight: 300;
-  color: #9194a1; }
+  color: #b7bac2; }
 
 .clear-left {
   clear: left; }
@@ -204,17 +210,19 @@ a.btn {
   font-size: 0.8125em;
   line-height: 2.05128em;
   text-transform: uppercase;
+  letter-spacing: 2px;
   font-family: "futura-pt", serif;
   font-weight: 400;
   height: 4.16667em;
   line-height: 4.16667em;
   margin-bottom: 4.16667em;
-  padding: 0 1.5em;
-  border: 1px solid #1b1e1e;
+  padding: 0 2em;
+  border: 2px solid #1b1e1e;
   box-sizing: border-box; }
   a.btn:hover {
+    background: #1b1e1e;
     border-color: #1b1e1e;
-    color: #1b1e1e; }
+    color: white; }
 
 .add-bottom {
   margin-bottom: 1.66667em !important; }
@@ -237,10 +245,45 @@ a.btn {
 header {
   position: relative;
   z-index: 1;
-  padding: 8.33333em 0 3.33333em; }
+  padding: 0;
+  text-align: center; }
+  header section {
+    padding: 10em 0 5em; }
+  header .grid-switch {
+    position: absolute;
+    top: 5em;
+    left: 50%;
+    right: 0;
+    margin-left: -15px; }
+    header .grid-switch i {
+      left: 0; }
+    header .grid-switch:after {
+      content: '';
+      display: block;
+      position: relative;
+      box-sizing: border-box;
+      border-radius: 100%;
+      margin: -15px 0 0 -15px;
+      width: 60px;
+      height: 60px;
+      border: 1px solid #1b1e1e; }
+  header .filler:before {
+    /* 13px / 18px */
+    font-size: 0.8125em;
+    line-height: 2.05128em;
+    box-sizing: border-box;
+    content: attr(data-column);
+    display: block;
+    width: 100%; }
+
+#main .grid-container div:before, #main .grid-line-container div {
+  border-color: #ffd200; }
 
 section {
-  padding: 5em 0 3.33333em; }
+  padding: 6.66667em 0 5em; }
+
+.alternate {
+  background: #f7f7f8; }
 
 .filler {
   position: relative;
@@ -249,25 +292,37 @@ section {
   text-transform: uppercase;
   text-align: center;
   font-family: "futura-pt", serif;
-  font-weight: 600; }
+  font-weight: 400; }
   .filler:before {
     /* 13px / 18px */
     font-size: 0.8125em;
     line-height: 2.05128em;
     color: #1b1e1e;
     box-sizing: border-box;
-    border: 1px solid #23f0c7;
-    border-width: 0 0 1px 0;
+    border: 1px dotted #1b1e1e;
     content: attr(data-column);
     display: block;
     width: 100%; }
 
 footer {
-  padding: 1.66667em 0 1.66667em;
-  margin-top: 1.66667em; }
-  footer p {
-    /* 13px / 18px */
-    font-size: 0.8125em;
-    line-height: 2.05128em; }
+  padding: 10em 0 5em; }
+  footer .grid-switch {
+    position: absolute;
+    top: 5em;
+    left: 50%;
+    right: 0;
+    margin-left: -15px; }
+    footer .grid-switch i {
+      left: 0; }
+    footer .grid-switch:after {
+      content: '';
+      display: block;
+      position: relative;
+      box-sizing: border-box;
+      border-radius: 100%;
+      margin: -15px 0 0 -15px;
+      width: 60px;
+      height: 60px;
+      border: 1px solid #1b1e1e; }
 
 /*-----  End of Layout  ------*/
