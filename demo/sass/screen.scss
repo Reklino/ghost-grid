@@ -239,7 +239,7 @@ hr {
 .sub {
     font-family: $sans-serif;
     font-weight: 300;
-    color: lighten($body, 25);
+    color: lighten($body, 10);
 }
 
 .clear-left { clear: left; }
@@ -318,7 +318,7 @@ header {
     section {
         padding: #{$line*6}em 0 #{$line*3}em;
     }
-    .grid-switch {
+    .gg-grid-switch {
         position: absolute;
         top: #{$line*3}em;
         left: 50%; right: 0; margin-left: -15px;
@@ -334,7 +334,7 @@ header {
             margin: -15px 0 0 -15px;
             width: 60px;
             height: 60px;
-            border: 1px solid $header;
+            border: 1px dotted $header;
         }
     }
     .filler {
@@ -345,12 +345,6 @@ header {
             display: block;
             width: 100%;
         }
-    }
-}
-
-#main {
-    .grid-container div:before, .grid-line-container div {
-        border-color: #ffd200;
     }
 }
 
@@ -379,10 +373,10 @@ section {
 }
 
 footer {
-    padding: #{$line*6}em 0 #{$line*3}em;
-    .grid-switch {
+    padding: #{$line*7}em 0 #{$line*3}em;
+    .gg-grid-switch {
         position: absolute;
-        top: #{$line*3}em;
+        top: #{$line*4}em;
         left: 50%; right: 0; margin-left: -15px;
         i {
             left: 0;
@@ -396,7 +390,7 @@ footer {
             margin: -15px 0 0 -15px;
             width: 60px;
             height: 60px;
-            border: 1px solid $header;
+            border: 1px dotted $header;
         }
     }
 }

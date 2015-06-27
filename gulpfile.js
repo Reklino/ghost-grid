@@ -35,8 +35,6 @@ gulp.task('css', function() {
 
 gulp.task('js', function() {
     return gulp.src('dist/ghost-grid.js')
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(jshint.reporter('fail'))
         .pipe(uglify())
         .pipe(rename('ghost-grid.min.js'))
         .pipe(gulp.dest('dist'));

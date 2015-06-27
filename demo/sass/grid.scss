@@ -4,7 +4,7 @@
 =            Grid            =
 ============================*/
 
-$tablet:      layout(650px 6);
+$tablet:      layout(750px 6);
 $desktop-sm:  layout(960px 12);
 $desktop-lg:  layout(1100px 12);
 $susy: (
@@ -63,7 +63,7 @@ body {
 .col-11    { @include span(3 of 3); }
 .col-12    { @include span(3 of 3); }
 
-@include susy-breakpoint(700px, $tablet) {
+@include susy-breakpoint(780px, $tablet) {
   .col-1     { @include span(1 of 6); }
   .col-2     { @include span(1 of 6); }
   .col-3     { @include span(2 of 6); }

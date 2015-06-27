@@ -174,7 +174,7 @@ hr {
 .sub {
   font-family: "freight-micro-pro", sans-serif;
   font-weight: 300;
-  color: #b7bac2; }
+  color: #8e929f; }
 
 .clear-left {
   clear: left; }
@@ -249,15 +249,15 @@ header {
   text-align: center; }
   header section {
     padding: 10em 0 5em; }
-  header .grid-switch {
+  header .gg-grid-switch {
     position: absolute;
     top: 5em;
     left: 50%;
     right: 0;
     margin-left: -15px; }
-    header .grid-switch i {
+    header .gg-grid-switch i {
       left: 0; }
-    header .grid-switch:after {
+    header .gg-grid-switch:after {
       content: '';
       display: block;
       position: relative;
@@ -266,7 +266,7 @@ header {
       margin: -15px 0 0 -15px;
       width: 60px;
       height: 60px;
-      border: 1px solid #1b1e1e; }
+      border: 1px dotted #1b1e1e; }
   header .filler:before {
     /* 13px / 18px */
     font-size: 0.8125em;
@@ -275,9 +275,6 @@ header {
     content: attr(data-column);
     display: block;
     width: 100%; }
-
-#main .grid-container div:before, #main .grid-line-container div {
-  border-color: #ffd200; }
 
 section {
   padding: 6.66667em 0 5em; }
@@ -305,16 +302,16 @@ section {
     width: 100%; }
 
 footer {
-  padding: 10em 0 5em; }
-  footer .grid-switch {
+  padding: 11.66667em 0 5em; }
+  footer .gg-grid-switch {
     position: absolute;
-    top: 5em;
+    top: 6.66667em;
     left: 50%;
     right: 0;
     margin-left: -15px; }
-    footer .grid-switch i {
+    footer .gg-grid-switch i {
       left: 0; }
-    footer .grid-switch:after {
+    footer .gg-grid-switch:after {
       content: '';
       display: block;
       position: relative;
@@ -323,6 +320,6 @@ footer {
       margin: -15px 0 0 -15px;
       width: 60px;
       height: 60px;
-      border: 1px solid #1b1e1e; }
+      border: 1px dotted #1b1e1e; }
 
 /*-----  End of Layout  ------*/

@@ -35,13 +35,13 @@ function Ghost() {
 
 
     // render grid and container elements (see ghost-grid.css for styles)
-    ghost.grid.setAttribute('class', 'grid');
-    ghost.gridContainer.setAttribute('class', 'grid-container');
-    ghost.gridLineContainer.setAttribute('class', 'grid-line-container');
+    ghost.grid.setAttribute('class', 'gg-grid');
+    ghost.gridContainer.setAttribute('class', 'gg-grid-container');
+    ghost.gridLineContainer.setAttribute('class', 'gg-grid-line-container');
     ghost.grid.appendChild(ghost.gridLineContainer);
     ghost.grid.appendChild(ghost.gridContainer);
 
-    ghost.gridSwitch.setAttribute('class', 'grid-switch');
+    ghost.gridSwitch.setAttribute('class', 'gg-grid-switch');
     ghost.gridSwitch.innerHTML    = '<i></i><i></i><i></i><i></i>';
 
 
@@ -152,7 +152,7 @@ function Ghost() {
 
         ghost.containingElement.style.position = 'relative';
         ghost.containingElement = ghost.containingElement ? ghost.containingElement : document.body;
-        ghost.containingElement.classList.toggle('grid-hidden');
+        ghost.containingElement.classList.toggle('gg-grid-hidden');
         console.log(ghost.grid);
         ghost.containingElement.appendChild(ghost.grid);
         ghost.containingElement.appendChild(ghost.gridSwitch);
@@ -161,7 +161,7 @@ function Ghost() {
 
         // define grid toggle method used for toggling the grid visibility
         ghost.toggle = function() {
-            ghost.containingElement.classList.toggle('grid-hidden');
+            ghost.containingElement.classList.toggle('gg-grid-hidden');
         };
 
         ghost.gridSwitch.addEventListener('click', function() {

@@ -8,7 +8,7 @@ body {
     position: relative;
 }
 
-.grid {
+.gg-grid {
     transition: all $duration $easing;
     overflow: hidden;
     position: absolute;
@@ -20,7 +20,7 @@ body {
     z-index: 2147483647;
 }
 
-.grid-container {
+.gg-grid-container {
     position: relative;
     width: 100%;
     height: 100%;
@@ -41,7 +41,7 @@ body {
     }
 }
 
-.grid-line-container {
+.gg-grid-line-container {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -52,8 +52,8 @@ body {
     }
 }
 
-.grid-hidden {
-    .grid-container {
+.gg-grid-hidden {
+    .gg-grid-container {
         div {
             padding: 0% !important;
             &:before {
@@ -61,7 +61,7 @@ body {
             }
         }
     }
-    .grid-line-container {
+    .gg-grid-line-container {
         div {
             opacity: 0;
         }
@@ -70,8 +70,9 @@ body {
 
 $grid-switch-size: 30px;
 
-.grid-switch {
+.gg-grid-switch {
     cursor: pointer;
+    user-select: none;
     position: fixed;
     z-index: 99;
     width: $grid-switch-size;
@@ -104,7 +105,7 @@ $grid-switch-size: 30px;
     }
 }
 
-.grid-hidden .grid-switch {
+.gg-grid-hidden .gg-grid-switch {
     i:first-child {
         height: $grid-switch-size;
         transform: translate($grid-switch-size*0.125, 0px);
