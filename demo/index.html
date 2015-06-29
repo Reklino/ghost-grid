@@ -5,7 +5,6 @@
 	<link rel="stylesheet" type="text/css" href="stylesheets/screen.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/grid.css">
 	<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Reklino/gromlicons/master/style.css">
-	<link href='http://fonts.googleapis.com/css?family=Almendra+Display' rel='stylesheet' type='text/css'>
 
 	<script src="//use.typekit.net/hro1cmg.js"></script>
 	<script>try{Typekit.load();}catch(e){}</script>
@@ -132,7 +131,7 @@
 	var ghost = new Ghost();
 	ghost.containingElement = document.getElementById('header'),
 	ghost.align = 'center',
-	ghost.opacity = 1,
+	ghost.opacity = 0.75,
 	ghost.breaks = [
 		{
 	        point: "(min-width: 300px)",
@@ -143,7 +142,7 @@
 	    },
 	    {
 	        point: "(min-width: 700px)",
-	        containerWidth: 650,
+	        containerWidth: 750,
 	        columns: 6,
 	        gutters: 1/4,
 	        baseLineHeight: (30/18) + 'em'
@@ -168,7 +167,7 @@
 	var ghost2 = new Ghost();
 	ghost2.containingElement = document.getElementById('footer'),
 	ghost2.align = 'center',
-	ghost2.opacity = 1,
+	ghost2.opacity = 0.75,
 	ghost2.breaks = [
 		{
 	        point: "(min-width: 300px)",
@@ -177,8 +176,8 @@
 	        gutters: 1/4
 	    },
 	    {
-	        point: "(min-width: 700px)",
-	        containerWidth: 650,
+	        point: "(min-width: 780px)",
+	        containerWidth: 750,
 	        columns: 6,
 	        gutters: 1/4
 	    },

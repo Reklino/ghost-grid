@@ -1,12 +1,6 @@
 /*============================
 =            Grid            =
 ============================*/
-/*
-*
-*   Zoomable baseline grid
-*   type size presets
-*
-*/
 body {
   /* 20px / 28px */
   font-size: 1em;
@@ -225,10 +219,7 @@ body {
     .container:after {
       content: " ";
       display: block;
-      clear: both; }
-  figure.outset-left {
-    width: 75%;
-    margin-left: -16.66667%; } }
+      clear: both; } }
 
 @media (min-width: 1100px) {
   .col-1 {
@@ -338,13 +329,7 @@ body {
     .container:after {
       content: " ";
       display: block;
-      clear: both; }
-  figure.outset-left {
-    width: 74.5%;
-    margin-left: -12.75%; }
-  blockquote {
-    width: 124%;
-    margin-left: -12.75%; } }
+      clear: both; } }
 
 @media (min-width: 1600px) {
   .container {

@@ -22,8 +22,8 @@ function Ghost() {
             containerWidth : false,
             point : "(min-width: 800px)",
             columns : 12,
-            gutters : 0.25,
-            baseLineHeight : '24px'
+            gutters : 1/4,
+            baseLineHeight : '1.5em'
         }
     ];
     ghost.oldBreaks = [];

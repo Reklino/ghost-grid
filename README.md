@@ -1,6 +1,6 @@
 #Ghost Grid
 
-Summon your fluid grids from the bowels of CSS hell. 
+Summon your fluid grids from the bowels of CSS hell. [Read More here...](http://reklino.github.io/ghost-grid/demo/)
 
 ##What?
 
@@ -78,7 +78,7 @@ align | 'center' | Ghosts can be aligned `'left'`, `'center'`, or `'right'` in r
 opacity | 0.75 | Determines the opacity of the Ghost.
 breaks | see below | Contains an array of break point objects. See next section below for details...
 
-*Break Point Options*
+####Break Point Options
 
 Option | Default | Description
 --- | --- | ---
