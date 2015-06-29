@@ -20,7 +20,10 @@ body {
   .gg-grid-container div {
     -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
             transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3BpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDE0IDc5LjE1Njc5NywgMjAxNC8wOC8yMC0wOTo1MzowMiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo3MEIzRDhCOUZDQjQxMUU0OUMzMEE3MTZGMjFEQUU0RSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpGNDEyREZBRTAwOEIxMUU1ODYwMkI1MzVDMkVGMTQ1NSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpGNDEyREZBRDAwOEIxMUU1ODYwMkI1MzVDMkVGMTQ1NSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxNCAoTWFjaW50b3NoKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOmVlZjFmZTQ4LWMwMmMtNDk4MS05NDBiLWNiNmY5NzA4Y2QzNiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo3MEIzRDhCOUZDQjQxMUU0OUMzMEE3MTZGMjFEQUU0RSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqlaCL8AAAA5SURBVHjaYlL+cPw/EDP8//8fjpkYGBgYgfi/yscTDDDABKVRJBhBypFU/QeJgVXe4bdgQNYBEGAAVdoba7pNym4AAAAASUVORK5CYII=);
+    background: #00c5f0;
+    background: -webkit-linear-gradient(45deg, #23f0c7, #00c5f0);
+    background: linear-gradient(45deg, #23f0c7, #00c5f0);
+    border-width: 0 1px;
     position: absolute;
     width: 0;
     height: 100%; }
@@ -38,7 +41,7 @@ body {
   height: 100%; }
   .gg-grid-line-container div {
     box-sizing: border-box;
-    border-top: 1px dotted #23f0c7;
+    border-top: 1px solid #00c5f0;
     width: 100%; }
 
 .gg-grid-hidden .gg-grid-container div {

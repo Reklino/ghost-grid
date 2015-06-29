@@ -170,11 +170,6 @@ h5 {
         background: lighten($body, 35);
     }
 }
-.section-header {
-    text-transform: uppercase;
-    text-align: center;
-    letter-spacing: 0.25em;
-}
 p a {
     position: relative;
     transition: all $duration $easing;
@@ -270,14 +265,11 @@ a.btn {
     display: inline-block;
     text-decoration: none;
     color: $header;
-    @include small;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     font-family: $serif;
     font-weight: 400;
-    height: #{$line*2.5}em;
-    line-height: #{$line*2.5}em;
-    margin-bottom: #{$line*2.5}em;
+    height: #{$line*2}em;
+    line-height: #{$line*2}em;
+    margin-bottom: #{$line*2}em;
     padding: 0 2em;
     border: 2px solid $header;
     box-sizing: border-box;
@@ -312,44 +304,16 @@ header {
     position: relative;
     z-index: 1;
     padding: 0;
-    text-align: center;
+    height: 100vh;
+    text-align: left;
     section {
         padding: #{$line*6}em 0 #{$line*3}em;
-    }
-    .gg-grid-switch {
-        position: absolute;
-        top: #{$line*3}em;
-        left: 50%; right: 0; margin-left: -15px;
-        i {
-            left: 0;
-        }
-        &:after {
-            content: '';
-            display: block;
-            position: relative;
-            box-sizing: border-box;
-            border-radius: 100%;
-            margin: -15px 0 0 -15px;
-            width: 60px;
-            height: 60px;
-            border: 1px dotted $header;
-        }
-    }
-    .filler {
-        &:before {
-            @include small;
-            box-sizing: border-box;
-            content: attr(data-column);
-            display: block;
-            width: 100%;
-        }
     }
 }
 
 section {
     padding: #{$line*4}em 0 #{$line*3}em;
 }
-.alternate { background: lighten($body, 48); }
 
 .filler {
     position: relative;
@@ -378,17 +342,6 @@ footer {
         left: 50%; right: 0; margin-left: -15px;
         i {
             left: 0;
-        }
-        &:after {
-            content: '';
-            display: block;
-            position: relative;
-            box-sizing: border-box;
-            border-radius: 100%;
-            margin: -15px 0 0 -15px;
-            width: 60px;
-            height: 60px;
-            border: 1px dotted $header;
         }
     }
 }

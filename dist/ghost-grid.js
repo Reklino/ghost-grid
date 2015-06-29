@@ -150,8 +150,8 @@ function Ghost() {
 
     ghost.summon = function() {
 
-        ghost.containingElement.style.position = 'relative';
         ghost.containingElement = ghost.containingElement ? ghost.containingElement : document.body;
+        ghost.containingElement.style.position = 'relative';
         ghost.containingElement.classList.toggle('gg-grid-hidden');
         console.log(ghost.grid);
         ghost.containingElement.appendChild(ghost.grid);

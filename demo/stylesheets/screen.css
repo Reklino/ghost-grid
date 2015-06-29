@@ -106,11 +106,6 @@ h5:after {
   width: 120px;
   background: #d3d5da; }
 
-.section-header {
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 0.25em; }
-
 p a {
   position: relative;
   -webkit-transition: all 0.3s cubic-bezier(.36, .43, .18, .97);
@@ -205,16 +200,11 @@ a.btn {
   display: inline-block;
   text-decoration: none;
   color: #1b1e1e;
-  /* 13px / 18px */
-  font-size: 0.8125em;
-  line-height: 2.05128em;
-  text-transform: uppercase;
-  letter-spacing: 2px;
   font-family: "futura-pt", serif;
   font-weight: 400;
-  height: 4.16667em;
-  line-height: 4.16667em;
-  margin-bottom: 4.16667em;
+  height: 3.33333em;
+  line-height: 3.33333em;
+  margin-bottom: 3.33333em;
   padding: 0 2em;
   border: 2px solid #1b1e1e;
   box-sizing: border-box; }
@@ -245,41 +235,13 @@ header {
   position: relative;
   z-index: 1;
   padding: 0;
-  text-align: center; }
+  height: 100vh;
+  text-align: left; }
   header section {
     padding: 10em 0 5em; }
-  header .gg-grid-switch {
-    position: absolute;
-    top: 5em;
-    left: 50%;
-    right: 0;
-    margin-left: -15px; }
-    header .gg-grid-switch i {
-      left: 0; }
-    header .gg-grid-switch:after {
-      content: '';
-      display: block;
-      position: relative;
-      box-sizing: border-box;
-      border-radius: 100%;
-      margin: -15px 0 0 -15px;
-      width: 60px;
-      height: 60px;
-      border: 1px dotted #1b1e1e; }
-  header .filler:before {
-    /* 13px / 18px */
-    font-size: 0.8125em;
-    line-height: 2.05128em;
-    box-sizing: border-box;
-    content: attr(data-column);
-    display: block;
-    width: 100%; }
 
 section {
   padding: 6.66667em 0 5em; }
-
-.alternate {
-  background: #f7f7f8; }
 
 .filler {
   position: relative;
@@ -310,15 +272,5 @@ footer {
     margin-left: -15px; }
     footer .gg-grid-switch i {
       left: 0; }
-    footer .gg-grid-switch:after {
-      content: '';
-      display: block;
-      position: relative;
-      box-sizing: border-box;
-      border-radius: 100%;
-      margin: -15px 0 0 -15px;
-      width: 60px;
-      height: 60px;
-      border: 1px dotted #1b1e1e; }
 
 /*-----  End of Layout  ------*/

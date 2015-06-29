@@ -20,7 +20,9 @@ body {
   .gg-grid-container div {
     -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
             transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
-    background: orange;
+    background: #00c5f0;
+    background: -webkit-linear-gradient(15deg, #23f0c7, #00c5f0);
+    background: linear-gradient(75deg, #23f0c7, #00c5f0);
     border-width: 0 1px;
     position: absolute;
     width: 0;
@@ -39,7 +41,7 @@ body {
   height: 100%; }
   .gg-grid-line-container div {
     box-sizing: border-box;
-    border-top: 1px solid orange;
+    border-top: 1px solid #00c5f0;
     width: 100%; }
 
 .gg-grid-hidden .gg-grid-container div {

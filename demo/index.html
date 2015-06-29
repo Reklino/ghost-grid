@@ -16,20 +16,21 @@
 	<header id="header" class="alternate">
 		<section class="container">
 			<div class="row">
-				<div class="col-12">
-					<h4>Summon your fluid grid from the bowels of CSS hell.</h4>
+				<div class="col-4">
+					<h2>Ghost Grid</h2>
+					<h4 class="sub">Summon your fluid grid from the bowels of CSS hell.</h4>
+					<p>In short, Ghost Grid is a tool for folks like me who love designing with code, but miss having a visual guide.</p>
+					<a class="btn" href="https://github.com/Reklino/ghost-grid" target="_blank">Usage Guide <span class="icon_arrow-right"></span></a>
 				</div>
 			</div>			
 		</section>
-		<hr>
 	</header>
 
 	<main id="main">
 		<section class="container">
 			<div class="col-4">
-				<h2>Ghost Grid</h2>
-				<h4 class="sub">is a tool for folks like me who love designing with code, but miss having a visual grid.</h4>
-				<a class="btn" href="https://github.com/Reklino/ghost-grid" target="_blank">Usage Guide <span class="icon_arrow-right"></span></a>
+				<h4>Philosophy</h4>
+				<p>Grid systems are one of the most important tools in design. Using grids enforces confident design and is conducive to good communiation. With the emergence of responsive design and fluid grid frameworks, the structure of design has never been so complex and exciting. </p>
 			</div>
 			<div class="col-4">
 				<h4>What?</h4>
@@ -129,9 +130,8 @@
 
 	// ghost grid
 	var ghost = new Ghost();
-	ghost.containingElement = document.getElementById('header'),
 	ghost.align = 'center',
-	ghost.opacity = 0.75,
+	ghost.opacity = 0.65,
 	ghost.breaks = [
 		{
 	        point: "(min-width: 300px)",
@@ -163,38 +163,6 @@
 	    }	    
 	];
 	ghost.summon();
-
-	var ghost2 = new Ghost();
-	ghost2.containingElement = document.getElementById('footer'),
-	ghost2.align = 'center',
-	ghost2.opacity = 0.75,
-	ghost2.breaks = [
-		{
-	        point: "(min-width: 300px)",
-	        containerWidth: 450,
-	        columns: 3,
-	        gutters: 1/4
-	    },
-	    {
-	        point: "(min-width: 780px)",
-	        containerWidth: 750,
-	        columns: 6,
-	        gutters: 1/4
-	    },
-	    {
-	        point: "(min-width: 1100px)",
-	        containerWidth: 960,
-	        columns: 12,
-	        gutters: 1/4
-	    },
-	    {
-	        point: "(min-width: 1600px)",
-	        containerWidth: 1100,
-	        columns: 12,
-	        gutters: 1/4
-	    }	    
-	];
-	ghost2.summon();
 
 </script>
 </body>

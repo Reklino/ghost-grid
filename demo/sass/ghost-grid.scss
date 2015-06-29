@@ -2,7 +2,7 @@
 $duration: 0.3s;
 $easing: cubic-bezier(.3,.53,0,1);
 
-$color1: #23f0c7;
+$color1: #00c5f0;
 
 body {
     position: relative;
@@ -26,7 +26,8 @@ body {
     height: 100%;
     div {
         transition: all $duration $easing;
-        background: orange;
+        background: $color1;
+        background: linear-gradient(75deg, #23f0c7, #00c5f0);
         border-width: 0 1px;
         position: absolute;
         width: 0;
@@ -48,7 +49,7 @@ body {
     height: 100%;
     div {
         box-sizing: border-box;
-        border-top: 1px solid orange;
+        border-top: 1px solid $color1;
         width: 100%;
     }
 }
