@@ -21,8 +21,8 @@ body {
     -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
             transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
     background: #00c5f0;
-    background: -webkit-linear-gradient(45deg, #23f0c7, #00c5f0);
-    background: linear-gradient(45deg, #23f0c7, #00c5f0);
+    background: -webkit-linear-gradient(15deg, #23f0c7, #00c5f0);
+    background: linear-gradient(75deg, #23f0c7, #00c5f0);
     border-width: 0 1px;
     position: absolute;
     width: 0;

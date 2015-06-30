@@ -49,11 +49,10 @@ h4 {
   margin: 0 0 1.15385em; }
 
 h5 {
-  /* 20px / 28px */
-  font-size: 1em;
-  line-height: 1.66667em;
-  /* 28 */
-  margin: 0 0 1.66667em; }
+  /* 28 / 36px */
+  font-size: 1.44444em;
+  line-height: 1.15385em;
+  margin: 0 0 1.15385em; }
 
 h6 {
   /* 13px / 18px */
@@ -72,10 +71,10 @@ p {
   box-sizing: border-box; }
 
 body {
-  font-family: "freight-micro-pro", sans-serif;
+  font-family: "proxima-nova", sans-serif;
   font-style: normal;
   font-weight: 400;
-  color: #737887;
+  color: #565C6F;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
   text-rendering: optimizeLegibility !important;
   -webkit-font-smoothing: antialiased !important; }
@@ -95,16 +94,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   color: #1b1e1e;
-  font-family: "futura-pt", serif; }
+  font-family: "proxima-nova", serif; }
 
-h5:after {
-  content: '';
-  display: block;
-  position: absolute;
-  margin-top: 0.83333em;
-  height: 3px;
-  width: 120px;
-  background: #d3d5da; }
+h5 {
+  font-weight: 400; }
 
 p a {
   position: relative;
@@ -163,12 +156,12 @@ hr {
 .subtle h1, .subtle h2, .subtle h3, .subtle h4, .subtle h5, .subtle h6 {
   color: #4b5454; }
 .subtle, .subtle p {
-  color: #aaadb6; }
+  color: #888fa3; }
 
 .sub {
-  font-family: "freight-micro-pro", sans-serif;
+  font-family: "proxima-nova", sans-serif;
   font-weight: 300;
-  color: #8e929f; }
+  color: #6c748c; }
 
 .clear-left {
   clear: left; }
@@ -176,7 +169,7 @@ hr {
 .clear-right {
   clear: right; }
 
-.clearfix:after {
+.clearfix:after, .baseline-spacer-1:after, .baseline-spacer-2:after, .baseline-spacer-3:after, .baseline-spacer-4:after, .baseline-spacer-5:after {
   content: '';
   display: block;
   clear: both; }
@@ -190,6 +183,21 @@ hr {
 .highlight {
   color: #23f0c7; }
 
+.baseline-spacer-1 {
+  margin-bottom: 1.66667em; }
+
+.baseline-spacer-2 {
+  margin-bottom: 3.33333em; }
+
+.baseline-spacer-3 {
+  margin-bottom: 5em; }
+
+.baseline-spacer-4 {
+  margin-bottom: 6.66667em; }
+
+.baseline-spacer-5 {
+  margin-bottom: 8.33333em; }
+
 /*-----  End of Typography  ------*/
 /*===========================================
 =            Base Element Styles            =
@@ -200,7 +208,7 @@ a.btn {
   display: inline-block;
   text-decoration: none;
   color: #1b1e1e;
-  font-family: "futura-pt", serif;
+  font-family: "proxima-nova", serif;
   font-weight: 400;
   height: 3.33333em;
   line-height: 3.33333em;
@@ -238,7 +246,7 @@ header {
   height: 100vh;
   text-align: left; }
   header section {
-    padding: 10em 0 5em; }
+    padding: 1.66667em 0 5em; }
 
 section {
   padding: 6.66667em 0 5em; }
@@ -249,7 +257,7 @@ section {
   margin-bottom: 1.66667em;
   text-transform: uppercase;
   text-align: center;
-  font-family: "futura-pt", serif;
+  font-family: "proxima-nova", serif;
   font-weight: 400; }
   .filler:before {
     /* 13px / 18px */

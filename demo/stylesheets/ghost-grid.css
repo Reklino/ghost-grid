@@ -20,9 +20,7 @@ body {
   .gg-grid-container div {
     -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
             transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
-    background: #00c5f0;
-    background: -webkit-linear-gradient(15deg, #23f0c7, #00c5f0);
-    background: linear-gradient(75deg, #23f0c7, #00c5f0);
+    border: 1px solid #00EBEE;
     border-width: 0 1px;
     position: absolute;
     width: 0;
@@ -32,7 +30,7 @@ body {
       content: '';
       position: absolute;
       width: 0;
-      border-right: 1px solid white;
+      border-right: 1px solid #00EBEE;
       height: 100%; }
 
 .gg-grid-line-container {
@@ -41,11 +39,11 @@ body {
   height: 100%; }
   .gg-grid-line-container div {
     box-sizing: border-box;
-    border-top: 1px solid #00c5f0;
+    border-top: 1px dotted #00EBEE;
     width: 100%; }
 
 .gg-grid-hidden .gg-grid-container div {
-  padding: 0% !important; }
+  opacity: 0; }
   .gg-grid-hidden .gg-grid-container div:before {
     opacity: 0; }
 .gg-grid-hidden .gg-grid-line-container div {

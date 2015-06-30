@@ -15,12 +15,19 @@
 
 	<header id="header" class="alternate">
 		<section class="container">
+			<div class="col-6 col-offset-6">
+				<h5>Source hosted on Github.</h5>
+			</div>
+			<div class="baseline-spacer-5"></div>
+			<div class="col-12">
+				<h1>Ghost Grid</h1>
+			</div>
 			<div class="row">
-				<div class="col-4">
-					<h2>Ghost Grid</h2>
-					<h4 class="sub">Summon your fluid grid from the bowels of CSS hell.</h4>
-					<p>In short, Ghost Grid is a tool for folks like me who love designing with code, but miss having a visual guide.</p>
-					<a class="btn" href="https://github.com/Reklino/ghost-grid" target="_blank">Usage Guide <span class="icon_arrow-right"></span></a>
+				<div class="col-6">
+					<h5>Summon your fluid grid from the bowels of CSS hell</h5>
+				</div>
+				<div class="col-6">
+					<h5>Ghost Grid is a tool for the modern day designer &amp; developer for visualizing the fluid grid in during development.</h5>
 				</div>
 			</div>			
 		</section>
@@ -132,6 +139,7 @@
 	var ghost = new Ghost();
 	ghost.align = 'center',
 	ghost.opacity = 0.65,
+	ghost.containingElement = document.getElementById('header'),
 	ghost.breaks = [
 		{
 	        point: "(min-width: 300px)",

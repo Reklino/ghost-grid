@@ -33,14 +33,14 @@ time, mark, audio, video {
 =            Vars            =
 ============================*/
 
-$body: #737887;
+$body: #565C6F;
 $header: #1b1e1e;
 $background: #fdfff8;
 $primary: #23f0c7;
 $secondary: #8fa9c7;
 
-$serif: "futura-pt", serif;
-$sans-serif: "freight-micro-pro", sans-serif;
+$serif: "proxima-nova", serif;
+$sans-serif: "proxima-nova", sans-serif;
 
 $duration: 0.3s;
 $easing: cubic-bezier(.36,.43,.18,.97);
@@ -117,8 +117,8 @@ h4 {
     margin: 0 0 ($line-int*1) / 26 * 1em;
 }
 h5 {
-    @include normal;
-    margin: 0 0 #{$line-int / $em}em;
+    @include large;
+    margin: 0 0 ($line-int*1) / 26 * 1em;
 }
 h6 {
     @include small;
@@ -160,15 +160,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 { font-weight: 700; color: $header; font-family: $serif; }
 h5 {
-    &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        margin-top: #{$line/2}em;
-        height: 3px;
-        width: 120px;
-        background: lighten($body, 35);
-    }
+    font-weight: 400;
 }
 p a {
     position: relative;
@@ -253,6 +245,12 @@ hr {
 .center { text-align: center !important; }
 .highlight { color: $primary; }
 
+.baseline-spacer-1 { @extend .clearfix; margin-bottom: #{$line*1}em; }
+.baseline-spacer-2 { @extend .clearfix; margin-bottom: #{$line*2}em; }
+.baseline-spacer-3 { @extend .clearfix; margin-bottom: #{$line*3}em; }
+.baseline-spacer-4 { @extend .clearfix; margin-bottom: #{$line*4}em; }
+.baseline-spacer-5 { @extend .clearfix; margin-bottom: #{$line*5}em; }
+
 /*-----  End of Typography  ------*/
 
 
@@ -307,7 +305,7 @@ header {
     height: 100vh;
     text-align: left;
     section {
-        padding: #{$line*6}em 0 #{$line*3}em;
+        padding: #{$line}em 0 #{$line*3}em;
     }
 }
 
