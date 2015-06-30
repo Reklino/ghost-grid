@@ -162,6 +162,9 @@ h1, h2, h3, h4, h5, h6 { font-weight: 700; color: $header; font-family: $serif; 
 h5 {
     font-weight: 400;
 }
+a {
+    color: $header;
+}
 p a {
     position: relative;
     transition: all $duration $easing;
@@ -312,6 +315,7 @@ header {
 section {
     padding: #{$line*4}em 0 #{$line*3}em;
 }
+.alternate { background: #dadada; }
 
 .filler {
     position: relative;

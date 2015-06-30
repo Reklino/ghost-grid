@@ -99,6 +99,9 @@ h1, h2, h3, h4, h5, h6 {
 h5 {
   font-weight: 400; }
 
+a {
+  color: #1b1e1e; }
+
 p a {
   position: relative;
   -webkit-transition: all 0.3s cubic-bezier(.36, .43, .18, .97);
@@ -250,6 +253,9 @@ header {
 
 section {
   padding: 6.66667em 0 5em; }
+
+.alternate {
+  background: #dadada; }
 
 .filler {
   position: relative;
