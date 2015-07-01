@@ -153,7 +153,9 @@ function Ghost() {
         ghost.containingElement = ghost.containingElement ? ghost.containingElement : document.body;
         ghost.containingElement.style.position = 'relative';
         ghost.containingElement.classList.toggle('gg-grid-hidden');
-        console.log(ghost.grid);
+        if (ghost.color) {
+            ghost.grid.style.borderColor = ghost.color;
+        }
         ghost.containingElement.appendChild(ghost.grid);
         ghost.containingElement.appendChild(ghost.gridSwitch);
 

@@ -26,33 +26,33 @@ body {
 
 h1 {
   /* 135px / 120px */
-  font-size: 7.22222em;
-  line-height: 0.92308em;
-  margin: 0 0 0.46154em; }
+  font-size: 5.66667em;
+  line-height: 1.17647em;
+  margin: 0 0 0.58824em; }
 
 h2 {
   /* 84px / 72px */
-  font-size: 4.66667em;
-  line-height: 1.07143em;
-  margin: 0 0 0.35714em; }
+  font-size: 4em;
+  line-height: 1.25em;
+  margin: 0 0 0.41667em; }
 
 h3 {
   /* 52px / 48px */
-  font-size: 2.88889em;
-  line-height: 1.15385em;
-  margin: 0 0 1.15385em; }
+  font-size: 2.66667em;
+  line-height: 1.25em;
+  margin: 0 0 1.25em; }
 
 h4 {
   /* 28 / 36px */
-  font-size: 1.44444em;
-  line-height: 1.15385em;
-  margin: 0 0 1.15385em; }
+  font-size: 1.27778em;
+  line-height: 1.30435em;
+  margin: 0 0 1.30435em; }
 
 h5 {
   /* 28 / 36px */
-  font-size: 1.44444em;
-  line-height: 1.15385em;
-  margin: 0 0 1.15385em; }
+  font-size: 1.27778em;
+  line-height: 1.30435em;
+  margin: 0 0 1.30435em; }
 
 h6 {
   /* 13px / 18px */
@@ -242,17 +242,27 @@ a.btn {
   #bg .container {
     height: 2000px; }
 
+nav {
+  position: fixed;
+  left: 0;
+  width: 100vh;
+  -webkit-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: 0;
+      -ms-transform-origin: 0;
+          transform-origin: 0; }
+
 header {
   position: relative;
   z-index: 1;
   padding: 0;
-  height: 100vh;
   text-align: left; }
   header section {
     padding: 1.66667em 0 5em; }
 
 section {
-  padding: 6.66667em 0 5em; }
+  padding: 3.33333em 0 3.33333em; }
 
 .alternate {
   background: #dadada; }
@@ -269,9 +279,9 @@ section {
     /* 13px / 18px */
     font-size: 0.8125em;
     line-height: 2.05128em;
-    color: #1b1e1e;
+    color: white;
     box-sizing: border-box;
-    border: 1px dotted #1b1e1e;
+    background: #1b1e1e;
     content: attr(data-column);
     display: block;
     width: 100%; }

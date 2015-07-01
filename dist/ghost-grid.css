@@ -6,6 +6,7 @@ body {
           transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
   overflow: hidden;
   position: absolute;
+  border-color: #00EBEE;
   top: 0;
   left: 0;
   width: 100%;
@@ -16,11 +17,13 @@ body {
 .gg-grid-container {
   position: relative;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  border-color: inherit; }
   .gg-grid-container div {
     -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
             transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
     border: 1px solid #00EBEE;
+    border-color: inherit;
     border-width: 0 1px;
     position: absolute;
     width: 0;
@@ -31,15 +34,18 @@ body {
       position: absolute;
       width: 0;
       border-right: 1px solid #00EBEE;
+      border-color: inherit;
       height: 100%; }
 
 .gg-grid-line-container {
   position: absolute;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  border-color: inherit; }
   .gg-grid-line-container div {
     box-sizing: border-box;
     border-top: 1px dotted #00EBEE;
+    border-color: inherit;
     width: 100%; }
 
 .gg-grid-hidden .gg-grid-container div {

@@ -78,47 +78,47 @@ body {
 
 @mixin large {
     /* 28 / 36px */
-    font-size: #{26 / $em}em;
-    line-height: ($line-int*1) / 26 * 1em;
+    font-size: #{23 / $em}em;
+    line-height: ($line-int*1) / 23 * 1em;
 }
 
 @mixin huge {
     /* 52px / 48px */
-    font-size: #{52 / $em}em;
-    line-height: ($line-int*2) / 52 * 1em;
+    font-size: #{48 / $em}em;
+    line-height: ($line-int*2) / 48 * 1em;
 }
 
 @mixin massive {
     /* 84px / 72px */
-    font-size: #{84 / $em}em;
-    line-height: ($line-int*3) / 84 * 1em;
+    font-size: #{72 / $em}em;
+    line-height: ($line-int*3) / 72 * 1em;
 }
 
 @mixin gigantic {
     /* 135px / 120px */
-    font-size: #{130 / $em}em;
-    line-height: ($line-int*4) / 130 * 1em;
+    font-size: #{102 / $em}em;
+    line-height: ($line-int*4) / 102 * 1em;
 }
 
 h1 {
     @include gigantic;
-    margin: 0 0 ($line-int*2) / 130 * 1em;
+    margin: 0 0 ($line-int*2) / 102 * 1em;
 }
 h2 {
     @include massive;
-    margin: 0 0 ($line-int*1) / 84 * 1em;
+    margin: 0 0 ($line-int*1) / 72 * 1em;
 }
 h3 {
     @include huge;
-    margin: 0 0 ($line-int*2) / 52 * 1em;
+    margin: 0 0 ($line-int*2) / 48 * 1em;
 }
 h4 {
     @include large;
-    margin: 0 0 ($line-int*1) / 26 * 1em;
+    margin: 0 0 ($line-int*1) / 23 * 1em;
 }
 h5 {
     @include large;
-    margin: 0 0 ($line-int*1) / 26 * 1em;
+    margin: 0 0 ($line-int*1) / 23 * 1em;
 }
 h6 {
     @include small;
@@ -301,11 +301,18 @@ a.btn {
     .container { height: 2000px; }
 }
 
+nav {
+    position: fixed;
+    left: 0;
+    width: 100vh;
+    transform: rotate(90deg);
+    transform-origin: 0;
+}
+
 header {
     position: relative;
     z-index: 1;
     padding: 0;
-    height: 100vh;
     text-align: left;
     section {
         padding: #{$line}em 0 #{$line*3}em;
@@ -313,7 +320,7 @@ header {
 }
 
 section {
-    padding: #{$line*4}em 0 #{$line*3}em;
+    padding: #{$line*2}em 0 #{$line*2}em;
 }
 .alternate { background: #dadada; }
 
@@ -327,9 +334,9 @@ section {
     font-weight: 400;
     &:before {
         @include small;
-        color: $header;
+        color: white;
         box-sizing: border-box;
-        border: 1px dotted $header;
+        background: $header;
         content: attr(data-column);
         display: block;
         width: 100%;

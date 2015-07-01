@@ -16,7 +16,7 @@
 	<header id="header">
 		<section class="container">
 			<div class="col-6 col-offset-6">
-				<h5><a href="#">Source hosted on Github.</a></h5>
+				<h5>Grab it on <a href="#">Github.</a></h5>
 			</div>
 			<div class="baseline-spacer-5"></div>
 			<div class="col-12">
@@ -27,38 +27,40 @@
 					<h5>Summon your fluid grid from the bowels of CSS hell.</h5>
 				</div>
 				<div class="col-6">
-					<h5>Ghost Grid is a tool for the modern day designer &amp; developer for visualizing the fluid grid in during development.</h5>
+					<h5>Ghost Grid is a tool for the frontend designer &amp; developer for visualizing the fluid grid in during development.</h5>
 				</div>
 			</div>			
 		</section>
 	</header>
 
-	<main id="main" class="alternate">
+	<main id="main">
 		<section class="container">
 			<div class="col-4">
 				<h4>Philosophy</h4>
+				<div class="baseline-spacer-2"></div>
 				<p>Grid systems are one of the most important tools in design. Using grids enforces confident design and is conducive to good communiation. With the emergence of responsive design and fluid grid frameworks, the structure of design has never been so complex and exciting. </p>
 			</div>
 			<div class="col-4">
 				<h4>What?</h4>
+				<div class="baseline-spacer-2"></div>
 				<p>
 					With multiple breakpoints, fluid widths, and dynamic baseline heights, <strong>fluid grid systems</strong> get complicated really quick. Ghost Grid is a lightweight javascript tool for visualizing fluid grid systems during development/design. It is NOT a grid system in itself, but is an agnostic visual companion to <strong>any</strong> grid system.
 				</p>
 			</div>
 			<div class="col-4">
 				<h4>Why?</h4>
+				<div class="baseline-spacer-2"></div>
 				<p>
 					More and more these days, I find myself skipping the design process in applications like Photoshop. It's an amazing feeling when you're able to craft a desisn simply by typing up some html and css, especially when you can do it quickly. Some things, however, are lost in this design process. One of which is visual guides, grids, and layout tools that you find in design &amp; prototyping applications. Ghost Grid is a simple attempt to bridge that gap.
 				</p>
 			</div>
 		</section>
-	</main>
 
-	<div>
 		<section class="container">
 			<div class="col-12">
-				<h3 class="section-header">Features</h3>
+				<h4>Features</h4>
 			</div>
+			<div class="baseline-spacer-2"></div>
 			<article class="col-4">
 				<h5>Multiple Breakpoints</h5>
 				<p>
@@ -92,13 +94,13 @@
 				</p>
 			</article>
 		</section>
-	</div>
+	</main>
 
 	<footer id="footer">
 		<div class="container">
 
 			<div class="col-12">
-				<h3 class="section-header">Credits</h3>
+				<h4>Credits</h4>
 			</div>
 
 			<div data-column="col-1" class="col-1 filler"></div><div data-column="col-11" class="col-11 filler"></div>
@@ -136,7 +138,7 @@
 	var ghost = new Ghost();
 	ghost.align = 'center',
 	ghost.opacity = 0.65,
-	ghost.containingElement = document.getElementById('header'),
+	ghost.containingElement = document.body,
 	ghost.breaks = [
 		{
 	        point: "(min-width: 300px)",
@@ -161,7 +163,7 @@
 	    },
 	    {
 	        point: "(min-width: 1600px)",
-	        containerWidth: 1100,
+	        containerWidth: 1200,
 	        columns: 12,
 	        gutters: 1/4,
 	        baseLineHeight: (30/18) + 'em'
