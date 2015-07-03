@@ -2,7 +2,8 @@
 $duration: 0.45s;
 $easing: cubic-bezier(.3,.53,0,1);
 
-$color: #00EBEE;
+$color1: #00FCFF;
+$color2: #FF1DAC;
 
 body {
     position: relative;
@@ -12,7 +13,6 @@ body {
     transition: all $duration $easing;
     overflow: hidden;
     position: absolute;
-    border-color: $color;
     top: 0;
     left: 0;
     width: 100%;
@@ -25,25 +25,13 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    border-color: inherit;
     div {
         transition: all $duration $easing;
-        border: 1px solid $color;
-        border-color: inherit;
+        border: 1px solid $color2;
         border-width: 0 1px;
         position: absolute;
         width: 0;
         height: 100%;
-        &:before {
-            transition: all $duration $easing;
-            opacity: 1;
-            content:'';
-            position: absolute;
-            width: 0;
-            border-right: 1px solid $color;
-            border-color: inherit;
-            height: 100%;
-        }
     }
 }
 
@@ -51,11 +39,9 @@ body {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-color: inherit;
     div {
         box-sizing: border-box;
-        border-top: 1px dotted $color;
-        border-color: inherit;
+        border-top: 1px dotted $color1;
         width: 100%;
     }
 }

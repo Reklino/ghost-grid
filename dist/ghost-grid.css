@@ -2,11 +2,11 @@ body {
   position: relative; }
 
 .gg-grid {
-  -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
-          transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
+  -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+          transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
   overflow: hidden;
   position: absolute;
-  border-color: #00EBEE;
+  border-color: #EE0081;
   top: 0;
   left: 0;
   width: 100%;
@@ -20,20 +20,22 @@ body {
   height: 100%;
   border-color: inherit; }
   .gg-grid-container div {
-    -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
-            transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
-    border: 1px solid #00EBEE;
+    -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+            transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+    border: 1px solid #EE0081;
     border-color: inherit;
     border-width: 0 1px;
     position: absolute;
     width: 0;
     height: 100%; }
     .gg-grid-container div:before {
+      -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+              transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
       opacity: 1;
       content: '';
       position: absolute;
       width: 0;
-      border-right: 1px solid #00EBEE;
+      border-right: 1px solid #EE0081;
       border-color: inherit;
       height: 100%; }
 
@@ -68,8 +70,8 @@ body {
   bottom: 24px;
   right: 24px; }
   .gg-grid-switch i {
-    -webkit-transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
-            transition: all 0.3s cubic-bezier(.3, .53, 0, 1);
+    -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
+            transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
     position: absolute;
     width: 4px;
     margin-left: -2px;
