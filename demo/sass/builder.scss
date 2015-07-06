@@ -102,7 +102,7 @@ body {
 
 h1 {
     @include gigantic;
-    margin: 0 0 ($line-int*2) / 102 * 1em;
+    margin: 0 0 ($line-int*1) / 102 * 1em;
 }
 h2 {
     @include massive;
@@ -110,7 +110,7 @@ h2 {
 }
 h3 {
     @include huge;
-    margin: 0 0 ($line-int*2) / 36 * 1em;
+    margin: 0 0 ($line-int*1) / 36 * 1em;
 }
 h4 {
     @include large;
@@ -195,35 +195,6 @@ li {
     margin-left: 1.2em;
 }
 
-hr {
-    position: relative;
-    display: block;
-    border: 1px solid $header;
-    //border-radius: 100%;
-    height: #{$line}em;
-    width: #{$line}em;
-    margin: 0 auto 0;
-    top: #{$line/2}em;
-    &:after, &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 50%; left: -25%;
-        width: 150%;
-        height: 1px;
-        background: $header;
-        transform: rotate(45deg);
-    }
-    &:after {
-        transform: rotate(-45deg);
-    }
-}
-
-.subtle {
-    h1, h2, h3, h4, h5, h6 { color: lighten($header, 20); }
-    &, p { color: lighten($body, 20); }
-}
-
 .sub {
     font-family: $sans-serif;
     font-weight: 300;
@@ -297,66 +268,28 @@ a.btn {
 =            Layout            =
 ==============================*/
 
-#bg {
+body, html { height: 100%; }
+
+$sidebar-width: 500px;
+
+section#controls {
     position: fixed;
-    z-index: 2;
-    pointer-events: none;
-    width: 100%;
-    .container { height: 2000px; }
+    height: 100%;
+    width: $sidebar-width;
+    padding: #{$line}em 0 #{$line}em;
+    border: 1px solid #ccc;
 }
-
-nav {
-    position: fixed;
-    left: 0;
-    width: 100vh;
-    transform: rotate(90deg);
-    transform-origin: 0;
-}
-
-header {
+main {
+    height: 100%;
     position: relative;
-    z-index: 1;
-    padding: 0;
-    text-align: left;
-    section {
-        padding: #{$line}em 0 #{$line*3}em;
-    }
+    padding-left: $sidebar-width;
 }
-
-section {
-    padding: #{$line*2}em 0 #{$line*2}em;
+#demo {
+    min-height: 100%;
 }
-.alternate { background: #dadada; }
-
-.filler {
-    position: relative;
-    height: #{$line}em;
-    margin-bottom: #{$line}em;
-    text-transform: uppercase;
-    text-align: center;
-    font-family: $serif;
-    font-weight: 400;
-    &:before {
-        @include small;
-        color: white;
-        box-sizing: border-box;
-        background: $header;
-        content: attr(data-column);
-        display: block;
-        width: 100%;
-    }
-}
-
 footer {
-    padding: #{$line*2}em 0 #{$line*2}em;
-    .gg-grid-switch {
-        position: absolute;
-        top: #{$line*4}em;
-        left: 50%; right: 0; margin-left: -15px;
-        i {
-            left: 0;
-        }
-    }
+    position: fixed;
+    bottom: 0;
 }
 
 /*-----  End of Layout  ------*/

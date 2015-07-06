@@ -28,7 +28,7 @@ h1 {
   /* 135px / 120px */
   font-size: 5.66667em;
   line-height: 1.17647em;
-  margin: 0 0 0.58824em; }
+  margin: 0 0 0.29412em; }
 
 h2 {
   /* 84px / 72px */
@@ -40,7 +40,7 @@ h3 {
   /* 52px / 36px */
   font-size: 2em;
   line-height: 1.66667em;
-  margin: 0 0 1.66667em; }
+  margin: 0 0 0.83333em; }
 
 h4 {
   /* 28 / 36px */
@@ -131,36 +131,6 @@ li {
   line-height: 1.66667em;
   margin-left: 1.2em; }
 
-hr {
-  position: relative;
-  display: block;
-  border: 1px solid #1b1e1e;
-  height: 1.66667em;
-  width: 1.66667em;
-  margin: 0 auto 0;
-  top: 0.83333em; }
-  hr:after, hr:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: -25%;
-    width: 150%;
-    height: 1px;
-    background: #1b1e1e;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg); }
-  hr:after {
-    -webkit-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-            transform: rotate(-45deg); }
-
-.subtle h1, .subtle h2, .subtle h3, .subtle h4, .subtle h5, .subtle h6 {
-  color: #4b5454; }
-.subtle, .subtle p {
-  color: #888fa3; }
-
 .sub {
   font-family: "proxima-nova", sans-serif;
   font-weight: 300;
@@ -246,67 +216,26 @@ a.btn {
 /*==============================
 =            Layout            =
 ==============================*/
-#bg {
+body, html {
+  height: 100%; }
+
+section#controls {
   position: fixed;
-  z-index: 2;
-  pointer-events: none;
-  width: 100%; }
-  #bg .container {
-    height: 2000px; }
+  height: 100%;
+  width: 500px;
+  padding: 1.66667em 0 1.66667em;
+  border: 1px solid #ccc; }
 
-nav {
-  position: fixed;
-  left: 0;
-  width: 100vh;
-  -webkit-transform: rotate(90deg);
-      -ms-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-transform-origin: 0;
-      -ms-transform-origin: 0;
-          transform-origin: 0; }
-
-header {
+main {
+  height: 100%;
   position: relative;
-  z-index: 1;
-  padding: 0;
-  text-align: left; }
-  header section {
-    padding: 1.66667em 0 5em; }
+  padding-left: 500px; }
 
-section {
-  padding: 3.33333em 0 3.33333em; }
-
-.alternate {
-  background: #dadada; }
-
-.filler {
-  position: relative;
-  height: 1.66667em;
-  margin-bottom: 1.66667em;
-  text-transform: uppercase;
-  text-align: center;
-  font-family: "proxima-nova", serif;
-  font-weight: 400; }
-  .filler:before {
-    /* 13px / 18px */
-    font-size: 0.8125em;
-    line-height: 2.05128em;
-    color: white;
-    box-sizing: border-box;
-    background: #1b1e1e;
-    content: attr(data-column);
-    display: block;
-    width: 100%; }
+#demo {
+  min-height: 100%; }
 
 footer {
-  padding: 3.33333em 0 3.33333em; }
-  footer .gg-grid-switch {
-    position: absolute;
-    top: 6.66667em;
-    left: 50%;
-    right: 0;
-    margin-left: -15px; }
-    footer .gg-grid-switch i {
-      left: 0; }
+  position: fixed;
+  bottom: 0; }
 
 /*-----  End of Layout  ------*/

@@ -6,7 +6,6 @@ body {
           transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
   overflow: hidden;
   position: absolute;
-  border-color: #EE0081;
   top: 0;
   left: 0;
   width: 100%;
@@ -17,37 +16,23 @@ body {
 .gg-grid-container {
   position: relative;
   width: 100%;
-  height: 100%;
-  border-color: inherit; }
+  height: 100%; }
   .gg-grid-container div {
     -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
             transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
-    border: 1px solid #EE0081;
-    border-color: inherit;
+    border: 1px solid #FF1DAC;
     border-width: 0 1px;
     position: absolute;
     width: 0;
     height: 100%; }
-    .gg-grid-container div:before {
-      -webkit-transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
-              transition: all 0.45s cubic-bezier(.3, .53, 0, 1);
-      opacity: 1;
-      content: '';
-      position: absolute;
-      width: 0;
-      border-right: 1px solid #EE0081;
-      border-color: inherit;
-      height: 100%; }
 
 .gg-grid-line-container {
   position: absolute;
   width: 100%;
-  height: 100%;
-  border-color: inherit; }
+  height: 100%; }
   .gg-grid-line-container div {
     box-sizing: border-box;
-    border-top: 1px dotted #00EBEE;
-    border-color: inherit;
+    border-top: 1px dotted #00FCFF;
     width: 100%; }
 
 .gg-grid-hidden .gg-grid-container div {
