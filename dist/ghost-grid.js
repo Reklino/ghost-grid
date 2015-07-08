@@ -10,7 +10,7 @@ function Ghost() {
     */
 
     // define ghost Object (will return this)
-    var ghost = {};
+    var ghost = this;
 
 
 

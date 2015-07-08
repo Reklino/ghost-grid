@@ -28,25 +28,25 @@ h1 {
   /* 135px / 120px */
   font-size: 5.66667em;
   line-height: 1.17647em;
-  margin: 0 0 0.29412em; }
+  margin: 0 0 0.14706em; }
 
 h2 {
   /* 84px / 72px */
   font-size: 4em;
   line-height: 1.25em;
-  margin: 0 0 0.41667em; }
+  margin: 0 0 0.20833em; }
 
 h3 {
   /* 52px / 36px */
   font-size: 2em;
   line-height: 1.66667em;
-  margin: 0 0 0.83333em; }
+  margin: 0 0 0.41667em; }
 
 h4 {
   /* 28 / 36px */
   font-size: 1.27778em;
   line-height: 1.30435em;
-  margin: 0 0 1.30435em; }
+  margin: 0 0 0.65217em; }
 
 h5 {
   /* 28 / 36px */
@@ -123,13 +123,6 @@ p a {
     background: #1b1e1e; }
   p a:hover:after {
     top: 18px; }
-
-ul {
-  list-style: circle; }
-
-li {
-  line-height: 1.66667em;
-  margin-left: 1.2em; }
 
 .sub {
   font-family: "proxima-nova", sans-serif;
@@ -219,20 +212,16 @@ a.btn {
 body, html {
   height: 100%; }
 
-section#controls {
-  position: fixed;
-  height: 100%;
-  width: 500px;
-  padding: 1.66667em 0 1.66667em;
-  border: 1px solid #ccc; }
-
 main {
   height: 100%;
-  position: relative;
-  padding-left: 500px; }
+  position: relative; }
 
 #demo {
-  min-height: 100%; }
+  min-height: 100%;
+  padding-top: 6.66667em; }
+
+#container {
+  margin: 0 auto; }
 
 footer {
   position: fixed;

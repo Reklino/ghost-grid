@@ -12,20 +12,8 @@
 </head>
 <body>
 
-	<section id="controls">
-
-	</section>
-
 	<main>
 		<div id="demo">
-			<section class="container">
-				<h1>Header 1</h1>
-				<h2>Header 2</h2>
-				<h3>Header 3</h3>
-				<h4>Header 4</h4>
-				<h5>Header 5</h5>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</section>
 		</div>
 	</main>
 
@@ -36,10 +24,21 @@
 	</footer>
 
 <script src="../dist/ghost-grid.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
 <script>
 
 	// ghost grid
-	var ghost = new Ghost();
+	var ghost = new Ghost(),
+		gui = new dat.GUI(),
+		demo = document.getElementById('demo'),
+		containerStuff = '<section id="container">\
+				<h1>Header 1</h1>\
+				<h2>Header 2</h2>\
+				<h3>Header 3</h3>\
+				<h4>Header 4</h4>\
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\
+			</section>';
+
 	ghost.align = 'center',
 	ghost.opacity = 0.65,
 	ghost.containingElement = document.getElementById('demo'),
@@ -57,23 +56,39 @@
 	        columns: 6,
 	        gutters: 1/4,
 	        baseLineHeight: (30/18) + 'em'
-	    },
-	    {
-	        point: "(min-width: 1100px)",
-	        containerWidth: 960,
-	        columns: 9,
-	        gutters: 1/4,
-	        baseLineHeight: (30/18) + 'em'
-	    },
-	    {
-	        point: "(min-width: 1600px)",
-	        containerWidth: 1200,
-	        columns: 12,
-	        gutters: 1/4,
-	        baseLineHeight: (30/18) + 'em'
 	    }	    
 	];
 	ghost.summon();
+	ghost.toggle();
+
+	var controller = gui.add(ghost, 'align', ['left', 'center', 'right']);
+	var controller2 = gui.add(ghost, 'opacity').min(0).max(1);
+	for (var i = ghost.breaks.length - 1; i >= 0; i--) {
+		window["container" + i] = document.createElement('div');
+		window["container" + i].classList.add('container');
+		window["container" + i].innerHTML = containerStuff;
+		window["container" + i] = demo.appendChild(window["container" + i]);
+		window["f" + i] = gui.addFolder('Breakpoint ' + i);
+		window["f" + i + 'Ctrl1'] = window["f" + i].add(ghost.breaks[i], 'point');
+		window["f" + i + 'Ctrl2'] = window["f" + i].add(ghost.breaks[i], 'containerWidth');
+		window["f" + i + 'Ctrl3'] = window["f" + i].add(ghost.breaks[i], 'columns');
+		window["f" + i + 'Ctrl4'] = window["f" + i].add(ghost.breaks[i], 'gutters');
+		window["f" + i + 'Ctrl5'] = window["f" + i].add(ghost.breaks[i], 'baseLineHeight');
+		window["f" + i + 'Ctrl1'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
+		// ya gots to deal with that 'i' variable
+		window["f" + i + 'Ctrl2'].onChange(function(value) { ghost.summon(); ghost.toggle(); window["container" + i].style.width = value + 'px'; })
+		window["f" + i + 'Ctrl3'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
+		window["f" + i + 'Ctrl4'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
+		window["f" + i + 'Ctrl5'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
+	};
+	controller.onChange(function(value) {
+		ghost.summon();
+		ghost.toggle();
+	})
+	controller2.onChange(function(value) {
+		ghost.summon();
+		ghost.toggle();
+	})
 
 </script>
 </body>

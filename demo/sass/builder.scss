@@ -1,4 +1,3 @@
-@import "susy";
 
 /*=============================
 =            Reset            =
@@ -102,19 +101,19 @@ body {
 
 h1 {
     @include gigantic;
-    margin: 0 0 ($line-int*1) / 102 * 1em;
+    margin: 0 0 ($line-int*0.5) / 102 * 1em;
 }
 h2 {
     @include massive;
-    margin: 0 0 ($line-int*1) / 72 * 1em;
+    margin: 0 0 ($line-int*0.5) / 72 * 1em;
 }
 h3 {
     @include huge;
-    margin: 0 0 ($line-int*1) / 36 * 1em;
+    margin: 0 0 ($line-int*0.5) / 36 * 1em;
 }
 h4 {
     @include large;
-    margin: 0 0 ($line-int*1) / 23 * 1em;
+    margin: 0 0 ($line-int*0.5) / 23 * 1em;
 }
 h5 {
     @include large;
@@ -185,14 +184,6 @@ p a {
             top: 18px;
         }
     }
-}
-
-ul {
-    list-style: circle;
-}
-li {
-    line-height: #{$line}em;
-    margin-left: 1.2em;
 }
 
 .sub {
@@ -270,22 +261,16 @@ a.btn {
 
 body, html { height: 100%; }
 
-$sidebar-width: 500px;
-
-section#controls {
-    position: fixed;
-    height: 100%;
-    width: $sidebar-width;
-    padding: #{$line}em 0 #{$line}em;
-    border: 1px solid #ccc;
-}
 main {
     height: 100%;
     position: relative;
-    padding-left: $sidebar-width;
 }
 #demo {
     min-height: 100%;
+    padding-top: #{$line*4}em;
+}
+#container {
+    margin: 0 auto;
 }
 footer {
     position: fixed;
