@@ -70,13 +70,13 @@
 		window["container" + i] = demo.appendChild(window["container" + i]);
 		window["f" + i] = gui.addFolder('Breakpoint ' + i);
 		window["f" + i + 'Ctrl1'] = window["f" + i].add(ghost.breaks[i], 'point');
-		window["f" + i + 'Ctrl2'] = window["f" + i].add(ghost.breaks[i], 'containerWidth');
-		window["f" + i + 'Ctrl3'] = window["f" + i].add(ghost.breaks[i], 'columns');
-		window["f" + i + 'Ctrl4'] = window["f" + i].add(ghost.breaks[i], 'gutters');
+		window["f" + i + 'Ctrl2'] = window["f" + i].add(ghost.breaks[i], 'containerWidth').min(300).max(1600);
+		window["f" + i + 'Ctrl3'] = window["f" + i].add(ghost.breaks[i], 'columns').min(1).max(36);
+		window["f" + i + 'Ctrl4'] = window["f" + i].add(ghost.breaks[i], 'gutters').max(2);
 		window["f" + i + 'Ctrl5'] = window["f" + i].add(ghost.breaks[i], 'baseLineHeight');
 		window["f" + i + 'Ctrl1'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
 		// ya gots to deal with that 'i' variable
-		window["f" + i + 'Ctrl2'].onChange(function(value) { ghost.summon(); ghost.toggle(); window["container" + i].style.width = value + 'px'; })
+		window["f" + i + 'Ctrl2'].onChange(function(i, value) { ghost.summon(); ghost.toggle(); window["container" + i].style.width = value + 'px'; })
 		window["f" + i + 'Ctrl3'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
 		window["f" + i + 'Ctrl4'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
 		window["f" + i + 'Ctrl5'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
