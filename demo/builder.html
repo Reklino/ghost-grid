@@ -63,6 +63,14 @@
 
 	var controller = gui.add(ghost, 'align', ['left', 'center', 'right']);
 	var controller2 = gui.add(ghost, 'opacity').min(0).max(1);
+	function setContainer(i) {
+		console.log(i);
+		window["f" + i + 'Ctrl2'].onChange(function(value) {
+			ghost.summon();
+			ghost.toggle();
+			window["container" + i].style.width = value + 'px';
+		});
+	}
 	for (var i = ghost.breaks.length - 1; i >= 0; i--) {
 		window["container" + i] = document.createElement('div');
 		window["container" + i].classList.add('container');
@@ -76,7 +84,7 @@
 		window["f" + i + 'Ctrl5'] = window["f" + i].add(ghost.breaks[i], 'baseLineHeight');
 		window["f" + i + 'Ctrl1'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
 		// ya gots to deal with that 'i' variable
-		window["f" + i + 'Ctrl2'].onChange(function(i, value) { ghost.summon(); ghost.toggle(); window["container" + i].style.width = value + 'px'; })
+		setContainer(i);
 		window["f" + i + 'Ctrl3'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
 		window["f" + i + 'Ctrl4'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
 		window["f" + i + 'Ctrl5'].onChange(function(value) { ghost.summon(); ghost.toggle(); })

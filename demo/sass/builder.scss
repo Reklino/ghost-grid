@@ -261,6 +261,7 @@ a.btn {
 
 body, html { height: 100%; }
 
+.dg.ac { z-index: 2147483648; }
 main {
     height: 100%;
     position: relative;
@@ -269,7 +270,7 @@ main {
     min-height: 100%;
     padding-top: #{$line*4}em;
 }
-#container {
+.container {
     margin: 0 auto;
 }
 footer {
