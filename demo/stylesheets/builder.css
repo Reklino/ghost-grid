@@ -71,7 +71,7 @@ p {
   box-sizing: border-box; }
 
 body {
-  font-family: "proxima-nova", sans-serif;
+  font-family: "ocr-a-std", sans-serif;
   font-style: normal;
   font-weight: 400;
   color: #565C6F;
@@ -125,7 +125,7 @@ p a {
     top: 18px; }
 
 .sub {
-  font-family: "proxima-nova", sans-serif;
+  font-family: "ocr-a-std", sans-serif;
   font-weight: 300;
   color: #6c748c; }
 
@@ -214,6 +214,9 @@ body, html {
 
 .dg.ac {
   z-index: 2147483648; }
+
+#ui {
+  position: fixed; }
 
 main {
   height: 100%;

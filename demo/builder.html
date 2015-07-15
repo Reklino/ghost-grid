@@ -12,6 +12,10 @@
 </head>
 <body>
 
+	<section id="ui">
+		
+	</section>
+
 	<main>
 		<div id="demo">
 		</div>
@@ -79,11 +83,10 @@
 		window["f" + i] = gui.addFolder('Breakpoint ' + i);
 		window["f" + i + 'Ctrl1'] = window["f" + i].add(ghost.breaks[i], 'point');
 		window["f" + i + 'Ctrl2'] = window["f" + i].add(ghost.breaks[i], 'containerWidth').min(300).max(1600);
-		window["f" + i + 'Ctrl3'] = window["f" + i].add(ghost.breaks[i], 'columns').min(1).max(36);
-		window["f" + i + 'Ctrl4'] = window["f" + i].add(ghost.breaks[i], 'gutters').max(2);
+		window["f" + i + 'Ctrl3'] = window["f" + i].add(ghost.breaks[i], 'columns').min(3).max(18).step(1);
+		window["f" + i + 'Ctrl4'] = window["f" + i].add(ghost.breaks[i], 'gutters').min(0).max(2);
 		window["f" + i + 'Ctrl5'] = window["f" + i].add(ghost.breaks[i], 'baseLineHeight');
 		window["f" + i + 'Ctrl1'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
-		// ya gots to deal with that 'i' variable
 		setContainer(i);
 		window["f" + i + 'Ctrl3'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
 		window["f" + i + 'Ctrl4'].onChange(function(value) { ghost.summon(); ghost.toggle(); })

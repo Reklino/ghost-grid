@@ -39,7 +39,7 @@ $primary: #23f0c7;
 $secondary: #8fa9c7;
 
 $serif: "proxima-nova", serif;
-$sans-serif: "proxima-nova", sans-serif;
+$sans-serif: "ocr-a-std", sans-serif;
 
 $duration: 0.3s;
 $easing: cubic-bezier(.36,.43,.18,.97);
@@ -262,6 +262,9 @@ a.btn {
 body, html { height: 100%; }
 
 .dg.ac { z-index: 2147483648; }
+#ui {
+    position: fixed;
+}
 main {
     height: 100%;
     position: relative;
