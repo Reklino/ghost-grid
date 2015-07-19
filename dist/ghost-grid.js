@@ -9,9 +9,9 @@ function Ghost() {
 
     */
 
+
     // define ghost Object (will return this)
     var ghost = this;
-
 
 
     // set defaults
@@ -26,18 +26,22 @@ function Ghost() {
             baseLineHeight : '1.5em'
         }
     ];
+
+
+    // will store old breaks here (will need in order to remove listeners)
     ghost.oldBreaks = [];
+
+
+    // create grid elements (see ghost-grid.css for styles)
     ghost.grid                = document.createElement('div');
     ghost.gridContainer       = document.createElement('div');
     ghost.gridLineContainer   = document.createElement('div');
     ghost.gridSwitch          = document.createElement('div');
 
-
-
-    // render grid and container elements (see ghost-grid.css for styles)
     ghost.grid.setAttribute('class', 'gg-grid');
     ghost.gridContainer.setAttribute('class', 'gg-grid-container');
     ghost.gridLineContainer.setAttribute('class', 'gg-grid-line-container');
+
     ghost.grid.appendChild(ghost.gridLineContainer);
     ghost.grid.appendChild(ghost.gridContainer);
 
@@ -47,7 +51,6 @@ function Ghost() {
 
 
     // returns the pixel value of a string/unit pair
-    // example: getPixelValue('24px') will return 24
     function getPixelValue(value)
     {   
         if (value == undefined)
@@ -60,47 +63,69 @@ function Ghost() {
             return parseFloat(value) * parseFloat(window.getComputedStyle(ghost.containingElement).fontSize);
         else
             return parseFloat(value);
-    }
+    };
 
-    // render the grid lines
-    ghost.gridRender = function(currentBreak) {
-        var bp              = typeof currentBreak === 'undefined' ? ghost.breaks[0] : currentBreak;
-            body            = ghost.containingElement,
-            html            = document.documentElement,
-            containerWidth  = '100%',
-            containerWidth  =  bp.containerWidth > 0 ? bp.containerWidth + 'px' : containerWidth,
-            w               = window.innerWidth,
-            h               = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ),
-            baseLineHeight  = getPixelValue(bp.baseLineHeight),
-            lines           = Math.round(h/baseLineHeight) + 40,
-            colWidth        = 100/bp.columns,
-            gutterSize      = bp.gutters/(bp.columns + bp.columns * bp.gutters) * 100;
+    // append the grid to the dom
+    ghost.render = function(currentBreak) {
+        ghost.containingElement = ghost.containingElement ? ghost.containingElement : document.body;
+        ghost.containingElement.style.position = 'relative';
+        ghost.containingElement.appendChild(ghost.grid);
+        ghost.containingElement.appendChild(ghost.gridSwitch);
 
-        // set configurable grid and grid container styles
-        ghost.gridContainer.innerHTML      = '';
-        ghost.gridLineContainer.innerHTML  = '';
-        ghost.grid.style.opacity           = ghost.opacity;
-        ghost.gridContainer.style.maxWidth = containerWidth;
+        ghost.toggle = function() {
+            ghost.containingElement.classList.toggle('gg-grid-hidden');
+        };
 
-        // position grid container based on container position
-        if(containerWidth != '100%') {
-            switch(ghost.align) {
-                case 'left':
-                    ghost.gridContainer.style.marginLeft = '0';
-                    ghost.gridContainer.style.marginRight = '0';
-                    break;
-                case 'center':
-                    ghost.gridContainer.style.marginLeft = 'auto';
-                    ghost.gridContainer.style.marginRight = 'auto';
-                    break;
-                case 'right':
-                    ghost.gridContainer.style.marginLeft = 'auto';
-                    ghost.gridContainer.style.marginRight = '0';
-                    break;
-            }
+        ghost.gridSwitch.addEventListener('click', function() {
+            ghost.toggle();
+        });
+
+        ghost.renderOpacity();
+        ghost.renderContainerPosition();
+        ghost.renderContainerWidth(currentBreak);
+        ghost.renderColumns(currentBreak);
+        ghost.renderBaseline(currentBreak);
+    };
+
+
+    ghost.renderOpacity = function() {
+        ghost.grid.style.opacity = ghost.opacity;
+    };
+
+
+    ghost.renderContainerPosition = function() {
+        switch(ghost.align) {
+            case 'left':
+                ghost.gridContainer.style.marginLeft = '0';
+                ghost.gridContainer.style.marginRight = '0';
+                break;
+            case 'center':
+                ghost.gridContainer.style.marginLeft = 'auto';
+                ghost.gridContainer.style.marginRight = 'auto';
+                break;
+            case 'right':
+                ghost.gridContainer.style.marginLeft = 'auto';
+                ghost.gridContainer.style.marginRight = '0';
+                break;
         }
-        
-        // generate columns
+    };
+
+
+    ghost.renderContainerWidth = function(currentBreak) {
+        var bp              = typeof currentBreak === 'undefined' ? ghost.breaks[0] : currentBreak,
+            containerWidth  =  bp.containerWidth > 0 ? bp.containerWidth + 'px' : '100%';
+
+        ghost.gridContainer.style.maxWidth = containerWidth;
+    };
+
+
+    ghost.renderColumns = function(currentBreak) {
+        var bp          = typeof currentBreak === 'undefined' ? ghost.breaks[0] : currentBreak,
+            gutterSize  = bp.gutters/(bp.columns + bp.columns * bp.gutters) * 100,
+            colWidth    = 100/bp.columns;
+
+        ghost.gridContainer.innerHTML      = '';
+
         for( i = 0; i < bp.columns + 1; i++ ) {
             var c = document.createElement('div');
             c.style.paddingLeft     = gutterSize/2 + '%';
@@ -108,16 +133,25 @@ function Ghost() {
             c.style.left            = i * colWidth - gutterSize/2 + '%';
             ghost.gridContainer.appendChild(c);
         }
-        
-        // generate base lines
-        if (baseLineHeight) {
-            for( i = 0; i < lines; i++ ) {
-                var l = document.createElement('div');
-                l.setAttribute('class','ghost-line');
-                l.style.height = bp.baseLineHeight;
-                ghost.gridLineContainer.appendChild(l);
-            }
-        };
+    };
+
+
+    ghost.renderBaseline = function(currentBreak) {
+        var bp              = typeof currentBreak === 'undefined' ? ghost.breaks[0] : currentBreak,
+            baseLineHeight  = getPixelValue(bp.baseLineHeight),
+            body            = ghost.containingElement,
+            html            = document.documentElement,
+            h               = Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ),
+            lines           = Math.round(h/baseLineHeight) + 40;
+
+        ghost.gridLineContainer.innerHTML  = '';
+
+        for( i = 0; i < lines; i++ ) {
+            var l = document.createElement('div');
+            l.setAttribute('class','ghost-line');
+            l.style.height = bp.baseLineHeight;
+            ghost.gridLineContainer.appendChild(l);
+        }
     };
 
     // loops through breaks to find match and returns break object
@@ -140,35 +174,16 @@ function Ghost() {
         }
     };
 
+
     // media query change
     ghost.breakChange = function(mq) {
-
         ghost.activeBreakPoint = findBreak(mq.media);        
-        ghost.gridRender(ghost.activeBreakPoint);
-
+        ghost.render(ghost.activeBreakPoint);
     };
 
+
+    // registers media query listeners
     ghost.summon = function() {
-
-        ghost.containingElement = ghost.containingElement ? ghost.containingElement : document.body;
-        ghost.containingElement.style.position = 'relative';
-        ghost.containingElement.classList.toggle('gg-grid-hidden');
-        if (ghost.color) {
-            ghost.grid.style.borderColor = ghost.color;
-        }
-        ghost.containingElement.appendChild(ghost.grid);
-        ghost.containingElement.appendChild(ghost.gridSwitch);
-
-
-
-        // define grid toggle method used for toggling the grid visibility
-        ghost.toggle = function() {
-            ghost.containingElement.classList.toggle('gg-grid-hidden');
-        };
-
-        ghost.gridSwitch.addEventListener('click', function() {
-            ghost.toggle();
-        });
 
         // clear old listeners
         for ( i = 0; i < ghost.oldBreaks.length; i++ ) {
@@ -201,13 +216,14 @@ function Ghost() {
 
             // if media query wasn't found, set to the first breakpoint
             ghost.activeBreakPoint = !ghost.activeBreakPoint ? ghost.breaks[(ghost.breaks[0])] : ghost.activeBreakPoint;
-            ghost.gridRender(ghost.activeBreakPoint);
+            ghost.render(ghost.activeBreakPoint);
 
         }
         else {
             alert('Your browser does not support the MediaQueryList object. Ghosts hate old browsers. Get a new one.');
         }
     };
+
 
     return ghost;
 

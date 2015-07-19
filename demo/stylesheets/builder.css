@@ -216,7 +216,8 @@ body, html {
   z-index: 2147483648; }
 
 #ui {
-  position: fixed; }
+  position: fixed;
+  z-index: 1; }
 
 main {
   height: 100%;

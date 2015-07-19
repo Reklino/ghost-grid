@@ -35,7 +35,10 @@
 	var ghost = new Ghost(),
 		gui = new dat.GUI(),
 		demo = document.getElementById('demo'),
-		containerStuff = '<section id="container">\
+		ui = document.getElementById('ui'),
+		activeBreak = 0,
+		containerStuff = '\
+			<section id="container">\
 				<h1>Header 1</h1>\
 				<h2>Header 2</h2>\
 				<h3>Header 3</h3>\
@@ -60,55 +63,80 @@
 	        columns: 6,
 	        gutters: 1/4,
 	        baseLineHeight: (30/18) + 'em'
-	    }	    
+	    }
 	];
-	ghost.summon();
-	ghost.toggle();
+	ghost.render();
 
 	var controller = gui.add(ghost, 'align', ['left', 'center', 'right']);
 	var controller2 = gui.add(ghost, 'opacity').min(0).max(1);
 
-	function setContainer(i) {
+	function setBreakpointClick(i) {
+		window["breakpoint" + i].addEventListener('click', function() {
+			activeBreak = i;
+			ghost.renderContainerWidth(ghost.breaks[i]);
+			ghost.renderColumns(ghost.breaks[i]);
+			ghost.renderBaseline(ghost.breaks[i]);
+		})
+	}
+
+	function setContainerWidth(i) {
 		window["f" + i + 'Ctrl2'].onChange(function(value) {
-			ghost.summon();
-			ghost.toggle();
+			ghost.renderContainerWidth(ghost.breaks[i]);
 			window["container" + i].style.width = value + 'px';
 		});
 	}
 
-	function setContainerPadding(i) {
+	function setColumns(i) {
+		window["f" + i + 'Ctrl3'].onChange(function(value) {
+			ghost.renderColumns(ghost.breaks[i]);
+		});
+	}
+
+	function setGutters(i) {
 		window["f" + i + 'Ctrl4'].onChange(function(value) {
 			var gw = value/(ghost.breaks[i].columns + ghost.breaks[i].columns * value) * 100;
-			ghost.summon();
-			ghost.toggle();
+			ghost.renderColumns(ghost.breaks[i]);
 			window["container" + i].style.padding = '0 ' + gw/4 + '%';
 		});
 	}
 
+	function setBaseline(i) {
+		window["f" + i + 'Ctrl5'].onChange(function(value) {
+			ghost.renderBaseline(ghost.breaks[i]);
+		});
+	}
+
 	for (var i = ghost.breaks.length - 1; i >= 0; i--) {
+
+		window["breakpoint" + i] = document.createElement('div');
+		window["breakpoint" + i].classList.add('breakpoint');
+		window["breakpoint" + i].innerHTML = '<a href="#">' + ghost.breaks[i].point + '</a>';
+		setBreakpointClick(i);
+		ui.appendChild(window["breakpoint" + i]);
+
 		window["container" + i] = document.createElement('div');
 		window["container" + i].classList.add('container');
 		window["container" + i].innerHTML = containerStuff;
 		window["container" + i] = demo.appendChild(window["container" + i]);
+
 		window["f" + i] = gui.addFolder('Breakpoint ' + i);
 		window["f" + i + 'Ctrl1'] = window["f" + i].add(ghost.breaks[i], 'point');
 		window["f" + i + 'Ctrl2'] = window["f" + i].add(ghost.breaks[i], 'containerWidth').min(300).max(1600);
 		window["f" + i + 'Ctrl3'] = window["f" + i].add(ghost.breaks[i], 'columns').min(3).max(18).step(1);
 		window["f" + i + 'Ctrl4'] = window["f" + i].add(ghost.breaks[i], 'gutters').min(0).max(2);
 		window["f" + i + 'Ctrl5'] = window["f" + i].add(ghost.breaks[i], 'baseLineHeight');
-		window["f" + i + 'Ctrl1'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
-		setContainer(i);
-		setContainerPadding(i);
-		window["f" + i + 'Ctrl3'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
-		window["f" + i + 'Ctrl5'].onChange(function(value) { ghost.summon(); ghost.toggle(); })
+		setContainerWidth(i);
+		setColumns(i);
+		setGutters(i);
+		setBaseline(i);
 	};
+
 	controller.onChange(function(value) {
-		ghost.summon();
-		ghost.toggle();
+		ghost.renderContainerPosition();
 	})
+	
 	controller2.onChange(function(value) {
-		ghost.summon();
-		ghost.toggle();
+		ghost.renderOpacity();
 	})
 
 </script>
