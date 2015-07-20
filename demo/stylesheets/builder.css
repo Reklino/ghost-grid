@@ -227,6 +227,10 @@ main {
   min-height: 100%;
   padding-top: 6.66667em; }
 
+#container {
+  display: inline-block;
+  text-align: left; }
+
 .container {
   margin: 0 auto; }
 

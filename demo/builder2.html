@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 <head>
 	<link rel="stylesheet" type="text/css" href="stylesheets/ghost-grid.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/builder.css">
@@ -10,46 +10,97 @@
 
 	<title>Ghost Grid</title>
 </head>
-<body>
+<body ng-controller="mainController as main">
 
 	<section id="ui">
-		
+		<nav id="breakpoints">
+			<a href="#" ng-repeat="break in main.breaks" ng-click="main.setBreakpoint($index)">{{ break.point }}</a>
+		</nav>
+		<aside id="main-settings">
+
+			<input type="number" ng-model="main.opacity" ng-change="main.renderOpacity()">
+
+			<div class="butts">
+				<a href="#" class="butt"
+					ng-repeat="option in main.alignmentOptions"
+					ng-click="main.renderContainerPosition(option)">
+					{{ option }}
+				</a>
+			</div>
+
+		</aside>
+		<aside id="breakpoint-settings">
+
+			<input type="number" ng-model="main.breaks[main.activeBreak].containerWidth" ng-change="main.renderContainerWidth()">
+			<input type="number" ng-model="main.breaks[main.activeBreak].columns" ng-change="main.renderColumns()">
+			<input type="number" ng-model="main.breaks[main.activeBreak].gutters" ng-change="main.renderGutters()">
+			<input type="text" ng-model="main.breaks[main.activeBreak].baseLineHeight" ng-change="main.renderBaseline()">
+			
+		</aside>
 	</section>
 
 	<main>
-		<div id="demo">
+		<div id="demo"
+			ng-style="{
+				textAlign : main.align
+			}">
+			<section id="container"
+				ng-style="{
+					width : main.breaks[main.activeBreak].containerWidth + 'px'
+				}">
+				<h1>gHost gr1d</h1>
+				<h2>gHo2t grid</h2>
+				<h3>gHost 3rid</h3>
+				<h4>gHos4 grid</h4>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			</section>
 		</div>
 	</main>
 
 	<footer id="footer">
 		<div class="container">
-			<p>Stuff.</p>
+			<p>Stuff</p>
 		</div>
 	</footer>
 
 <script src="../dist/ghost-grid.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.5/dat.gui.min.js"></script>
+<script src="../node_modules/angular/angular.min.js"></script>
+<script src="../node_modules/angular-resizable/angular-resizable.min.js"></script>
 <script>
 
-	// ghost grid
-	var ghost = new Ghost(),
-		gui = new dat.GUI(),
-		demo = document.getElementById('demo'),
-		ui = document.getElementById('ui'),
-		activeBreak = 0,
-		containerStuff = '\
-			<section id="container">\
-				<h1>Header 1</h1>\
-				<h2>Header 2</h2>\
-				<h3>Header 3</h3>\
-				<h4>Header 4</h4>\
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\
-			</section>';
+angular
+	.module('app', ['angularResizable'])
+	.controller('mainController', mainController);
 
-	ghost.align = 'center',
-	ghost.opacity = 0.65,
-	ghost.containingElement = document.getElementById('demo'),
-	ghost.breaks = [
+function mainController() {
+
+	// set view model objects
+	var vm = this;
+
+	vm.activeBreak = 0;
+	vm.setBreakpoint = function(i) {
+		vm.activeBreak = i;
+		ghost.renderContainerWidth(ghost.breaks[i]);
+		ghost.renderColumns(ghost.breaks[i]);
+		ghost.renderBaseline(ghost.breaks[i]);
+	}
+
+	vm.opacity = 0.65;
+	vm.renderOpacity = function() {
+		ghost.opacity = vm.opacity;
+		ghost.renderOpacity();
+	}
+
+	vm.align = 'center';
+	vm.alignmentOptions = ['left', 'center', 'right'];
+	vm.renderContainerPosition = function(value) {
+		vm.align = value;
+		ghost.align = vm.align;
+		ghost.renderContainerPosition(); 
+	}
+
+	vm.breaks = [
 		{
 	        point: "(min-width: 300px)",
 	        containerWidth: 450,
@@ -65,32 +116,45 @@
 	        baseLineHeight: (30/18) + 'em'
 	    }
 	];
+	vm.renderContainerWidth = function() {
+		ghost.breaks[vm.activeBreak].containerWidth = vm.breaks[vm.activeBreak].containerWidth;
+		ghost.renderContainerWidth(ghost.breaks[vm.activeBreak]); 
+	}
+	vm.renderColumns = function() {
+		ghost.breaks[vm.activeBreak].columns = vm.breaks[vm.activeBreak].columns;
+		ghost.renderColumns(ghost.breaks[vm.activeBreak]); 
+	}
+	vm.renderGutters = function() {
+		ghost.breaks[vm.activeBreak].gutters = vm.breaks[vm.activeBreak].gutters;
+		ghost.renderColumns(ghost.breaks[vm.activeBreak]); 
+	}
+	vm.renderBaseline = function() {
+		ghost.breaks[vm.activeBreak].baseLineHeight = vm.breaks[vm.activeBreak].baseLineHeight;
+		ghost.renderBaseline(ghost.breaks[vm.activeBreak]); 
+	}
+
+
+	// define ghost grid
+	var ghost = new Ghost();
+
+	ghost.align = vm.align,
+	ghost.opacity = vm.opacity,
+	ghost.containingElement = document.getElementById('demo'),
+	ghost.breaks = vm.breaks;
 	ghost.render();
 
-	var controller = gui.add(ghost, 'align', ['left', 'center', 'right']);
-	var controller2 = gui.add(ghost, 'opacity').min(0).max(1);
 
-	function setBreakpointClick(i) {
-		window["breakpoint" + i].addEventListener('click', function() {
-			activeBreak = i;
-			ghost.renderContainerWidth(ghost.breaks[i]);
-			ghost.renderColumns(ghost.breaks[i]);
-			ghost.renderBaseline(ghost.breaks[i]);
-		})
-	}
 
-	function setContainerWidth(i) {
-		window["f" + i + 'Ctrl2'].onChange(function(value) {
-			ghost.renderContainerWidth(ghost.breaks[i]);
-			window["container" + i].style.width = value + 'px';
-		});
-	}
-
-	function setColumns(i) {
-		window["f" + i + 'Ctrl3'].onChange(function(value) {
-			ghost.renderColumns(ghost.breaks[i]);
-		});
-	}
+	var demo = document.getElementById('demo'),
+		ui = document.getElementById('ui'),
+		containerStuff = '\
+			<section id="container">\
+				<h1>Header 1</h1>\
+				<h2>Header 2</h2>\
+				<h3>Header 3</h3>\
+				<h4>Header 4</h4>\
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>\
+			</section>';
 
 	function setGutters(i) {
 		window["f" + i + 'Ctrl4'].onChange(function(value) {
@@ -100,44 +164,7 @@
 		});
 	}
 
-	function setBaseline(i) {
-		window["f" + i + 'Ctrl5'].onChange(function(value) {
-			ghost.renderBaseline(ghost.breaks[i]);
-		});
-	}
-
-	for (var i = ghost.breaks.length - 1; i >= 0; i--) {
-
-		window["breakpoint" + i] = document.createElement('div');
-		window["breakpoint" + i].classList.add('breakpoint');
-		window["breakpoint" + i].innerHTML = '<a href="#">' + ghost.breaks[i].point + '</a>';
-		setBreakpointClick(i);
-		ui.appendChild(window["breakpoint" + i]);
-
-		window["container" + i] = document.createElement('div');
-		window["container" + i].classList.add('container');
-		window["container" + i].innerHTML = containerStuff;
-		window["container" + i] = demo.appendChild(window["container" + i]);
-
-		window["f" + i] = gui.addFolder('Breakpoint ' + i);
-		window["f" + i + 'Ctrl1'] = window["f" + i].add(ghost.breaks[i], 'point');
-		window["f" + i + 'Ctrl2'] = window["f" + i].add(ghost.breaks[i], 'containerWidth').min(300).max(1600);
-		window["f" + i + 'Ctrl3'] = window["f" + i].add(ghost.breaks[i], 'columns').min(3).max(18).step(1);
-		window["f" + i + 'Ctrl4'] = window["f" + i].add(ghost.breaks[i], 'gutters').min(0).max(2);
-		window["f" + i + 'Ctrl5'] = window["f" + i].add(ghost.breaks[i], 'baseLineHeight');
-		setContainerWidth(i);
-		setColumns(i);
-		setGutters(i);
-		setBaseline(i);
-	};
-
-	controller.onChange(function(value) {
-		ghost.renderContainerPosition();
-	})
-	
-	controller2.onChange(function(value) {
-		ghost.renderOpacity();
-	})
+};
 
 </script>
 </body>

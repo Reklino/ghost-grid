@@ -274,6 +274,10 @@ main {
     min-height: 100%;
     padding-top: #{$line*4}em;
 }
+#container {
+    display: inline-block;
+    text-align: left;
+}
 .container {
     margin: 0 auto;
 }
