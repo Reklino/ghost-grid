@@ -46,7 +46,8 @@
 			}">
 			<section id="container"
 				ng-style="{
-					width : main.breaks[main.activeBreak].containerWidth + 'px'
+					width : main.breaks[main.activeBreak].containerWidth + 'px',
+					paddingLeft : main.breaks[main.activeBreak].gutterValue + '%'
 				}">
 				<h1>gHost gr1d</h1>
 				<h2>gHo2t grid</h2>
@@ -105,14 +106,16 @@ function mainController() {
 	        point: "(min-width: 300px)",
 	        containerWidth: 450,
 	        columns: 3,
-	        gutters: 1/4,
+	        gutters: 0.25,
+	        gutterValue: 1.666666666666667,
 	        baseLineHeight: (30/18) + 'em'
 	    },
 	    {
 	        point: "(min-width: 700px)",
 	        containerWidth: 750,
 	        columns: 6,
-	        gutters: 1/4,
+	        gutters: 0.25,
+	        gutterValue: 0.8333333333333335,
 	        baseLineHeight: (30/18) + 'em'
 	    }
 	];
@@ -125,7 +128,10 @@ function mainController() {
 		ghost.renderColumns(ghost.breaks[vm.activeBreak]); 
 	}
 	vm.renderGutters = function() {
+		var g = vm.breaks[vm.activeBreak].gutters,
+			c = vm.breaks[vm.activeBreak].columns;
 		ghost.breaks[vm.activeBreak].gutters = vm.breaks[vm.activeBreak].gutters;
+		vm.breaks[vm.activeBreak].gutterValue = (g/(c + c * g) * 100)/2;
 		ghost.renderColumns(ghost.breaks[vm.activeBreak]); 
 	}
 	vm.renderBaseline = function() {
