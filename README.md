@@ -4,7 +4,7 @@ Summon your fluid grids from the bowels of CSS hell. [Read More here...](http://
 
 ##What?
 
-Ghost Grid is a design/development tool for folks like me who love designing with code, but miss having a visual grid. [Check out these examples](http://google.com).
+Ghost Grid is a design/development tool for folks like me who love designing with code, but miss having a visual grid.
 
 ##Why?
 
@@ -37,33 +37,40 @@ Load the javascript file before your closing `<body>` tag like so
 **Configure**
 
 ```
-<script src="ghost-grid.min.js"></script>
 <script>
 	var ghost = new Ghost();
 	ghost.align = 'center',
-	ghost.opacity = 0.75,
+	ghost.opacity = 0.65,
+	ghost.containingElement = document.body,
 	ghost.breaks = [
 		{
 	        point: "(min-width: 300px)",
 	        containerWidth: 450,
 	        columns: 3,
 	        gutters: 1/4,
-	        baseLineHeight: '1em'
+	        baseLineHeight: (30/18) + 'em'
 	    },
 	    {
 	        point: "(min-width: 700px)",
-	        containerWidth: 650,
+	        containerWidth: 750,
 	        columns: 6,
 	        gutters: 1/4,
-	        baseLineHeight: '1.25em'
+	        baseLineHeight: (30/18) + 'em'
 	    },
 	    {
 	        point: "(min-width: 1100px)",
 	        containerWidth: 960,
+	        columns: 9,
+	        gutters: 1/4,
+	        baseLineHeight: (30/18) + 'em'
+	    },
+	    {
+	        point: "(min-width: 1600px)",
+	        containerWidth: 1200,
 	        columns: 12,
 	        gutters: 1/4,
-	        baseLineHeight: '1.5em'
-	    }    
+	        baseLineHeight: (30/18) + 'em'
+	    }	    
 	];
 	ghost.summon();
 </script>
