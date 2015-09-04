@@ -15,10 +15,10 @@ Designing in the browser is becoming more and more common, and so are fluid grid
 **Install**
 
 ```
-bower install blooby-grid
+bower install ghost-grid
 ```
 ```
-npm install blooby-grid --save-dev
+npm install ghost-grid --save-dev
 ```
 or download `ghost-grid.min.js` and `ghost-grid.min.css`
 
